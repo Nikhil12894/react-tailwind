@@ -1,6 +1,7 @@
 import { useSidebar } from "../../../context";
 
-export const Logo = () => {
+export const Logo = ({ ...pops }) => {
+  const { logoImgUrl, logoName } = pops;
   const { isOpened, toggleOpened } = useSidebar();
   return (
     <div className="-mx-6 px-6 py-4">
@@ -12,7 +13,8 @@ export const Logo = () => {
           &times;
         </div>
       )}
-      <a href="#" title="home">
+      <a title="home">
+        {/* <img src={logoImgUrl} className="w-32" alt={logoName} /> */}
         <img src="images/logo.svg" className="w-32" alt="tailus logo" />
       </a>
     </div>
