@@ -25,7 +25,7 @@ export const SimpleAnd = ({
   onSelect,
   onValueChange,
   isValueSelected,
-  gridSize = ["w-1/6", "md:w-1/12"],
+  gridSize = ["w-1/6", "md:w-1/12", "mr-4"],
   segmentId,
 }: Props) => (
   <div

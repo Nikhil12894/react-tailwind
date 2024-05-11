@@ -64,7 +64,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-every-weekday-option"]
           )}
           type="radio"
@@ -78,7 +78,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:200"],
             ["c-every-weekday-option-label"]
           )}
           htmlFor={genId(Mode.EVERY, session, Segment.dayOfWeek)}
@@ -93,7 +93,7 @@ export const QuartzCronDay = ({
     <div
       className={genClassName(
         classPrefix,
-        ["form-group", "form-inline"],
+        ["form-group flex flex-wrap items-center"],
         ["c-increment-weekday", "c-segment"]
       )}
     >
@@ -107,7 +107,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-increment-weekday-option"]
           )}
           type="radio"
@@ -121,7 +121,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-increment-weekday-option-label"]
           )}
           htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfWeek)}
@@ -133,7 +133,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-increment-weekday-every"]
         )}
         disabled={api.isDayOfWeekIncrementControlsDisabled()}
@@ -150,7 +150,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-increment-weekday-option-label2"
+        className="c-increment-weekday-option-label2 text-gray-900 dark:text-gray-200"
         htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfWeek)}
       >
         {dayOfWeekIncrement.label2}
@@ -159,7 +159,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-increment-weekday-from"]
         )}
         disabled={api.isDayOfWeekIncrementControlsDisabled()}
@@ -181,7 +181,7 @@ export const QuartzCronDay = ({
     <div
       className={genClassName(
         classPrefix,
-        ["form-group", "form-inline"],
+        ["form-group flex flex-wrap items-center"],
         ["c-increment-monthday", "c-segment"]
       )}
     >
@@ -195,7 +195,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-increment-monthday-option"]
           )}
           type="radio"
@@ -209,7 +209,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-increment-monthday-option-label"]
           )}
           htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfMonth)}
@@ -221,7 +221,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-increment-monthday-every"]
         )}
         disabled={api.isDayOfMonthIncrementControlsDisabled()}
@@ -238,7 +238,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-increment-monthday-option-label2"
+        className="c-increment-monthday-option-label2 text-gray-900 dark:text-gray-200 "
         htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfMonth)}
       >
         {dayOfMonthIncrement.label2}
@@ -247,7 +247,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-increment-monthday-from"]
         )}
         disabled={api.isDayOfMonthIncrementControlsDisabled()}
@@ -264,7 +264,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-increment-monthday-option-label3"
+        className="c-increment-monthday-option-label3 text-gray-900 dark:text-gray-200"
         htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfMonth)}
       >
         {dayOfMonthIncrement.label3}
@@ -290,7 +290,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-and-weekday-option"]
           )}
           type="radio"
@@ -304,7 +304,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-and-weekday-option-label"]
           )}
           htmlFor={genId(Mode.AND, session, Segment.dayOfWeek)}
@@ -316,7 +316,7 @@ export const QuartzCronDay = ({
       <div
         className={genClassName(
           classPrefix,
-          ["row", "pl-3", "pt-1"],
+          ["flex flex-wrap pl-3 pt-1"],
           ["c-and-weekday-list"]
         )}
       >
@@ -325,7 +325,7 @@ export const QuartzCronDay = ({
             <div
               className={genClassName(
                 classPrefix,
-                ["col-3", "col-md-2"],
+                ["w-1/2", "xl:w-1/6", "2xl:w-1/12", "mr-4"],
                 ["c-and-weekday-item"]
               )}
               item-value={item.value}
@@ -341,7 +341,7 @@ export const QuartzCronDay = ({
                 <input
                   className={genClassName(
                     classPrefix,
-                    ["form-check-input"],
+                    ["form-radio h-4 w-4 text-indigo-600"],
                     ["c-and-weekday-item-field"]
                   )}
                   type="checkbox"
@@ -355,7 +355,7 @@ export const QuartzCronDay = ({
                 <label
                   className={genClassName(
                     classPrefix,
-                    ["form-check-label"],
+                    ["ml-2 text-gray-900 dark:text-gray-200"],
                     ["c-and-weekday-item-label"]
                   )}
                   htmlFor={genId(
@@ -411,7 +411,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-and-monthday-option"]
           )}
           type="radio"
@@ -425,7 +425,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-and-monthday-option-label"]
           )}
           htmlFor={genId(Mode.AND, session, Segment.dayOfMonth)}
@@ -437,7 +437,7 @@ export const QuartzCronDay = ({
       <div
         className={genClassName(
           classPrefix,
-          ["row", "pl-3", "pt-1"],
+          ["flex flex-wrap pl-3 pt-1"],
           ["c-and-monthday-list"]
         )}
       >
@@ -446,7 +446,7 @@ export const QuartzCronDay = ({
             <div
               className={genClassName(
                 classPrefix,
-                ["col-2", "col-md-1"],
+                ["w-1/4", "md:w-1/6", "xl:w-1/12", "mr-4"],
                 ["c-and-monthday-item"]
               )}
               item-value={item.value}
@@ -462,7 +462,7 @@ export const QuartzCronDay = ({
                 <input
                   className={genClassName(
                     classPrefix,
-                    ["form-check-input"],
+                    ["form-radio h-4 w-4 text-indigo-600"],
                     ["c-and-monthday-item-field"]
                   )}
                   type="checkbox"
@@ -476,7 +476,7 @@ export const QuartzCronDay = ({
                 <label
                   className={genClassName(
                     classPrefix,
-                    ["form-check-label"],
+                    ["ml-2 mr-2 text-gray-900 dark:text-gray-200"],
                     ["c-and-monthday-item-label"]
                   )}
                   htmlFor={genId(
@@ -513,7 +513,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-last-monthday-option"]
           )}
           type="radio"
@@ -527,7 +527,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-last-monthday-option-label"]
           )}
           htmlFor={genId(Mode.LAST_DAY, session, Segment.dayOfMonth)}
@@ -556,7 +556,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-last-weekday-option"]
           )}
           type="radio"
@@ -570,7 +570,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-last-weekday-option-label"]
           )}
           htmlFor={genId(Mode.LAST_DAY_WEEK, session, Segment.dayOfMonth)}
@@ -585,7 +585,7 @@ export const QuartzCronDay = ({
     <div
       className={genClassName(
         classPrefix,
-        ["form-group", "form-inline"],
+        ["form-group flex items-center"],
         ["c-last-nth", "c-segment"]
       )}
     >
@@ -599,7 +599,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-last-nth-option"]
           )}
           type="radio"
@@ -613,7 +613,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-last-nth-option-label"]
           )}
           htmlFor={genId(Mode.LAST_NTH_DAY_WEEK, session, Segment.dayOfWeek)}
@@ -625,7 +625,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-last-nth-weekday"]
         )}
         disabled={api.isDayOfWeekLastNTHDayWeekControlsDisabled()}
@@ -642,7 +642,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-last-nth-option-label2"
+        className="c-last-nth-option-label2 ml-2 text-gray-900 dark:text-gray-200"
         htmlFor={genId(Mode.LAST_NTH_DAY_WEEK, session, Segment.dayOfWeek)}
       >
         {dayOfWeekLastNTHDayWeek.label2}
@@ -654,7 +654,7 @@ export const QuartzCronDay = ({
     <div
       className={genClassName(
         classPrefix,
-        ["form-group", "form-inline"],
+        ["form-group flex items-center"],
         ["c-day-before-end", "c-segment"]
       )}
     >
@@ -668,7 +668,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-day-before-end-option"]
           )}
           type="radio"
@@ -683,7 +683,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-day-before-end-monthday"]
         )}
         disabled={api.isDayOfMonthDaysBeforeEndMonthControlsDisabled()}
@@ -714,7 +714,7 @@ export const QuartzCronDay = ({
     <div
       className={genClassName(
         classPrefix,
-        ["form-group", "form-inline"],
+        ["form-group flex flex-wrap items-center"],
         ["c-nearest", "c-segment"]
       )}
     >
@@ -728,7 +728,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-nearest-option"]
           )}
           type="radio"
@@ -742,7 +742,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-nearest-option-label"]
           )}
           htmlFor={genId(
@@ -758,7 +758,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-nearest-monthday"]
         )}
         disabled={api.isDayOfMonthNearestWeekDayOfMonthControlsDisabled()}
@@ -793,7 +793,7 @@ export const QuartzCronDay = ({
     <div
       className={genClassName(
         classPrefix,
-        ["form-group", "form-inline"],
+        ["form-group flex flex-wrap items-center"],
         ["c-nth", "c-segment"]
       )}
     >
@@ -803,7 +803,7 @@ export const QuartzCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-nth-option"]
           )}
           type="radio"
@@ -817,7 +817,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["form-check-label"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-nth-option-label"]
           )}
           htmlFor={genId(Mode.NTH_WEEKDAY_OF_MONTH, session, Segment.dayOfWeek)}
@@ -829,7 +829,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-nth-every"]
         )}
         disabled={api.isDayOfWeekNTHWeekDayOfMonthControlsDisabled()}
@@ -850,7 +850,7 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-control", "form-control-sm", "mx-1"],
+          ["form-select form-select-sm mx-1"],
           ["c-nth-every-weekday"]
         )}
         disabled={api.isDayOfWeekNTHWeekDayOfMonthControlsDisabled()}

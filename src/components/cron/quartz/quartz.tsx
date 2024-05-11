@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   CronQuartzUIService,
   QuartzType,
@@ -89,7 +89,9 @@ export const ReQuartzCron = ({
   const genTabs = (activeTab: QuartzType) => {
     const className = genClassName(
       cssClassPrefix,
-      ["flex flex-wrap -mb-px text-sm font-medium text-center"],
+      [
+        "flex flex-wrap -mb-px font-medium text-center mb-4 border-b border-gray-200 dark:border-gray-700",
+      ],
       ["c-tabs"]
     );
     return (
@@ -149,7 +151,7 @@ export const ReQuartzCron = ({
   };
 
   return (
-    <div className={"mb-4 border-b border-gray-200 dark:border-gray-700"}>
+    <div className="c-tabs-container sm:text-xs md:text-sm xl:text-lg 2xl:lg">
       {hasTabs && genTabs(tab)}
 
       <div

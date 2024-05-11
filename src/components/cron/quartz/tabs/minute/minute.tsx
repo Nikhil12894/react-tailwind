@@ -58,6 +58,14 @@ export const QuartzCronMinute = ({
       onValueChange={api.selectAndValue}
       isValueSelected={(value) => api.isSelectedAndValue(value)}
       options={minutesList}
+      gridSize={[
+        " w-1/6",
+        "sm:w-1/10",
+        "md:w-1/10",
+        "xl:w-1/12",
+        "2xl:w-1/12",
+        "mr-4",
+      ]}
     />
   );
 

@@ -52,7 +52,7 @@ export const UnixCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-every-weekday-option"]
           )}
           type="radio"
@@ -95,7 +95,7 @@ export const UnixCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-increment-weekday-option"]
           )}
           type="radio"
@@ -164,7 +164,7 @@ export const UnixCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-increment-monthday-option"]
           )}
           type="radio"
@@ -233,7 +233,7 @@ export const UnixCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-and-weekday-option"]
           )}
           type="radio"
@@ -284,7 +284,7 @@ export const UnixCronDay = ({
                 <input
                   className={genClassName(
                     classPrefix,
-                    ["form-check-input"],
+                    ["form-radio h-4 w-4 text-indigo-600"],
                     ["c-and-weekday-item-field"]
                   )}
                   type="checkbox"
@@ -335,7 +335,7 @@ export const UnixCronDay = ({
         <input
           className={genClassName(
             classPrefix,
-            ["form-check-input"],
+            ["form-radio h-4 w-4 text-indigo-600"],
             ["c-and-monthday-option"]
           )}
           type="radio"
@@ -361,7 +361,7 @@ export const UnixCronDay = ({
       <div
         className={genClassName(
           classPrefix,
-          ["row", "pl-3", "pt-1"],
+          ["row", "pl-1", "pt-1", "2xl:pl-3"],
           ["c-and-monthday-list"]
         )}
       >
@@ -386,7 +386,7 @@ export const UnixCronDay = ({
                 <input
                   className={genClassName(
                     classPrefix,
-                    ["form-check-input"],
+                    ["form-radio h-4 w-4 text-indigo-600"],
                     ["c-and-monthday-item-field"]
                   )}
                   type="checkbox"

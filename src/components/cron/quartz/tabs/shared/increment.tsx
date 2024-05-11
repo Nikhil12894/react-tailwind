@@ -44,7 +44,7 @@ export const SimpleIncrement = ({
   <div
     className={genClassName(
       cssClassPrefix,
-      ["flex items-center"],
+      ["flex flex-wrap items-center"],
       ["c-increment", "c-segment"]
     )}
   >

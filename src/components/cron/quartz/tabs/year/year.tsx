@@ -66,6 +66,7 @@ export const QuartzCronYear = (props: CronTabYearProps) => {
       onValueChange={api.selectAndValue}
       isValueSelected={(value) => api.isSelectedAndValue(value)}
       options={years}
+      gridSize={["w-1/4", "sm:w-1/6", "xl:w-1/12", "2xl:w-1/18"]}
     />
   );
 

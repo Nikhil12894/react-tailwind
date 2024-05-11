@@ -50,7 +50,7 @@ export const QuartzCronMonth = ({
   const genAnd = () => (
     <SimpleAnd
       cssClassPrefix={classPrefix}
-      gridSize={["col-3", "col-md-2"]}
+      gridSize={["w-1/2", "md:w-1/4", "xl:w-1/6"]}
       segmentId={genId(Mode.AND, session)}
       checked={api.isAndSelected()}
       disabled={service.isDisabled()}

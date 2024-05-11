@@ -40,7 +40,7 @@ export const SimpleRange = ({
   <div
     className={genClassName(
       cssClassPrefix,
-      ["form-group flex items-center"],
+      ["form-group flex flex-wrap items-center"],
       ["c-range", "c-segment"]
     )}
   >
