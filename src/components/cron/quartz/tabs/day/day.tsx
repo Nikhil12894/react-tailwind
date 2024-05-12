@@ -78,7 +78,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:200"],
+            ["ml-2 text-gray-900 dark:text-gray-200"],
             ["c-every-weekday-option-label"]
           )}
           htmlFor={genId(Mode.EVERY, session, Segment.dayOfWeek)}
@@ -325,7 +325,7 @@ export const QuartzCronDay = ({
             <div
               className={genClassName(
                 classPrefix,
-                ["w-1/2", "xl:w-1/6", "2xl:w-1/12", "mr-4"],
+                ["w-1/2", "xl:w-1/6", "2xl:w-[10%]"],
                 ["c-and-weekday-item"]
               )}
               item-value={item.value}
@@ -702,7 +702,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-day-before-end-option-label"
+        className="c-day-before-end-option-label text-gray-900 dark:text-gray-200"
         htmlFor={genId(Mode.DAYS_BEFORE_END_MONTH, session, Segment.dayOfMonth)}
       >
         {dayOfMonthDaysBeforeEndMonth.label}
@@ -777,7 +777,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-nearest-option-label2"
+        className="c-nearest-option-label2 text-gray-900 dark:text-gray-200"
         htmlFor={genId(
           Mode.NEAREST_WEEKDAY_OF_MONTH,
           session,
@@ -869,7 +869,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-nth-option-label2"
+        className="c-nth-option-label2 text-gray-900 dark:text-gray-200"
         htmlFor={genId(Mode.NTH_WEEKDAY_OF_MONTH, session, Segment.dayOfWeek)}
       >
         {dayOfWeekNTHWeekDayOfMonth.label2}

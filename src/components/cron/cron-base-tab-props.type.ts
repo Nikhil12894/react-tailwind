@@ -1,4 +1,4 @@
-import { CronUnixUIService, CronQuartzUIService } from "./cron-core";
+import { CronUnixUIService, CronQuartzUIService } from "@sbzen/cron-core";
 
 import { CronBaseProps } from "./cron-base-props.type";
 import { localization } from "./cron-localization";

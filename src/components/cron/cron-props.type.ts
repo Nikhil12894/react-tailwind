@@ -1,4 +1,4 @@
-import { Type } from "./cron-core";
+import { Type } from "@sbzen/cron-core";
 
 import { CronBaseProps } from "./cron-base-props.type";
 import { CronLocalization } from "./cron-localization";
