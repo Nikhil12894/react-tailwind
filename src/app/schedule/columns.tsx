@@ -5,7 +5,7 @@ import { Schedule } from "../schedule-type";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
+import { DataTableColumnHeader } from "@/components/ui/data-table-column-header";
 
 export const columns: ColumnDef<Schedule>[] = [
   {
@@ -36,30 +36,48 @@ export const columns: ColumnDef<Schedule>[] = [
   },
   {
     accessorKey: "schedule_id",
-    header: "ScheduleID",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="ScheduleID" />
+    ),
   },
   {
     accessorKey: "cron_schedule",
-    header: "CronExpression",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="CronExpression" />
+    ),
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     accessorKey: "created_by",
-    header: "CreatedBy",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="CreatedBy" />
+    ),
   },
   {
     accessorKey: "last_updated_by",
-    header: "LastUpdatedBy",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="LastUpdatedBy" />
+    ),
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
   {
     accessorKey: "creation_date",
-    header: "CreationDate",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="CreationDate" />
+    ),
     cell: ({ getValue }) => {
       return new Date(getValue<Date | string>()).toLocaleString();
     },
   },
   {
     accessorKey: "last_update_date",
-    header: "LastUpdateDate",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="LastUpdateDate" />
+    ),
     cell: ({ getValue }) => {
       return new Date(getValue<Date | string>()).toLocaleString();
     },

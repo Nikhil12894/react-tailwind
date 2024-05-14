@@ -28,7 +28,7 @@ export const SideBar = () => {
     <aside
       className={`fixed top-0 z-10 flex h-full ${
         !isOpened && "ml-[-100%]"
-      } w-auto flex-col justify-between border-r px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[20%] xl:w-[20%] 2xl:w-[15%] border`}
+      } w-auto flex-col justify-between border-r px-6 pb-3 transition duration-300 md:w-4/12 lg:ml-0 lg:w-[20%] xl:w-[20%] 2xl:w-[15%] border bg-background`}
     >
       <div>
         <Logo />

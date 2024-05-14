@@ -6,6 +6,13 @@ import {
   getPaginationRowModel,
   getCoreRowModel,
   useReactTable,
+  getSortedRowModel,
+  getFilteredRowModel,
+  VisibilityState,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
+  ColumnFiltersState,
+  SortingState,
 } from "@tanstack/react-table";
 
 import {
@@ -16,26 +23,60 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
+import { DataTablePagination } from "../../components/ui/data-table-pagination";
+import {
+  DataTableToolbar,
+  FilterData,
+} from "../../components/ui/data-table-toolbar";
+import React from "react";
 
-interface DataTableProps<TData, TValue> {
+export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  hiddenColumns?: VisibilityState;
+  filterData?: FilterData;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  hiddenColumns,
+  filterData,
 }: DataTableProps<TData, TValue>) {
+  const [rowSelection, setRowSelection] = React.useState({});
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({ ...hiddenColumns });
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+
   const table = useReactTable({
     data,
     columns,
+
+    state: {
+      sorting,
+      columnVisibility,
+      rowSelection,
+      columnFilters,
+    },
+    enableRowSelection: true,
+    onRowSelectionChange: setRowSelection,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
+    onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
   return (
-    <div>
+    <div className="space-y-4">
+      <DataTableToolbar table={table} filterData={filterData} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -86,24 +127,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </div>
+      <DataTablePagination table={table} />
     </div>
   );
 }
