@@ -46,7 +46,7 @@ export const SimpleEvery = ({
       <label
         className={genClassName(
           cssClassPrefix,
-          ["ml-2 text-gray-900 dark:text-gray-200"],
+          ["ml-2 "],
           ["c-every-option-label"]
         )}
         htmlFor={segmentId}

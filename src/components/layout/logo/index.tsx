@@ -7,7 +7,7 @@ export const Logo = ({ ...pops }) => {
     <div className="-mx-6 px-6 py-4">
       {isOpened && (
         <div
-          className="float-right cursor-pointer text-2xl dark:text-white"
+          className="float-right cursor-pointer text-2xl"
           onClick={toggleOpened}
         >
           &times;

@@ -15,6 +15,7 @@ import {
 } from "./../../../helpers";
 import { SimpleRange } from "./../../../shared";
 import { CronQuartzTabProps } from "./../shared";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export const QuartzCronDay = ({
   service,
@@ -78,7 +79,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-every-weekday-option-label"]
           )}
           htmlFor={genId(Mode.EVERY, session, Segment.dayOfWeek)}
@@ -121,7 +122,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-increment-weekday-option-label"]
           )}
           htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfWeek)}
@@ -133,7 +134,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-increment-weekday-every"]
         )}
         disabled={api.isDayOfWeekIncrementControlsDisabled()}
@@ -150,7 +153,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-increment-weekday-option-label2 text-gray-900 dark:text-gray-200"
+        className="c-increment-weekday-option-label2 "
         htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfWeek)}
       >
         {dayOfWeekIncrement.label2}
@@ -159,7 +162,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-increment-weekday-from"]
         )}
         disabled={api.isDayOfWeekIncrementControlsDisabled()}
@@ -209,7 +214,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-increment-monthday-option-label"]
           )}
           htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfMonth)}
@@ -221,7 +226,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-increment-monthday-every"]
         )}
         disabled={api.isDayOfMonthIncrementControlsDisabled()}
@@ -238,7 +245,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-increment-monthday-option-label2 text-gray-900 dark:text-gray-200 "
+        className="c-increment-monthday-option-label2  "
         htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfMonth)}
       >
         {dayOfMonthIncrement.label2}
@@ -247,7 +254,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-increment-monthday-from"]
         )}
         disabled={api.isDayOfMonthIncrementControlsDisabled()}
@@ -264,7 +273,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-increment-monthday-option-label3 text-gray-900 dark:text-gray-200"
+        className="c-increment-monthday-option-label3 "
         htmlFor={genId(Mode.INCREMENT, session, Segment.dayOfMonth)}
       >
         {dayOfMonthIncrement.label3}
@@ -304,7 +313,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-and-weekday-option-label"]
           )}
           htmlFor={genId(Mode.AND, session, Segment.dayOfWeek)}
@@ -338,7 +347,7 @@ export const QuartzCronDay = ({
                   ["c-and-weekday-item-check"]
                 )}
               >
-                <input
+                {/* <input
                   className={genClassName(
                     classPrefix,
                     ["form-radio h-4 w-4 text-indigo-600"],
@@ -350,12 +359,21 @@ export const QuartzCronDay = ({
                   disabled={api.isDayOfWeekAndControlsDisabled()}
                   checked={api.isSelectedDayOfWeekAndValue(item.value)}
                   onChange={() => api.selectDayOfWeekAndValue(item.value)}
+                /> */}
+                <Checkbox
+                  id={genId(Mode.AND, session, Segment.dayOfWeek + item.value)}
+                  value={item.value}
+                  disabled={api.isDayOfWeekAndControlsDisabled()}
+                  checked={api.isSelectedDayOfWeekAndValue(item.value)}
+                  onChange={() => api.selectDayOfWeekAndValue(item.value)}
+                  onCheckedChange={() =>
+                    api.selectDayOfWeekAndValue(item.value)
+                  }
                 />
-
                 <label
                   className={genClassName(
                     classPrefix,
-                    ["ml-2 text-gray-900 dark:text-gray-200"],
+                    ["ml-2 "],
                     ["c-and-weekday-item-label"]
                   )}
                   htmlFor={genId(
@@ -425,7 +443,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-and-monthday-option-label"]
           )}
           htmlFor={genId(Mode.AND, session, Segment.dayOfMonth)}
@@ -459,7 +477,7 @@ export const QuartzCronDay = ({
                   ["c-and-monthday-item-check"]
                 )}
               >
-                <input
+                {/* <input
                   className={genClassName(
                     classPrefix,
                     ["form-radio h-4 w-4 text-indigo-600"],
@@ -471,12 +489,21 @@ export const QuartzCronDay = ({
                   disabled={api.isDayOfMonthAndControlsDisabled()}
                   checked={api.isSelectedDayOfMonthAndValue(item.value)}
                   onChange={() => api.selectDayOfMonthAndValue(item.value)}
+                /> */}
+                <Checkbox
+                  id={genId(Mode.AND, session, Segment.dayOfMonth + item.value)}
+                  value={item.value}
+                  disabled={api.isDayOfMonthAndControlsDisabled()}
+                  checked={api.isSelectedDayOfMonthAndValue(item.value)}
+                  onChange={() => api.selectDayOfMonthAndValue(item.value)}
+                  onCheckedChange={() =>
+                    api.selectDayOfMonthAndValue(item.value)
+                  }
                 />
-
                 <label
                   className={genClassName(
                     classPrefix,
-                    ["ml-2 mr-2 text-gray-900 dark:text-gray-200"],
+                    ["ml-2 mr-2 "],
                     ["c-and-monthday-item-label"]
                   )}
                   htmlFor={genId(
@@ -527,7 +554,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-last-monthday-option-label"]
           )}
           htmlFor={genId(Mode.LAST_DAY, session, Segment.dayOfMonth)}
@@ -570,7 +597,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-last-weekday-option-label"]
           )}
           htmlFor={genId(Mode.LAST_DAY_WEEK, session, Segment.dayOfMonth)}
@@ -613,7 +640,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-last-nth-option-label"]
           )}
           htmlFor={genId(Mode.LAST_NTH_DAY_WEEK, session, Segment.dayOfWeek)}
@@ -625,7 +652,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-last-nth-weekday"]
         )}
         disabled={api.isDayOfWeekLastNTHDayWeekControlsDisabled()}
@@ -642,7 +671,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-last-nth-option-label2 ml-2 text-gray-900 dark:text-gray-200"
+        className="c-last-nth-option-label2 ml-2 "
         htmlFor={genId(Mode.LAST_NTH_DAY_WEEK, session, Segment.dayOfWeek)}
       >
         {dayOfWeekLastNTHDayWeek.label2}
@@ -683,7 +712,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-day-before-end-monthday"]
         )}
         disabled={api.isDayOfMonthDaysBeforeEndMonthControlsDisabled()}
@@ -702,7 +733,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-day-before-end-option-label text-gray-900 dark:text-gray-200"
+        className="c-day-before-end-option-label "
         htmlFor={genId(Mode.DAYS_BEFORE_END_MONTH, session, Segment.dayOfMonth)}
       >
         {dayOfMonthDaysBeforeEndMonth.label}
@@ -742,7 +773,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-nearest-option-label"]
           )}
           htmlFor={genId(
@@ -758,7 +789,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-nearest-monthday"]
         )}
         disabled={api.isDayOfMonthNearestWeekDayOfMonthControlsDisabled()}
@@ -777,7 +810,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-nearest-option-label2 text-gray-900 dark:text-gray-200"
+        className="c-nearest-option-label2 "
         htmlFor={genId(
           Mode.NEAREST_WEEKDAY_OF_MONTH,
           session,
@@ -817,7 +850,7 @@ export const QuartzCronDay = ({
         <label
           className={genClassName(
             classPrefix,
-            ["ml-2 text-gray-900 dark:text-gray-200"],
+            ["ml-2 "],
             ["c-nth-option-label"]
           )}
           htmlFor={genId(Mode.NTH_WEEKDAY_OF_MONTH, session, Segment.dayOfWeek)}
@@ -829,7 +862,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-nth-every"]
         )}
         disabled={api.isDayOfWeekNTHWeekDayOfMonthControlsDisabled()}
@@ -850,7 +885,9 @@ export const QuartzCronDay = ({
       <select
         className={genClassName(
           classPrefix,
-          ["form-select form-select-sm mx-1"],
+          [
+            "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+          ],
           ["c-nth-every-weekday"]
         )}
         disabled={api.isDayOfWeekNTHWeekDayOfMonthControlsDisabled()}
@@ -869,7 +906,7 @@ export const QuartzCronDay = ({
       </select>
 
       <label
-        className="c-nth-option-label2 text-gray-900 dark:text-gray-200"
+        className="c-nth-option-label2 "
         htmlFor={genId(Mode.NTH_WEEKDAY_OF_MONTH, session, Segment.dayOfWeek)}
       >
         {dayOfWeekNTHWeekDayOfMonth.label2}

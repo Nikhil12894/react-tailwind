@@ -2,6 +2,7 @@ import { Mode } from "@sbzen/cron-core";
 
 import { genClassName } from "./../helpers";
 import { SharedProps } from "./props.type";
+import { Checkbox } from "@/components/ui/checkbox";
 
 type Props = {
   disabledControls?: boolean;
@@ -59,7 +60,7 @@ export const SimpleAnd = ({
       <label
         className={genClassName(
           cssClassPrefix,
-          ["ml-2 text-gray-900 dark:text-gray-200"],
+          ["ml-2"],
           ["c-and-option-label"]
         )}
         htmlFor={segmentId}
@@ -89,7 +90,7 @@ export const SimpleAnd = ({
                 ["c-and-item-check"]
               )}
             >
-              <input
+              {/* <input
                 className={genClassName(
                   cssClassPrefix,
                   ["form-checkbox h-4 w-4 text-indigo-600"],
@@ -101,12 +102,19 @@ export const SimpleAnd = ({
                 disabled={disabledControls}
                 checked={isValueSelected(item.value)}
                 onChange={() => onValueChange(item.value)}
+              /> */}
+              <Checkbox
+                id={`${segmentId}_${item.value}`}
+                value={item.value}
+                disabled={disabledControls}
+                checked={isValueSelected(item.value)}
+                onChange={() => onValueChange(item.value)}
+                onCheckedChange={() => onValueChange(item.value)}
               />
-
               <label
                 className={genClassName(
                   cssClassPrefix,
-                  ["ml-2 text-gray-900 dark:text-gray-200"],
+                  ["ml-2"],
                   ["c-and-item-label"]
                 )}
                 htmlFor={`${segmentId}_${item.value}`}

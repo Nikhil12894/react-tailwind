@@ -68,7 +68,7 @@ export const SimpleRange = ({
       <label
         className={genClassName(
           cssClassPrefix,
-          ["ml-2 text-gray-900 dark:text-gray-200"],
+          ["ml-2 "],
           ["c-range-option-label"]
         )}
         htmlFor={segmentId}
@@ -80,7 +80,9 @@ export const SimpleRange = ({
     <select
       className={genClassName(
         cssClassPrefix,
-        ["form-select form-select-sm mx-1"],
+        [
+          "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mx-1",
+        ],
         ["c-range-from"]
       )}
       disabled={disabledControls}
@@ -96,17 +98,16 @@ export const SimpleRange = ({
       })}
     </select>
 
-    <label
-      className="ml-2 text-gray-900 dark:text-gray-200"
-      htmlFor={segmentId}
-    >
+    <label className="ml-2 " htmlFor={segmentId}>
       {label2}
     </label>
 
     <select
       className={genClassName(
         cssClassPrefix,
-        ["form-select form-select-sm ml-1"],
+        [
+          "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 ml-1",
+        ],
         ["c-range-to"]
       )}
       disabled={disabledControls}

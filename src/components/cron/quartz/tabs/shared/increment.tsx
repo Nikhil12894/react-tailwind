@@ -72,7 +72,7 @@ export const SimpleIncrement = ({
       <label
         className={genClassName(
           cssClassPrefix,
-          ["ml-2 text-gray-900 dark:text-gray-200"],
+          ["ml-2 "],
           ["c-increment-option-label"]
         )}
         htmlFor={segmentId}
@@ -84,7 +84,9 @@ export const SimpleIncrement = ({
     <select
       className={genClassName(
         cssClassPrefix,
-        ["form-select form-select-sm mr-4"],
+        [
+          "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 mr-2",
+        ],
         ["c-increment-every"]
       )}
       disabled={disabledControls}
@@ -100,17 +102,16 @@ export const SimpleIncrement = ({
       })}
     </select>
 
-    <label
-      className="text-gray-900 dark:text-gray-200 mr-2"
-      htmlFor={segmentId}
-    >
+    <label className=" mr-2" htmlFor={segmentId}>
       {label2}
     </label>
 
     <select
       className={genClassName(
         cssClassPrefix,
-        ["form-select form-select-sm"],
+        [
+          "flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+        ],
         ["c-increment-from"]
       )}
       disabled={disabledControls}

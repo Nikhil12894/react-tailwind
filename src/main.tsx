@@ -1,10 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import ErrorPage from "./components/error-page/error_page.tsx";
+import Dashboard from "./app/dashboard/Dashboard.tsx";
+import Schedule from "./app/schedule/Schedule.tsx";
+import { Layout } from "./components/layout/index.tsx";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "schedule",
+        element: <Schedule />,
+      },
+    ],
+  },
+]);
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

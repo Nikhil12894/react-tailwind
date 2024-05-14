@@ -7,16 +7,13 @@ export const Header = () => {
   };
   return (
     <>
-      <div className="sticky top-0 h-16 border-b bg-white dark:bg-gray-800 dark:border-gray-700 lg:py-2.5">
+      <div className="sticky top-0 h-16 border-b  lg:py-2.5">
         <div className="flex items-center justify-between space-x-4 px-6">
-          <h5
-            hidden
-            className="text-2xl font-medium text-gray-600 lg:block dark:text-white"
-          >
+          <h5 hidden className="text-2xl font-medium  lg:block">
             Dashboard
           </h5>
           <button
-            className="-mr-2 h-16 w-12 border-r lg:hidden dark:border-gray-700 dark:text-gray-300"
+            className="-mr-2 h-16 w-12 border-r lg:hidden "
             onClick={isOpened}
           >
             <svg
@@ -36,8 +33,8 @@ export const Header = () => {
           </button>
           <div className="flex space-x-4">
             <div hidden className="md:block">
-              <div className="relative flex items-center text-gray-400 focus-within:text-cyan-400">
-                <span className="absolute left-4 flex h-6 items-center border-r border-gray-300 pr-3 dark:border-gray-700">
+              <div className="relative flex items-center focus-within:text-cyan-400">
+                <span className="absolute left-4 flex h-6 items-center border-r ">
                   <svg
                     xmlns="http://ww50w3.org/2000/svg"
                     className="w-4 fill-current"
@@ -55,18 +52,18 @@ export const Header = () => {
                   name="leadingIcon"
                   id="leadingIcon"
                   placeholder="Search here"
-                  className="outline-none w-full rounded-xl border border-gray-300 py-2.5 pl-14 pr-4 text-sm text-gray-600 transition focus:border-cyan-300 dark:bg-gray-900 dark:border-gray-700"
+                  className="outline-none w-full rounded-xl border  py-2.5 pl-14 pr-4 text-sm  transition bg-background"
                 />
               </div>
             </div>
 
             <button
               aria-label="search"
-              className="h-10 w-10 rounded-xl border bg-gray-100 active:bg-gray-200 md:hidden dark:bg-gray-700 dark:border-gray-600 dark:active:bg-gray-800"
+              className="h-10 w-10 rounded-xl border  md:hidden "
             >
               <svg
                 xmlns="http://ww50w3.org/2000/svg"
-                className="mx-auto w-4 fill-current text-gray-600 dark:text-gray-300"
+                className="mx-auto w-4 fill-current "
                 viewBox="0 0 35.997 36.004"
               >
                 <path
@@ -76,13 +73,10 @@ export const Header = () => {
                 ></path>
               </svg>
             </button>
-            <button
-              aria-label="chat"
-              className="h-10 w-10 rounded-xl border bg-gray-100 active:bg-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:active:bg-gray-800"
-            >
+            <button aria-label="chat" className="h-10 w-10 rounded-xl border ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="m-auto h-5 w-5 text-gray-600 dark:text-gray-300"
+                className="m-auto h-5 w-5 "
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -97,7 +91,7 @@ export const Header = () => {
             </button>
             <button
               aria-label="notification"
-              className="h-10 w-10 rounded-xl border bg-gray-100 active:bg-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:active:bg-gray-800"
+              className="h-10 w-10 rounded-xl border "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -37,32 +37,32 @@ const Table = ({ data, pageSize = 5 }) => {
         placeholder="Filter..."
         className="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
       />
-      <table className="min-w-full divide-y divide-gray-200">
+      <table className="min-w-full divide-y divide-gray-200 ">
         {/* Table headers */}
-        <thead className="bg-gray-50">
+        <thead className="">
           <tr>
             <th
               onClick={() => setSortBy("id")}
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+              className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider cursor-pointer"
             >
               ID
             </th>
             <th
               onClick={() => setSortBy("name")}
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+              className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider cursor-pointer"
             >
               Name
             </th>
             <th
               onClick={() => setSortBy("email")}
-              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+              className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider cursor-pointer"
             >
               Email
             </th>
           </tr>
         </thead>
         {/* Table body */}
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="divide-y divide-gray-200">
           {paginatedData.map((item) => (
             <tr key={item.id}>
               <td className="px-6 py-4 whitespace-nowrap">{item.id}</td>
@@ -73,17 +73,17 @@ const Table = ({ data, pageSize = 5 }) => {
         </tbody>
       </table>
       {/* Pagination */}
-      <div className="flex justify-between mt-4">
+      <div className="flex justify-between mt-4 ">
         <button
           onClick={() =>
             setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))
           }
           disabled={currentPage === 1}
-          className="px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-500"
+          className="px-4 py-2 border border-gray-300 rounded-md"
         >
           Previous
         </button>
-        <span className="text-gray-500">
+        <span>
           Page {currentPage} of {totalPages}
         </span>
         <button
@@ -91,7 +91,7 @@ const Table = ({ data, pageSize = 5 }) => {
             setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages))
           }
           disabled={currentPage === totalPages}
-          className="px-4 py-2 border border-gray-300 rounded-md bg-white text-gray-500"
+          className="px-4 py-2 border border-gray-300 rounded-md"
         >
           Next
         </button>

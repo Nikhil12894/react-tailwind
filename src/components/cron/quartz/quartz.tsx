@@ -89,9 +89,7 @@ export const ReQuartzCron = ({
   const genTabs = (activeTab: QuartzType) => {
     const className = genClassName(
       cssClassPrefix,
-      [
-        "flex flex-wrap -mb-px font-medium text-center mb-4 border-b border-gray-200 dark:border-gray-700",
-      ],
+      ["flex flex-wrap -mb-px font-medium text-center mb-4 border-b "],
       ["c-tabs"]
     );
     return (
