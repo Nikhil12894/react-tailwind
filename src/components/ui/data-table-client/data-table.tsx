@@ -23,11 +23,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DataTablePagination } from "../../components/ui/data-table-pagination";
-import {
-  DataTableToolbar,
-  FilterData,
-} from "../../components/ui/data-table-toolbar";
+import { DataTablePagination } from "./data-table-pagination";
+import { DataTableToolbar, FilterData } from "./data-table-toolbar";
 import React from "react";
 
 export interface DataTableProps<TData, TValue> {
@@ -54,7 +51,6 @@ export function DataTable<TData, TValue>({
   const table = useReactTable({
     data,
     columns,
-
     state: {
       sorting,
       columnVisibility,

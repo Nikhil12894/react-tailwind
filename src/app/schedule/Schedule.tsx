@@ -1,4 +1,4 @@
-import { DataTable } from "./data-table";
+import { DataTable } from "../../components/ui/data-table-client/data-table";
 import { scheduleData } from "../schedule";
 import { columns } from "./columns";
 const hiddenColumns = {
@@ -8,6 +8,7 @@ const hiddenColumns = {
   last_update_date: false,
   id: false,
 };
+
 const Schedule = () => {
   const data = scheduleData;
   return (
