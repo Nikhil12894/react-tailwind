@@ -1,8 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "../checkbox";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { DataTableColumnHeader } from "./data-table-column-header";
+import { DataTableRowActions } from "./data-table-row-actions";
 
 export interface ColumnConfig {
   accessorKey: string;
@@ -10,8 +9,17 @@ export interface ColumnConfig {
   enableSorting?: boolean;
   filterEnabled?: boolean;
 }
+export interface ColumnsProps<T> {
+  columnList: ColumnConfig[];
+  deleteFun: (rowData: T) => void;
+  editFun: (rowData: T) => void;
+}
 
-export function ColumnDefFun<T>(columnList: ColumnConfig[]): ColumnDef<T>[] {
+export function ColumnDefFun<T>({
+  columnList,
+  deleteFun,
+  editFun,
+}: ColumnsProps<T>): ColumnDef<T>[] {
   return columnList.map((item) => {
     if (item.accessorKey === "select") {
       return {
@@ -39,22 +47,13 @@ export function ColumnDefFun<T>(columnList: ColumnConfig[]): ColumnDef<T>[] {
       return {
         id: item.accessorKey,
         header: item.header,
-        cell: ({ row }) => {
-          return (
-            <>
-              <FontAwesomeIcon
-                icon={faPenToSquare}
-                className="mr-2 text-blue-500 cursor-pointer"
-                title="Edit"
-              />
-              <FontAwesomeIcon
-                icon={faTrashCan}
-                className="text-red-300 cursor-pointer"
-                title="Delete"
-              />
-            </>
-          );
-        },
+        cell: ({ row }) => (
+          <DataTableRowActions
+            row={row}
+            onDelete={deleteFun}
+            onEdit={editFun}
+          />
+        ),
       };
     } else {
       return {

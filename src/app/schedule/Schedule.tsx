@@ -1,6 +1,14 @@
+import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "../../components/ui/data-table-client/data-table";
 import { scheduleData } from "../schedule";
-import { columns } from "./columns";
+import { EditableDeletableTable } from "./edit-dilog";
+import { Schedule } from "../schedule-type";
+import {
+  ColumnConfig,
+  ColumnDefFun,
+} from "@/components/ui/data-table-client/data-table-column-def";
+import { useCallback } from "react";
+
 const hiddenColumns = {
   created_by: false,
   creation_date: false,
@@ -8,9 +16,81 @@ const hiddenColumns = {
   last_update_date: false,
   id: false,
 };
+// Define a type for the column configuration
+const sampleSchedule: Schedule = {
+  id: 1,
+  schedule_id: "schedule_id",
+  cron_schedule: "cron_schedule",
+  created_by: 1,
+  creation_date: new Date(),
+  last_updated_by: 1,
+  last_update_date: new Date(),
+};
 
-const Schedule = () => {
+const ScheduleComp = () => {
   const data = scheduleData;
+
+  const onEdit = useCallback(
+    (data: Schedule) => alert(JSON.stringify(data)),
+    []
+  );
+
+  const onDelete = useCallback(
+    (data: Schedule) => alert(JSON.stringify(data)),
+    []
+  );
+  const columnList: ColumnConfig[] = [
+    {
+      accessorKey: "select",
+      header: "Select",
+    },
+    {
+      accessorKey: "id",
+      header: "ID",
+      enableSorting: false,
+    },
+    {
+      accessorKey: "schedule_id",
+      header: "ScheduleID",
+      enableSorting: true,
+    },
+    {
+      accessorKey: "cron_schedule",
+      header: "CronSchedule",
+      enableSorting: false,
+      filterEnabled: true,
+    },
+    {
+      accessorKey: "created_by",
+      header: "CreatedBy",
+      enableSorting: false,
+    },
+    {
+      accessorKey: "creation_date",
+      header: "CreationDate",
+      enableSorting: false,
+    },
+    {
+      accessorKey: "last_updated_by",
+      header: "LastUpdatedBy",
+      enableSorting: false,
+    },
+    {
+      accessorKey: "last_update_date",
+      header: "LastUpdateDate",
+      enableSorting: false,
+    },
+    {
+      accessorKey: "actions",
+      header: "Actions",
+    },
+  ];
+  const columns: ColumnDef<Schedule>[] = ColumnDefFun<typeof sampleSchedule>({
+    columnList,
+    editFun: onEdit,
+    deleteFun: onDelete,
+  });
+
   return (
     <div>
       <div className="container mx-auto py-8">
@@ -39,9 +119,11 @@ const Schedule = () => {
             ],
           }}
         />
+
+        <EditableDeletableTable tableData={data} />
       </div>
     </div>
   );
 };
 
-export default Schedule;
+export default ScheduleComp;

@@ -22,6 +22,13 @@ export const SideBar = () => {
         return <FontAwesomeIcon icon={faClock} />;
       },
     },
+    {
+      name: "Schedule-Lazy",
+      link: "/schedule_lazy",
+      icon: () => {
+        return <FontAwesomeIcon icon={faClock} />;
+      },
+    },
   ];
 
   return (
