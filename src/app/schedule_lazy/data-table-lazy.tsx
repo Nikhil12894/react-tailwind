@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/table";
 import { DataTablePagination } from "./data-table-pagination";
 import { fetchData, Person } from "./fetchData";
+import { Loader } from "@/components/ui/loader";
 
 export function useSorting(initialField = "id", initialOrder = "ASC") {
   const [sorting, setSorting] = useState([
@@ -126,7 +127,7 @@ export function Table1() {
   const table = useReactTable({
     data: dataQuery.data?.rows ?? defaultData,
     columns,
-    rowCount: dataQuery.data?.rowCount, // new in v8.13.0 - alternatively, just pass in `pageCount` directly
+    rowCount: dataQuery.data?.rowCount,
     state: {
       pagination,
       sorting,
@@ -140,15 +141,12 @@ export function Table1() {
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getRowId: (row) => row.id,
-    manualPagination: true, //we're doing manual "server-side" pagination
-    // getPaginationRowModel: getPaginationRowModel(), // If only doing manual pagination, you don't need this
+    manualPagination: true,
     debugTable: true,
-    // getSortedRowModel: getSortedRowModel(), //client-side sorting
-    onSortingChange: onSortingChange, //optionally control sorting state in
-    enableMultiSort: false, //Don't allow shift key to sort multiple columns - default on/true
+    onSortingChange: onSortingChange,
+    enableMultiSort: false,
     manualSorting: true,
     manualFiltering: true,
-    // getFilteredRowModel: getFilteredRowModel(),
   });
 
   return (
@@ -190,35 +188,47 @@ export function Table1() {
               </TableRow>
             ))}
           </TableHeader>
-
-          <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
+          {dataQuery.isFetching ? (
+            <TableBody>
               <TableRow>
                 <TableCell
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  <Loader fillColorCss="fill-cyan-600" size={10} />
                 </TableCell>
               </TableRow>
-            )}
-          </TableBody>
+            </TableBody>
+          ) : (
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          )}
         </Table>
       </div>
       <div className="grid justify-items-stretch ">
