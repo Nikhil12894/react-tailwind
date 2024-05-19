@@ -11,8 +11,8 @@ export interface ColumnConfig {
 }
 export interface ColumnsProps<T> {
   columnList: ColumnConfig[];
-  deleteFun: (rowData: T) => void;
-  editFun: (rowData: T) => void;
+  deleteFun?: (rowData: T) => void;
+  editFun?: (rowData: T) => void;
 }
 
 export function ColumnDefFun<T>({

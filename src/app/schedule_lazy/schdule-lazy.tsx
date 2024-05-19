@@ -1,14 +1,22 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ColumnDef } from "@tanstack/react-table";
 import { Table1 } from "./data-table-lazy";
-const queryClient = new QueryClient();
+import { Person } from "./fetchData";
+import React from "react";
+import { ColumnDefFun } from "@/components/ui/data-table-client/data-table-column-def";
+import { personTableColumns } from "./table-config-data";
 
 const ScheduleLazy = () => {
+  const columns: ColumnDef<Person>[] = React.useMemo(
+    () =>
+      ColumnDefFun<Person>({
+        columnList: personTableColumns,
+      }),
+    []
+  );
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="p-4">
-        <Table1 />
-      </div>
-    </QueryClientProvider>
+    <div className="p-4">
+      <Table1 columns={columns} />
+    </div>
   );
 };
 

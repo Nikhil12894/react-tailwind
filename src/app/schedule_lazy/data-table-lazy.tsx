@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import { keepPreviousData, useQuery } from "@tanstack/react-query";
-
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -12,9 +10,8 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import { Checkbox } from "@/components/ui/checkbox";
-import { DataTableColumnHeader } from "@/components/ui/data-table-client/data-table-column-header";
 import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
+import { Loader } from "@/components/ui/loader";
 import {
   Table,
   TableBody,
@@ -23,9 +20,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { usePersonQuery } from "@/service/queries";
 import { DataTablePagination } from "./data-table-pagination";
-import { fetchData, Person } from "./fetchData";
-import { Loader } from "@/components/ui/loader";
+import { Person } from "./fetchData";
 
 export function useSorting(initialField = "id", initialOrder = "ASC") {
   const [sorting, setSorting] = useState([
@@ -41,66 +38,10 @@ export function useSorting(initialField = "id", initialOrder = "ASC") {
     field: sorting.length ? sorting[0].id : initialField,
   };
 }
-
-export function Table1() {
-  const columns: ColumnDef<Person>[] = [
-    {
-      id: "select",
-      header: ({ table }) => (
-        <Checkbox
-          checked={table.getIsAllPageRowsSelected()}
-          onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-          aria-label="Select all"
-        />
-      ),
-      cell: ({ row }) => (
-        <Checkbox
-          checked={row.getIsSelected()}
-          onCheckedChange={(value) => row.toggleSelected(!!value)}
-          aria-label="Select row"
-        />
-      ),
-      enableSorting: false,
-      enableHiding: false,
-    },
-    {
-      accessorKey: "firstName",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="FirstName" />
-      ),
-    },
-    {
-      accessorKey: "lastName",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="LastName" />
-      ),
-    },
-    {
-      accessorKey: "age",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Age" />
-      ),
-    },
-    {
-      accessorKey: "visits",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Visits" />
-      ),
-    },
-    {
-      accessorKey: "status",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Status" />
-      ),
-    },
-    {
-      accessorKey: "progress",
-      header: ({ column }) => (
-        <DataTableColumnHeader column={column} title="Progress" />
-      ),
-    },
-  ];
-
+interface Table1Props<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[];
+}
+export function Table1({ columns }: Table1Props<Person, any>) {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
@@ -111,17 +52,12 @@ export function Table1() {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
-  const dataQuery = useQuery({
-    queryKey: ["data", pagination, sorting, rowSelection, columnFilters],
-    queryFn: () =>
-      fetchData(
-        pagination,
-        { id: field, desc: order === "DESC" },
-        rowSelection,
-        columnFilters
-      ),
-    placeholderData: keepPreviousData,
-  });
+  const dataQuery = usePersonQuery(
+    pagination,
+    { id: field, desc: order === "DESC" },
+    rowSelection,
+    columnFilters
+  );
 
   const defaultData = React.useMemo(() => [], []);
   const table = useReactTable({
