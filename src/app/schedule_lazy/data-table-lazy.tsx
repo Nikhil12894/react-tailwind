@@ -3,17 +3,18 @@ import React, { useState } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 import {
+  ColumnDef,
+  ColumnFiltersState,
+  flexRender,
+  getCoreRowModel,
+  getSortedRowModel,
   PaginationState,
   useReactTable,
-  getCoreRowModel,
-  ColumnDef,
-  flexRender,
-  getSortedRowModel,
-  getFilteredRowModel,
-  ColumnFiltersState,
 } from "@tanstack/react-table";
 
-import { fetchData, Person } from "./fetchData";
+import { Checkbox } from "@/components/ui/checkbox";
+import { DataTableColumnHeader } from "@/components/ui/data-table-client/data-table-column-header";
+import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
 import {
   Table,
   TableBody,
@@ -23,9 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DataTablePagination } from "./data-table-pagination";
-import { DataTableColumnHeader } from "@/components/ui/data-table-client/data-table-column-header";
-import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
-import { Checkbox } from "@/components/ui/checkbox";
+import { fetchData, Person } from "./fetchData";
 
 export function useSorting(initialField = "id", initialOrder = "ASC") {
   const [sorting, setSorting] = useState([
