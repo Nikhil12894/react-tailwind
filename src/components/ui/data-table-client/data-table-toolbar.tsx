@@ -10,6 +10,7 @@ import { DataTableViewOptions } from "./data-table-view-options";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import DataAddRow from "./data-table-add-row";
 export interface FilterData {
   filterColl: string;
   filterPlaceHolder: string;
@@ -26,11 +27,13 @@ export interface FilterData {
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;
   filterData?: FilterData;
+  openAddDialog?: (open: boolean) => void;
 }
 
 export function DataTableToolbar<TData>({
   table,
   filterData,
+  openAddDialog,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
 
@@ -78,6 +81,7 @@ export function DataTableToolbar<TData>({
         )}
       </div>
       <DataTableViewOptions table={table} />
+      {openAddDialog && <DataAddRow onOpenDialogFunc={openAddDialog} />}
     </div>
   );
 }

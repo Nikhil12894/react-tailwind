@@ -32,6 +32,7 @@ export interface DataTableProps<TData, TValue> {
   data: TData[];
   hiddenColumns?: VisibilityState;
   filterData?: FilterData;
+  openAddDialog?: (open: boolean) => void;
 }
 
 export function DataTable<TData, TValue>({
@@ -39,6 +40,7 @@ export function DataTable<TData, TValue>({
   data,
   hiddenColumns,
   filterData,
+  openAddDialog,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -58,6 +60,7 @@ export function DataTable<TData, TValue>({
       columnFilters,
     },
     enableRowSelection: true,
+    autoResetPageIndex: false,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -72,7 +75,11 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} filterData={filterData} />
+      <DataTableToolbar
+        table={table}
+        filterData={filterData}
+        openAddDialog={openAddDialog}
+      />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
