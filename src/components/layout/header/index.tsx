@@ -35,10 +35,10 @@ export const Header = () => {
           <div className="flex space-x-4">
             <div hidden className="md:block">
               <div className="relative flex items-center focus-within:text-cyan-400">
-                <span className="absolute left-4 flex h-6 items-center border-r ">
+                <span className="absolute left-4 flex h-6 items-center border-r pr-3">
                   <svg
                     xmlns="http://ww50w3.org/2000/svg"
-                    className="w-4 fill-current"
+                    className="w-4 fill-slate-400"
                     viewBox="0 0 35.997 36.004"
                   >
                     <path
