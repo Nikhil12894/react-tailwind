@@ -60,7 +60,7 @@ export function ColumnDefFun<T>({
         accessorKey: item.accessorKey,
         header: item.enableSorting
           ? ({ column }) => (
-              <DataTableColumnHeader column={column} title="ScheduleID" />
+              <DataTableColumnHeader column={column} title={item.header} />
             )
           : item.header,
         enableSorting: item.enableSorting,

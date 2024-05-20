@@ -29,6 +29,13 @@ export const SideBar = () => {
         return <FontAwesomeIcon icon={faClock} />;
       },
     },
+    {
+      name: "Person",
+      link: "/person",
+      icon: () => {
+        return <FontAwesomeIcon icon={faClock} />;
+      },
+    },
   ];
 
   return (

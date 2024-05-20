@@ -1,6 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "../../components/ui/data-table-client/data-table";
-import { scheduleData } from "../schedule";
+import { scheduleData } from "./schedule";
 import { EditDialogForm } from "./edit-dilog";
 import { Schedule } from "../../types/schedule-type";
 import {

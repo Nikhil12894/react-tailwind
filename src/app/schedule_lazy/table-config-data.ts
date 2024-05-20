@@ -1,16 +1,5 @@
 "use strict";
 import { ColumnConfig } from "@/components/ui/data-table-client/data-table-column-def";
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  OnChangeFn,
-  PaginationState,
-  RowSelectionState,
-  SortingState,
-  getCoreRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
 
 const personTableColumns: ColumnConfig[] = [
   {
@@ -18,93 +7,62 @@ const personTableColumns: ColumnConfig[] = [
     header: "Select",
   },
   {
-    accessorKey: "firstName",
-    header: "FirstName",
+    accessorKey: "id",
+    header: "ID",
+    enableSorting: false,
+  },
+  {
+    accessorKey: "schedule_id",
+    header: "ScheduleID",
     enableSorting: true,
   },
   {
-    accessorKey: "lastName",
-    header: "LastName",
-    enableSorting: true,
+    accessorKey: "cron_schedule",
+    header: "CronSchedule",
+    enableSorting: false,
+    filterEnabled: true,
   },
   {
-    accessorKey: "age",
-    header: "Age",
-    enableSorting: true,
+    accessorKey: "created_by",
+    header: "CreatedBy",
+    enableSorting: false,
   },
   {
-    accessorKey: "visits",
-    header: "Visits",
-    enableSorting: true,
+    accessorKey: "creation_date",
+    header: "CreationDate",
+    enableSorting: false,
   },
   {
-    accessorKey: "status",
-    header: "Status",
-    enableSorting: true,
+    accessorKey: "last_updated_by",
+    header: "LastUpdatedBy",
+    enableSorting: false,
   },
   {
-    accessorKey: "progress",
-    header: "Progress",
-    enableSorting: true,
+    accessorKey: "last_update_date",
+    header: "LastUpdateDate",
+    enableSorting: false,
   },
   {
     accessorKey: "actions",
     header: "Actions",
   },
 ];
-
-interface UseTableProps<T, V> {
-  data?: T[];
-  rowCount?: number;
-  columns: ColumnDef<T, V>[];
-  pagination: PaginationState;
-  sorting: SortingState;
-  rowSelection: RowSelectionState;
-  columnFilters: ColumnFiltersState;
-  onSortingChange: OnChangeFn<SortingState>;
-  onPaginationChange: OnChangeFn<PaginationState>;
-  setRowSelection: OnChangeFn<RowSelectionState>;
-  setColumnFilters: OnChangeFn<ColumnFiltersState>;
-  idKey: string;
-}
-function useLazyTable<T, V>({
-  data,
-  rowCount,
-  columns,
-  pagination,
-  sorting,
-  rowSelection,
-  columnFilters,
-  onSortingChange,
-  onPaginationChange,
-  setRowSelection,
-  setColumnFilters,
-  idKey,
-}: UseTableProps<T, V>) {
-  return useReactTable({
-    data: data || [],
-    columns: columns,
-    rowCount: rowCount || 0,
-    state: {
-      pagination,
-      sorting,
-      rowSelection,
-      columnFilters,
+const FilterData = {
+  filterColl: "schedule_id",
+  filterPlaceHolder: "Search by schedule id",
+  filterCollDropdownOptions: [
+    {
+      label: "Cron Expression",
+      value: "cron_schedule",
+      options: [
+        { label: "*/5 * * * * *", value: "*/5 * * * * *" },
+        { label: "*/15 * * * * *", value: "*/15 * * * * *" },
+        { label: "*/20 * * * * *", value: "*/20 * * * * *" },
+        { label: "*/35 * * * * *", value: "*/35 * * * * *" },
+        { label: "0/10 * * ? * *", value: "0/10 * * ? * *" },
+      ],
     },
-    enableRowSelection: true,
-    manualPagination: true,
-    debugTable: true,
-    enableMultiSort: false,
-    manualSorting: true,
-    manualFiltering: true,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getRowId: (row: T) => (row as any)[idKey],
-    onRowSelectionChange: setRowSelection,
-    onPaginationChange: onPaginationChange,
-    onColumnFiltersChange: setColumnFilters,
-    onSortingChange: onSortingChange,
-  });
-}
+  ],
+};
 
-export { personTableColumns, useLazyTable };
+export { FilterData, personTableColumns };
