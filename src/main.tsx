@@ -10,11 +10,15 @@ import ScheduleLazy from "./app/schedule_lazy/schedule.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import PersonLazy from "./app/person/Person_data_table.tsx";
+import Landing from "./app/landing/Landing.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Landing />,
+  },
+  {
+    path: "/app",
     element: <Layout />,
-    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -33,8 +37,12 @@ const router = createBrowserRouter([
         element: <ScheduleLazy />,
       },
       {
-        path: "/person",
+        path: "person",
         element: <PersonLazy />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
       },
     ],
   },
