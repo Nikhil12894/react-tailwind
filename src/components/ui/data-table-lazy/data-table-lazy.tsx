@@ -8,6 +8,7 @@ import {
   RowSelectionState,
   SortingState,
   Table as TenStackTable,
+  VisibilityState,
   flexRender,
   getCoreRowModel,
   getSortedRowModel,
@@ -135,10 +136,12 @@ interface UseTableProps<T, V> {
   sorting: SortingState;
   rowSelection: RowSelectionState;
   columnFilters: ColumnFiltersState;
+  columnVisibility: VisibilityState;
   onSortingChange: OnChangeFn<SortingState>;
   onPaginationChange: OnChangeFn<PaginationState>;
   setRowSelection: OnChangeFn<RowSelectionState>;
   setColumnFilters: OnChangeFn<ColumnFiltersState>;
+  setColumnVisibility: OnChangeFn<VisibilityState>;
   idKey: string;
 }
 function useLazyTable<T, V>({
@@ -149,10 +152,12 @@ function useLazyTable<T, V>({
   sorting,
   rowSelection,
   columnFilters,
+  columnVisibility,
   onSortingChange,
   onPaginationChange,
   setRowSelection,
   setColumnFilters,
+  setColumnVisibility,
   idKey,
 }: UseTableProps<T, V>) {
   return useReactTable({
@@ -164,6 +169,7 @@ function useLazyTable<T, V>({
       sorting,
       rowSelection,
       columnFilters,
+      columnVisibility,
     },
     enableRowSelection: true,
     manualPagination: true,
@@ -178,6 +184,7 @@ function useLazyTable<T, V>({
     onPaginationChange: onPaginationChange,
     onColumnFiltersChange: setColumnFilters,
     onSortingChange: onSortingChange,
+    onColumnVisibilityChange: setColumnVisibility,
   });
 }
 
