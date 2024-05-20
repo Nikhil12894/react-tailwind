@@ -149,7 +149,7 @@ export const ReQuartzCron = ({
   };
 
   return (
-    <div className="c-tabs-container sm:text-xs md:text-sm xl:text-lg 2xl:lg">
+    <div className="c-tabs-container text-xs">
       {hasTabs && genTabs(tab)}
 
       <div

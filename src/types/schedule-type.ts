@@ -15,6 +15,11 @@ export interface ScheduleDTOList {
   sort_order: string;
   sort_by: string;
 }
+export interface ScheduleRequest {
+  id?: number;
+  schedule_id: string;
+  cron_schedule: string;
+}
 
 const scheduleShotBy = new Map<string, string>();
 

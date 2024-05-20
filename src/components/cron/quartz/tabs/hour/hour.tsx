@@ -58,7 +58,7 @@ export const QuartzCronHour = ({
       onValueChange={api.selectAndValue}
       isValueSelected={(value) => api.isSelectedAndValue(value)}
       options={hoursList}
-      gridSize={["w-1/6", "sm:w-1/6", "xl:w-1/12", "2xl:w-[5%]"]}
+      gridSize={["w-1/6"]}
     />
   );
 

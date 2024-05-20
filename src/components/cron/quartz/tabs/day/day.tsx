@@ -334,7 +334,7 @@ export const QuartzCronDay = ({
             <div
               className={genClassName(
                 classPrefix,
-                ["w-1/2", "xl:w-1/6", "2xl:w-[10%]"],
+                ["w-1/2"],
                 ["c-and-weekday-item"]
               )}
               item-value={item.value}
@@ -464,7 +464,7 @@ export const QuartzCronDay = ({
             <div
               className={genClassName(
                 classPrefix,
-                ["w-1/4", "md:w-1/6", "xl:w-1/12", "mr-4"],
+                ["w-1/4"],
                 ["c-and-monthday-item"]
               )}
               item-value={item.value}

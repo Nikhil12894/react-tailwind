@@ -1,5 +1,10 @@
 import { WebResponse } from "@/types/response-obj";
-import { ScheduleDTOList, getShotBy } from "@/types/schedule-type";
+import {
+  Schedule,
+  ScheduleDTOList,
+  ScheduleRequest,
+  getShotBy,
+} from "@/types/schedule-type";
 import { PaginationState } from "@tanstack/react-table";
 import axios from "axios";
 
@@ -17,6 +22,23 @@ export const getAllSchedules = async (
       `schedule/all?page=${pagination.pageIndex + 1}&page_size=${
         pagination.pageSize
       }&sort_order=${sort.desc ? "DESC" : "ASC"}&sort_by=${getShotBy(sort.id)}`
+    )
+  ).data;
+};
+
+export const createSchedule = async (data: ScheduleRequest) => {
+  return (await axiosInstance.post<WebResponse<Schedule>>("schedule", data))
+    .data;
+};
+export const updateSchedule = async (data: ScheduleRequest) => {
+  return (await axiosInstance.put<WebResponse<Schedule>>("schedule", data))
+    .data;
+};
+
+export const deleteSchedule = async (data: string) => {
+  return (
+    await axiosInstance.delete<WebResponse<Schedule>>(
+      `schedule?schedule_id=${data}`
     )
   ).data;
 };

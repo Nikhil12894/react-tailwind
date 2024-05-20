@@ -48,16 +48,22 @@ interface TableLazyProps<TData> {
   table: TenStackTable<TData>;
   isFetching: boolean;
   filterData?: FilterData;
+  openAddDialog?: (open: boolean) => void;
 }
 function TableLazy<TData>({
   table,
   isFetching,
   filterData,
+  openAddDialog,
 }: TableLazyProps<TData>) {
   return (
     <div className="space-y-4 w-full">
       <div className="h-2" />
-      <DataTableToolbar table={table} filterData={filterData} />
+      <DataTableToolbar
+        table={table}
+        filterData={filterData}
+        openAddDialog={openAddDialog}
+      />
       <div className="rounded-md border w-full">
         <Table>
           <TableHeader>

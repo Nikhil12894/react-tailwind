@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
 import { Schedule } from "../../types/schedule-type";
-
+import "./schedule.css";
 import {
   Form,
   FormControl,
@@ -23,6 +23,10 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { ReCron } from "@/components/cron";
+import { Type } from "@sbzen/cron-core";
+
+const tabs = [Type.SECONDS, Type.MINUTES, Type.HOURS, Type.DAY, Type.MONTH];
 
 interface EditDialogProps {
   isEditDialogOpen: boolean;
@@ -77,7 +81,7 @@ function AddEditDialogForm({
 
   return (
     <Dialog open={isEditDialogOpen} onOpenChange={onOpenDialogFunc}>
-      <DialogContent>
+      <DialogContent className="overflow-x-auto overflow-y-auto m-2 shadow-lg dialog-large">
         <DialogHeader>
           <DialogTitle>
             {selectedRow?.id === 0 || selectedRow?.id == undefined
@@ -111,16 +115,31 @@ function AddEditDialogForm({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Cron Expiration</FormLabel>
-                  <FormControl>
-                    <Input placeholder="cron expiration" {...field} />
+                  <FormControl className="disabled">
+                    <Input
+                      placeholder="cron expiration"
+                      {...field}
+                      disabled={true}
+                    />
                   </FormControl>
                   <FormDescription>
                     This is the cron expiration.
                   </FormDescription>
                   <FormMessage />
+                  <ReCron
+                    tabs={tabs}
+                    value={field.value}
+                    onChange={(cron) =>
+                      form.setValue(
+                        "cron_schedule",
+                        cron.slice(0, cron.length - 2)
+                      )
+                    }
+                  />
                 </FormItem>
               )}
             />
+
             <DialogFooter>
               <Button type="button" onClick={() => onOpenDialogFunc(false)}>
                 Cancel
