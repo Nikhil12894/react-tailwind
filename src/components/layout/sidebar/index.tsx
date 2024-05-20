@@ -10,28 +10,28 @@ export const SideBar = () => {
   const menuItems: MenuItem[] = [
     {
       name: "Dashboard",
-      link: "/dashboard",
+      link: "/app/dashboard",
       icon: () => {
         return <FontAwesomeIcon icon={faGrip} />;
       },
     },
     {
       name: "Schedule",
-      link: "/schedule",
+      link: "/app/schedule",
       icon: () => {
         return <FontAwesomeIcon icon={faClock} />;
       },
     },
     {
       name: "Schedule-Lazy",
-      link: "/schedule_lazy",
+      link: "/app/schedule_lazy",
       icon: () => {
         return <FontAwesomeIcon icon={faClock} />;
       },
     },
     {
       name: "Person",
-      link: "/person",
+      link: "/app/person",
       icon: () => {
         return <FontAwesomeIcon icon={faClock} />;
       },
