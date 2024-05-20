@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
-import { Schedule } from "../schedule-type";
+import { Schedule } from "../../types/schedule-type";
 
 import {
   Form,

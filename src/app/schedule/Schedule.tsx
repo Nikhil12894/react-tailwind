@@ -2,7 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "../../components/ui/data-table-client/data-table";
 import { scheduleData } from "../schedule";
 import { EditDialogForm } from "./edit-dilog";
-import { Schedule } from "../schedule-type";
+import { Schedule } from "../../types/schedule-type";
 import {
   columnList,
   hiddenColumns,

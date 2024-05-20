@@ -1,5 +1,5 @@
 import { ColumnConfig } from "@/components/ui/data-table-client/data-table-column-def";
-import { Schedule } from "../schedule-type";
+import { Schedule } from "../../types/schedule-type";
 
 export const columnList: ColumnConfig[] = [
   {
