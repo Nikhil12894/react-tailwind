@@ -9,6 +9,7 @@ import { Layout } from "./components/layout/index.tsx";
 import ScheduleLazy from "./app/schedule_lazy/schdule-lazy.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import PersonLazy from "./app/person/Persion_data_table.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "schedule_lazy",
         element: <ScheduleLazy />,
+      },
+      {
+        path: "/person",
+        element: <PersonLazy />,
       },
     ],
   },
