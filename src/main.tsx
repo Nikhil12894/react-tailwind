@@ -6,16 +6,20 @@ import ErrorPage from "./components/error-page/error_page.tsx";
 import Dashboard from "./app/dashboard/Dashboard.tsx";
 import ScheduleComp from "./app/schedule/Schedule.tsx";
 import { Layout } from "./components/layout/index.tsx";
-import ScheduleLazy from "./app/schedule_lazy/schdule-lazy.tsx";
+import ScheduleLazy from "./app/schedule_lazy/schedule.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import PersonLazy from "./app/person/Persion_data_table.tsx";
+import PersonLazy from "./app/person/Person_data_table.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
       {
         path: "dashboard",
         element: <Dashboard />,
