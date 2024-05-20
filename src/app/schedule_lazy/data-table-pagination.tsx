@@ -15,6 +15,7 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons/faCaretLeft";
 import { faCaretRight } from "@fortawesome/free-solid-svg-icons/faCaretRight";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useEffect, useState } from "react";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
@@ -23,13 +24,20 @@ interface DataTablePaginationProps<TData> {
 export function DataTablePagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
+  const [selectedRowCount, setSelectedRowCount] = useState<number>(0);
+  useEffect(() => {
+    setSelectedRowCount(
+      Object.keys(table.getState().rowSelection).filter(
+        (k) => table.getState().rowSelection[k]
+      ).length
+    );
+  }, [table.getState().rowSelection]);
   return (
     <div className="flex items-center justify-between px-2 justify-self-end">
-      {/* <div className="flex-1 text-sm text-muted-foreground">
-        {table.getFilteredSelectedRowModel().rows.length} of{" "}
-        {table.getFilteredRowModel().rows.length} row(s) selected.
-      </div> */}
       <div className="flex items-center space-x-6 lg:space-x-8">
+        <div className="flex text-sm text-muted-foreground">
+          {selectedRowCount} of {table.getRowCount()} row(s) selected.
+        </div>
         <div className="flex items-center space-x-2">
           <p className="flex-1 text-sm text-muted-foreground">Rows per page</p>
           <Select
@@ -41,7 +49,7 @@ export function DataTablePagination<TData>({
             <SelectTrigger className="h-8 w-[70px]">
               <SelectValue placeholder={table.getState().pagination.pageSize} />
             </SelectTrigger>
-            <SelectContent side="top">
+            <SelectContent side="top" className="w-[70px]">
               {[10, 20, 30, 40, 50].map((pageSize) => (
                 <SelectItem key={pageSize} value={`${pageSize}`}>
                   {pageSize}
