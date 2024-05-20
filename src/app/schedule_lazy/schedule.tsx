@@ -5,6 +5,7 @@ import {
   ColumnDef,
   ColumnFiltersState,
   PaginationState,
+  VisibilityState,
 } from "@tanstack/react-table";
 import React from "react";
 import {
@@ -12,7 +13,7 @@ import {
   useLazyTable,
   useSorting,
 } from "@/components/ui/data-table-lazy/data-table-lazy";
-import { personTableColumns } from "./table-config-data";
+import { hiddenColumns, personTableColumns } from "./table-config-data";
 
 const ScheduleLazy = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
@@ -27,6 +28,8 @@ const ScheduleLazy = () => {
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({ ...hiddenColumns });
   const dataQuery = useScheduleQuery(
     pagination,
     { id: field, desc: order === "DESC" },
@@ -49,10 +52,12 @@ const ScheduleLazy = () => {
     sorting,
     rowSelection,
     columnFilters,
+    columnVisibility,
     onSortingChange,
     onPaginationChange: setPagination,
     setRowSelection,
     setColumnFilters,
+    setColumnVisibility,
     idKey: "id",
   });
   return (
