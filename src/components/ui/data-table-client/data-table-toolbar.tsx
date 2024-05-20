@@ -12,8 +12,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import DataAddRow from "./data-table-add-row";
 export interface FilterData {
-  filterColl: string;
-  filterPlaceHolder: string;
+  filterColl?: string;
+  filterPlaceHolder?: string;
   filterCollDropdownOptions?: {
     label: string;
     value: string;
@@ -50,7 +50,7 @@ export function DataTableToolbar<TData>({
             }
             onChange={(event) =>
               table
-                .getColumn(filterData.filterColl)
+                .getColumn(filterData.filterColl ?? "")
                 ?.setFilterValue(event.target.value)
             }
             className="h-8 w-[150px] lg:w-[250px]"

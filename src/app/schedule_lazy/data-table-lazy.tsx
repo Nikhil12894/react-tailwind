@@ -1,16 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
+import { Table as TenStackTable, flexRender } from "@tanstack/react-table";
 
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  flexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  PaginationState,
-  useReactTable,
-} from "@tanstack/react-table";
-
-import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
+  DataTableToolbar,
+  FilterData,
+} from "@/components/ui/data-table-client/data-table-toolbar";
 import { Loader } from "@/components/ui/loader";
 import {
   Table,
@@ -20,9 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { usePersonQuery } from "@/service/queries";
 import { DataTablePagination } from "./data-table-pagination";
-import { Person } from "./fetchData";
 
 export function useSorting(initialField = "id", initialOrder = "ASC") {
   const [sorting, setSorting] = useState([
@@ -38,70 +31,20 @@ export function useSorting(initialField = "id", initialOrder = "ASC") {
     field: sorting.length ? sorting[0].id : initialField,
   };
 }
-interface Table1Props<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
+interface TableLazyProps<TData> {
+  table: TenStackTable<TData>;
+  isFetching: boolean;
+  filterData?: FilterData;
 }
-export function Table1({ columns }: Table1Props<Person, any>) {
-  const [pagination, setPagination] = React.useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  });
-
-  const { sorting, onSortingChange, field, order } = useSorting("age", "DESC");
-  const [rowSelection, setRowSelection] = React.useState({});
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const dataQuery = usePersonQuery(
-    pagination,
-    { id: field, desc: order === "DESC" },
-    rowSelection,
-    columnFilters
-  );
-
-  const defaultData = React.useMemo(() => [], []);
-  const table = useReactTable({
-    data: dataQuery.data?.rows ?? defaultData,
-    columns,
-    rowCount: dataQuery.data?.rowCount,
-    state: {
-      pagination,
-      sorting,
-      rowSelection,
-      columnFilters,
-    },
-    enableRowSelection: true,
-    onRowSelectionChange: setRowSelection,
-    onPaginationChange: setPagination,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    onColumnFiltersChange: setColumnFilters,
-    getRowId: (row) => row.id,
-    manualPagination: true,
-    debugTable: true,
-    onSortingChange: onSortingChange,
-    enableMultiSort: false,
-    manualSorting: true,
-    manualFiltering: true,
-  });
-
+export function TableLazy<TData>({
+  table,
+  isFetching,
+  filterData,
+}: TableLazyProps<TData>) {
   return (
     <div className="space-y-4">
       <div className="h-2" />
-      <DataTableToolbar
-        table={table}
-        filterData={{
-          filterColl: "firstName",
-          filterPlaceHolder: "Search by firstName",
-          filterCollDropdownOptions: [
-            {
-              label: "FirstName",
-              value: "firstName",
-              options: [{ label: "Cheyenne", value: "Cheyenne" }],
-            },
-          ],
-        }}
-      />
+      <DataTableToolbar table={table} filterData={filterData} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -124,11 +67,11 @@ export function Table1({ columns }: Table1Props<Person, any>) {
               </TableRow>
             ))}
           </TableHeader>
-          {dataQuery.isFetching ? (
+          {isFetching ? (
             <TableBody>
               <TableRow>
                 <TableCell
-                  colSpan={columns.length}
+                  colSpan={table.getAllColumns().length}
                   className="h-24 text-center"
                 >
                   <Loader fillColorCss="fill-cyan-600" size={10} />
@@ -156,7 +99,7 @@ export function Table1({ columns }: Table1Props<Person, any>) {
               ) : (
                 <TableRow>
                   <TableCell
-                    colSpan={columns.length}
+                    colSpan={table.getAllColumns().length}
                     className="h-24 text-center"
                   >
                     No results.

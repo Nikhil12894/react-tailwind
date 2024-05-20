@@ -9,7 +9,7 @@ export function usePersonQuery(
   columnFilters: {}
 ) {
   return useQuery({
-    queryKey: ["persona_data", pagination, sort, rowSelection, columnFilters],
+    queryKey: ["persona_data", pagination, sort, columnFilters],
     queryFn: () => fetchData(pagination, sort, rowSelection, columnFilters),
     placeholderData: keepPreviousData,
   });
