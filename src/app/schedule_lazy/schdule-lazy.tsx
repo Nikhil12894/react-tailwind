@@ -5,7 +5,7 @@ import {
 } from "@tanstack/react-table";
 import { TableLazy, useSorting } from "./data-table-lazy";
 import { Person } from "./fetchData";
-import React from "react";
+import React, { useEffect } from "react";
 import { ColumnDefFun } from "@/components/ui/data-table-client/data-table-column-def";
 import { personTableColumns, useLazyTable } from "./table-config-data";
 import { usePersonQuery } from "@/service/queries";
@@ -13,7 +13,7 @@ import { usePersonQuery } from "@/service/queries";
 const ScheduleLazy = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 10,
+    pageSize: 5,
   });
   const { sorting, onSortingChange, field, order } = useSorting("age", "DESC");
   const [rowSelection, setRowSelection] = React.useState({});
@@ -48,9 +48,8 @@ const ScheduleLazy = () => {
     setColumnFilters,
     idKey: "id",
   });
-
   return (
-    <div className="p-4">
+    <div className="p-4 w-full text-sm">
       <TableLazy
         table={table}
         isFetching={dataQuery.isFetching}

@@ -42,10 +42,10 @@ export function TableLazy<TData>({
   filterData,
 }: TableLazyProps<TData>) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 w-full">
       <div className="h-2" />
       <DataTableToolbar table={table} filterData={filterData} />
-      <div className="rounded-md border">
+      <div className="rounded-md border w-full">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -110,9 +110,7 @@ export function TableLazy<TData>({
           )}
         </Table>
       </div>
-      <div className="grid justify-items-stretch ">
-        <DataTablePagination table={table} />
-      </div>
+      <DataTablePagination table={table} />
     </div>
   );
 }
