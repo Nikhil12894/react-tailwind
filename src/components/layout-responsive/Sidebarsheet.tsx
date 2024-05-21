@@ -17,8 +17,10 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { useMenuItems } from "@/route";
 
 const SidebarSheet = () => {
+  const menus = useMenuItems();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -29,7 +31,17 @@ const SidebarSheet = () => {
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col">
         <nav className="grid gap-2 text-lg font-medium">
-          <a href="#" className="flex items-center gap-2 text-lg font-semibold">
+          {menus.map((menu) => (
+            <a
+              key={menu.name}
+              href={menu.link}
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground"
+            >
+              {menu.icon && <menu.icon />}
+              {menu.name}
+            </a>
+          ))}
+          {/* <a href="#" className="flex items-center gap-2 text-lg font-semibold">
             <Package2 className="h-6 w-6" />
             <span className="sr-only">Acme Inc</span>
           </a>
@@ -70,7 +82,7 @@ const SidebarSheet = () => {
           >
             <LineChart className="h-5 w-5" />
             Analytics
-          </a>
+          </a> */}
         </nav>
         <div className="mt-auto">
           <Card>

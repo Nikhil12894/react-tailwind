@@ -1,4 +1,4 @@
-import { ElementType } from "react";
+import { MenuItem } from "@/types/menu";
 import { Link } from "react-router-dom";
 
 export const Menu = ({ ...props }: { menuItems: MenuItem[] }) => {
@@ -21,11 +21,3 @@ export const Menu = ({ ...props }: { menuItems: MenuItem[] }) => {
     </div>
   );
 };
-
-export interface MenuItem {
-  name: string;
-  link: string;
-  icon?: string | ElementType;
-  iconClass?: string;
-  children?: MenuItem[];
-}

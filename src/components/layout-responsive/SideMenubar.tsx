@@ -1,11 +1,23 @@
 import { Home, LineChart, Package, ShoppingCart, Users } from "lucide-react";
 import { Badge } from "../ui/badge";
+import { useMenuItems } from "@/route";
 
 const SideMenubar = () => {
+  const menus = useMenuItems();
   return (
     <div className="flex-1">
       <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-        <a
+        {menus.map((menu) => (
+          <a
+            key={menu.name}
+            href={menu.link}
+            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+          >
+            {menu.icon && <menu.icon />}
+            {menu.name}
+          </a>
+        ))}
+        {/* <a
           href="#"
           className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
         >
@@ -42,7 +54,7 @@ const SideMenubar = () => {
         >
           <LineChart className="h-4 w-4" />
           Analytics
-        </a>
+        </a> */}
       </nav>
     </div>
   );

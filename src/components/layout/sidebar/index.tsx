@@ -1,10 +1,11 @@
 import { useSidebar } from "../../../context";
 import { Logo } from "../logo";
-import { Menu, MenuItem } from "../menu";
+import { Menu } from "../menu";
 import { SidebarFooter } from "../sidebar_footer";
 import { SidebarProfile } from "../sidebar_profile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faGrip } from "@fortawesome/free-solid-svg-icons";
+import { MenuItem } from "@/types/menu";
 export const SideBar = () => {
   const { isOpened } = useSidebar();
   const menuItems: MenuItem[] = [
