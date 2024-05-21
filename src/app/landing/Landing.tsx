@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Landing = () => {
+  useEffect(() => {
+    // Applying on mount
+    document.body.style.overflow = "scroll";
+    // Applying on unmount
+    return () => {
+      document.body.style.overflow = "hidden";
+    };
+  }, []);
   return (
-    <div>
+    <div className="overflow-x-hidden overflow-y-scroll">
       <header>
         <input
           type="checkbox"

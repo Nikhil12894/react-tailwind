@@ -5,7 +5,7 @@ const Dashboard = () => {
   const tabs = [Type.SECONDS, Type.MINUTES, Type.HOURS, Type.DAY, Type.MONTH];
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 hover:overscroll-x-none hover:overflow-y-auto focus:overflow-y-auto focus:overscroll-x-none">
       <ReCron
         tabs={tabs}
         value="* * * * * "

@@ -81,7 +81,7 @@ function AddEditDialogForm({
 
   return (
     <Dialog open={isEditDialogOpen} onOpenChange={onOpenDialogFunc}>
-      <DialogContent className="overflow-x-auto overflow-y-auto m-2 shadow-lg dialog-large">
+      <DialogContent className="h-3/4 m-4 p-4">
         <DialogHeader>
           <DialogTitle>
             {selectedRow?.id === 0 || selectedRow?.id == undefined
@@ -94,60 +94,65 @@ function AddEditDialogForm({
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="schedule_id"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Schedule ID</FormLabel>
-                  <FormControl>
-                    <Input placeholder="schedule ID" {...field} />
-                  </FormControl>
-                  <FormDescription>This is unique schedule id.</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="cron_schedule"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Cron Expiration</FormLabel>
-                  <FormControl className="disabled">
-                    <Input
-                      placeholder="cron expiration"
-                      {...field}
-                      disabled={true}
+          <div className="overflow-x-hidden overflow-y-hidden hover:overflow-x-auto hover:overflow-y-auto m-2">
+            <form className="space-y-8 m-1 shadow shadow-slate-400 rounded">
+              <FormField
+                control={form.control}
+                name="schedule_id"
+                render={({ field }) => (
+                  <FormItem className="m-2">
+                    <FormLabel>Schedule ID</FormLabel>
+                    <FormControl>
+                      <Input placeholder="schedule ID" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      This is unique schedule id.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="cron_schedule"
+                render={({ field }) => (
+                  <FormItem className="m-2">
+                    <FormLabel>Cron Expiration</FormLabel>
+                    <FormControl className="disabled">
+                      <Input
+                        placeholder="cron expiration"
+                        {...field}
+                        disabled={true}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      This is the cron expiration.
+                    </FormDescription>
+                    <FormMessage />
+                    <ReCron
+                      tabs={tabs}
+                      value={field.value}
+                      onChange={(cron) =>
+                        form.setValue(
+                          "cron_schedule",
+                          cron.slice(0, cron.length - 2)
+                        )
+                      }
                     />
-                  </FormControl>
-                  <FormDescription>
-                    This is the cron expiration.
-                  </FormDescription>
-                  <FormMessage />
-                  <ReCron
-                    tabs={tabs}
-                    value={field.value}
-                    onChange={(cron) =>
-                      form.setValue(
-                        "cron_schedule",
-                        cron.slice(0, cron.length - 2)
-                      )
-                    }
-                  />
-                </FormItem>
-              )}
-            />
-
-            <DialogFooter>
-              <Button type="button" onClick={() => onOpenDialogFunc(false)}>
-                Cancel
-              </Button>
-              <Button type="submit">Save</Button>
-            </DialogFooter>
-          </form>
+                  </FormItem>
+                )}
+              />
+            </form>
+          </div>
         </Form>
+        <DialogFooter>
+          <Button type="button" onClick={() => onOpenDialogFunc(false)}>
+            Cancel
+          </Button>
+          <Button type="submit" onClick={form.handleSubmit(onSubmit)}>
+            Save
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

@@ -13,6 +13,9 @@ import {
   useLazyTable,
   useSorting,
 } from "@/components/ui/data-table-lazy/data-table-lazy";
+import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
+import { DataTablePagination } from "@/components/ui/data-table-client/data-table-pagination";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 
 const PersonLazy = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
@@ -54,10 +57,8 @@ const PersonLazy = () => {
   });
   return (
     <div className="p-4 w-full text-sm">
-      <TableLazy
-        key="person_table"
+      <DataTableToolbar
         table={table}
-        isFetching={dataQuery.isFetching}
         filterData={{
           filterColl: "firstName",
           filterPlaceHolder: "Search by firstName",
@@ -69,7 +70,17 @@ const PersonLazy = () => {
             },
           ],
         }}
+        openAddDialog={() => console.log("Open Add Dialog")}
+        isHideColumnsEnabled={true}
       />
+      <ScrollArea className="h-[60vh] rounded-md border p-4">
+        <TableLazy
+          key="person_table"
+          table={table}
+          isFetching={dataQuery.isFetching}
+        />
+      </ScrollArea>
+      <DataTablePagination table={table} />
     </div>
   );
 };

@@ -47,89 +47,73 @@ function useSorting(initialField = "id", initialOrder = "ASC") {
 interface TableLazyProps<TData> {
   table: TenStackTable<TData>;
   isFetching: boolean;
-  filterData?: FilterData;
-  openAddDialog?: (open: boolean) => void;
 }
-function TableLazy<TData>({
-  table,
-  isFetching,
-  filterData,
-  openAddDialog,
-}: TableLazyProps<TData>) {
+function TableLazy<TData>({ table, isFetching }: TableLazyProps<TData>) {
   return (
-    <div className="space-y-4 w-full">
-      <div className="h-2" />
-      <DataTableToolbar
-        table={table}
-        filterData={filterData}
-        openAddDialog={openAddDialog}
-      />
-      <div className="rounded-md border w-full">
-        <Table>
-          <TableHeader>
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id} colSpan={header.colSpan}>
-                      {header.isPlaceholder ? null : (
-                        <div>
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                        </div>
+    <div className="rounded-md border p-6">
+      <Table>
+        <TableHeader>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <TableRow key={headerGroup.id}>
+              {headerGroup.headers.map((header) => {
+                return (
+                  <TableHead key={header.id} colSpan={header.colSpan}>
+                    {header.isPlaceholder ? null : (
+                      <div>
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                      </div>
+                    )}
+                  </TableHead>
+                );
+              })}
+            </TableRow>
+          ))}
+        </TableHeader>
+        {isFetching ? (
+          <TableBody>
+            <TableRow>
+              <TableCell
+                colSpan={table.getAllColumns().length}
+                className="h-24 text-center"
+              >
+                <Loader fillColorCss="fill-cyan-600" size={10} />
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        ) : (
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
                       )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
-          </TableHeader>
-          {isFetching ? (
-            <TableBody>
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
               <TableRow>
                 <TableCell
                   colSpan={table.getAllColumns().length}
                   className="h-24 text-center"
                 >
-                  <Loader fillColorCss="fill-cyan-600" size={10} />
+                  No results.
                 </TableCell>
               </TableRow>
-            </TableBody>
-          ) : (
-            <TableBody>
-              {table.getRowModel().rows?.length ? (
-                table.getRowModel().rows.map((row) => (
-                  <TableRow
-                    key={row.id}
-                    data-state={row.getIsSelected() && "selected"}
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <TableCell
-                    colSpan={table.getAllColumns().length}
-                    className="h-24 text-center"
-                  >
-                    No results.
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          )}
-        </Table>
-      </div>
-      <DataTablePagination table={table} />
+            )}
+          </TableBody>
+        )}
+      </Table>
     </div>
   );
 }
@@ -142,12 +126,12 @@ interface UseTableProps<T, V> {
   sorting: SortingState;
   rowSelection: RowSelectionState;
   columnFilters: ColumnFiltersState;
-  columnVisibility: VisibilityState;
+  columnVisibility?: VisibilityState;
   onSortingChange: OnChangeFn<SortingState>;
   onPaginationChange: OnChangeFn<PaginationState>;
   setRowSelection: OnChangeFn<RowSelectionState>;
   setColumnFilters: OnChangeFn<ColumnFiltersState>;
-  setColumnVisibility: OnChangeFn<VisibilityState>;
+  setColumnVisibility?: OnChangeFn<VisibilityState>;
   idKey: string;
 }
 function useLazyTable<T, V>({

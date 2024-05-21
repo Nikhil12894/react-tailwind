@@ -28,15 +28,16 @@ interface DataTableToolbarProps<TData> {
   table: Table<TData>;
   filterData?: FilterData;
   openAddDialog?: (open: boolean) => void;
+  isHideColumnsEnabled?: boolean;
 }
 
 export function DataTableToolbar<TData>({
   table,
   filterData,
   openAddDialog,
+  isHideColumnsEnabled = false,
 }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0;
-
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">
@@ -80,7 +81,7 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      <DataTableViewOptions table={table} />
+      {!isHideColumnsEnabled && <DataTableViewOptions table={table} />}
       {openAddDialog && <DataAddRow onOpenDialogFunc={openAddDialog} />}
     </div>
   );

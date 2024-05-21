@@ -10,7 +10,7 @@ const DataAddRow = ({ onOpenDialogFunc }: DataAddRowProps) => {
     <Button
       variant="outline"
       size="sm"
-      className="ml-auto hidden h-8 lg:flex"
+      className="ml-auto h-8 lg:flex"
       onClick={() => onOpenDialogFunc(true)}
     >
       <FontAwesomeIcon icon={faPlus} className="mr-2 h-4 w-4" />

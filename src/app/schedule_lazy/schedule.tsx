@@ -21,6 +21,8 @@ import {
   useDeleteSchedule,
   useUpdateSchedule,
 } from "@/service/mutation";
+import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
+import { DataTablePagination } from "@/components/ui/data-table-client/data-table-pagination";
 
 const ScheduleLazy = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
@@ -110,14 +112,18 @@ const ScheduleLazy = () => {
     idKey: "id",
   });
   return (
-    <div className="p-4 w-full text-sm">
+    <div className="w-full text-sm">
+      <DataTableToolbar
+        table={table}
+        openAddDialog={() => console.log("Open Add Dialog")}
+        isHideColumnsEnabled={true}
+      />
       <TableLazy
         key="schedule_table"
         table={table}
         isFetching={dataQuery.isFetching}
-        // filterData={FilterData}
-        openAddDialog={onAdd}
       />
+      <DataTablePagination table={table} />
       <EditDialogForm
         isEditDialogOpen={isEditDialogOpen}
         onOpenDialogFunc={(value) => {
