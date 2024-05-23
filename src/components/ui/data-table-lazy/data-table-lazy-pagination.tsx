@@ -21,7 +21,7 @@ interface DataTablePaginationProps<TData> {
   table: Table<TData>;
 }
 
-export function DataTablePagination<TData>({
+export function DataTableLazyPagination<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   const [selectedRowCount, setSelectedRowCount] = useState<number>(0);

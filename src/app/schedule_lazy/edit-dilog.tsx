@@ -10,7 +10,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
 import { Schedule } from "../../types/schedule-type";
-import "./schedule.css";
 import {
   Form,
   FormControl,

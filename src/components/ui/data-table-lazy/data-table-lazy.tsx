@@ -15,10 +15,6 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 
-import {
-  DataTableToolbar,
-  FilterData,
-} from "@/components/ui/data-table-client/data-table-toolbar";
 import { Loader } from "@/components/ui/loader";
 import {
   Table,
@@ -28,7 +24,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DataTablePagination } from "./data-table-pagination";
 
 function useSorting(initialField = "id", initialOrder = "ASC") {
   const [sorting, setSorting] = useState([
@@ -178,4 +173,4 @@ function useLazyTable<T, V>({
   });
 }
 
-export { useLazyTable, TableLazy, useSorting };
+export { TableLazy, useLazyTable, useSorting };

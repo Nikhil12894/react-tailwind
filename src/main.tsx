@@ -13,14 +13,19 @@ import PersonLazy from "./app/person/Person_data_table.tsx";
 import Landing from "./app/landing/Landing.tsx";
 import LayoutResponsive from "./components/layout-responsive/index.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
+import Portfolio from "./app/Portfolio/Portfolio.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
   },
   {
-    path: "/app",
-    element: <Layout />,
+    path: "portfolio",
+    element: <Portfolio />,
+  },
+  {
+    path: "app",
+    element: <LayoutResponsive />,
     children: [
       {
         index: true,

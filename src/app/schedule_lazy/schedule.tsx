@@ -1,4 +1,17 @@
 import { ColumnDefFun } from "@/components/ui/data-table-client/data-table-column-def";
+import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
+import {
+  TableLazy,
+  useLazyTable,
+  useSorting,
+} from "@/components/ui/data-table-lazy/data-table-lazy";
+import { DataTableLazyPagination } from "@/components/ui/data-table-lazy/data-table-lazy-pagination";
+import DeleteDialog from "@/components/ui/delete-dialog";
+import {
+  useCreateSchedule,
+  useDeleteSchedule,
+  useUpdateSchedule,
+} from "@/service/mutation";
 import { useScheduleQuery } from "@/service/queries";
 import { Schedule } from "@/types/schedule-type";
 import {
@@ -8,26 +21,13 @@ import {
   VisibilityState,
 } from "@tanstack/react-table";
 import React, { useCallback, useState } from "react";
-import {
-  TableLazy,
-  useLazyTable,
-  useSorting,
-} from "@/components/ui/data-table-lazy/data-table-lazy";
-import { hiddenColumns, personTableColumns } from "./table-config-data";
 import { EditDialogForm } from "./edit-dilog";
-import DeleteDialog from "@/components/ui/delete-dialog";
-import {
-  useCreateSchedule,
-  useDeleteSchedule,
-  useUpdateSchedule,
-} from "@/service/mutation";
-import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
-import { DataTablePagination } from "@/components/ui/data-table-client/data-table-pagination";
+import { hiddenColumns, personTableColumns } from "./table-config-data";
 
 const ScheduleLazy = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 5,
+    pageSize: 10,
   });
   const { sorting, onSortingChange, field, order } = useSorting(
     "schedule_id",
@@ -115,7 +115,7 @@ const ScheduleLazy = () => {
     <div className="w-full text-sm">
       <DataTableToolbar
         table={table}
-        openAddDialog={() => console.log("Open Add Dialog")}
+        openAddDialog={onAdd}
         isHideColumnsEnabled={true}
       />
       <TableLazy
@@ -123,7 +123,7 @@ const ScheduleLazy = () => {
         table={table}
         isFetching={dataQuery.isFetching}
       />
-      <DataTablePagination table={table} />
+      <DataTableLazyPagination table={table} />
       <EditDialogForm
         isEditDialogOpen={isEditDialogOpen}
         onOpenDialogFunc={(value) => {

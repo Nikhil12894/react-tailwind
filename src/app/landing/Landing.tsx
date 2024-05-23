@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Landing = () => {
@@ -64,12 +64,12 @@ const Landing = () => {
                       </Link>
                     </li>
                     <li>
-                      <a
-                        href="#"
+                      <Link
+                        to="/portfolio"
                         className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
                       >
                         <span>Portfolio</span>
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a
