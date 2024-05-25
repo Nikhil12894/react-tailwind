@@ -1,4 +1,4 @@
-const SkillIndicator = ({ label, level }: { label: string; level: number }) => {
+const SkillIndicator = ({ level }: { label: string; level: number }) => {
   // Calculate the number of filled circles
   const filledCircles = level;
   // Calculate the number of empty circles

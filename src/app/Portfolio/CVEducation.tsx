@@ -1,5 +1,4 @@
 import { CalendarDays, MapPin } from "lucide-react";
-import React from "react";
 
 interface CVEducationProps {
   title: string;
