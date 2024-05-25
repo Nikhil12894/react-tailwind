@@ -1,7 +1,6 @@
 import { useSidebar } from "../../../context";
 
-export const Logo = ({ ...pops }) => {
-  const { logoImgUrl, logoName } = pops;
+export const Logo = () => {
   const { isOpened, toggleOpened } = useSidebar();
   return (
     <div className="-mx-6 px-6 py-4">
