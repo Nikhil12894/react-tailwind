@@ -45,7 +45,7 @@ interface TableLazyProps<TData> {
 }
 function TableLazy<TData>({ table, isFetching }: TableLazyProps<TData>) {
   return (
-    <div className="rounded-md border p-6">
+    <div className="rounded-md border">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (

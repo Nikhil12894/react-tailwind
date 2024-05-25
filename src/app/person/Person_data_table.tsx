@@ -73,7 +73,7 @@ const PersonLazy = () => {
         openAddDialog={() => console.log("Open Add Dialog")}
         isHideColumnsEnabled={true}
       />
-      <ScrollArea className="h-[60vh] rounded-md border p-4">
+      <ScrollArea className="h-[65vh] rounded-md border p-4">
         <TableLazy
           key="person_table"
           table={table}
