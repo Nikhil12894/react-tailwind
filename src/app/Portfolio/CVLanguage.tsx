@@ -1,4 +1,4 @@
-import SkillIndicator from "./SkillIndicator";
+import { SkillIndicator } from "./SkillIndicator";
 
 export const CVLanguage = ({
   title,

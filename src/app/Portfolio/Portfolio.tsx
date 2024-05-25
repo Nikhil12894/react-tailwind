@@ -17,6 +17,7 @@ import { CVStrengths } from "./CVStrengths";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { FullPageHeader } from "../header/FullPageHeader";
 import { CVExtCertification } from "./CVExtCertification";
+
 export default function Portfolio() {
   const workExp = data.workExp;
   const summery = data.summery;

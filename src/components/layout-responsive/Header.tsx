@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
-import SidebarSheet from "./Sidebarsheet";
+import { SidebarSheet } from "./Sidebarsheet";
 import { ModeToggle } from "../layout/mode-toggle";
 
 export const Header = () => {
