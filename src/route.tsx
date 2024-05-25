@@ -1,4 +1,4 @@
-import { Home, Package, Package2, ShoppingCart, Users } from "lucide-react";
+import { Home, Package, ShoppingCart, Users } from "lucide-react";
 import { MenuItem } from "./types/menu";
 
 function useMenuItems(): MenuItem[] {

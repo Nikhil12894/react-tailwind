@@ -1,5 +1,3 @@
-import { Home, LineChart, Package, ShoppingCart, Users } from "lucide-react";
-import { Badge } from "../ui/badge";
 import { useMenuItems } from "@/route";
 
 const SideMenubar = () => {

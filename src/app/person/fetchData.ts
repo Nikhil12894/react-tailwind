@@ -66,6 +66,7 @@ export async function fetchData(
   // Simulate some network latency
   await new Promise((r) => setTimeout(r, 500));
   console.log(filter);
+  console.log(selectedRows);
   if (sortOption.desc) {
     data = data.sort((a: any, b: any) =>
       compareFnDesc(a[sortOption.id], b[sortOption.id])

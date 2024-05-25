@@ -17,6 +17,7 @@ export const getAllSchedules = async (
   rowSelection: {},
   columnFilters: {}
 ) => {
+  console.log(pagination, sort, rowSelection, columnFilters);
   return (
     await axiosInstance.get<WebResponse<ScheduleDTOList>>(
       `schedule/all?page=${pagination.pageIndex + 1}&page_size=${

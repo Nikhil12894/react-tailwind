@@ -1,13 +1,5 @@
-import {
-  Home,
-  LineChart,
-  Menu,
-  Package,
-  Package2,
-  ShoppingCart,
-  Users,
-} from "lucide-react";
-import { Badge } from "../ui/badge";
+import { useMenuItems } from "@/route";
+import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -17,7 +9,6 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { useMenuItems } from "@/route";
 
 const SidebarSheet = () => {
   const menus = useMenuItems();

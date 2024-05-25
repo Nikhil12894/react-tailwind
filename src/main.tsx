@@ -1,19 +1,18 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
-import ErrorPage from "./components/error-page/error_page.tsx";
 import Dashboard from "./app/dashboard/Dashboard.tsx";
-import ScheduleComp from "./app/schedule/Schedule.tsx";
-import { Layout } from "./components/layout/index.tsx";
-import ScheduleLazy from "./app/schedule_lazy/schedule.tsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import PersonLazy from "./app/person/Person_data_table.tsx";
 import Landing from "./app/landing/Landing.tsx";
+import PersonLazy from "./app/person/Person_data_table.tsx";
+import Portfolio from "./app/Portfolio/Portfolio.tsx";
+import ScheduleComp from "./app/schedule/Schedule.tsx";
+import ScheduleLazy from "./app/schedule_lazy/schedule.tsx";
+import ErrorPage from "./components/error-page/error_page.tsx";
 import LayoutResponsive from "./components/layout-responsive/index.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
-import Portfolio from "./app/Portfolio/Portfolio.tsx";
+import "./index.css";
 const router = createBrowserRouter([
   {
     path: "/",
