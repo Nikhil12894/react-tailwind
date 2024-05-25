@@ -2,21 +2,20 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
+import Portfolio from "./app/Portfolio/Portfolio.tsx";
 import { Dashboard } from "./app/dashboard/Dashboard.tsx";
 import { Landing } from "./app/landing/Landing.tsx";
 import { PersonLazy } from "./app/person/Person_data_table.tsx";
-import Portfolio from "./app/Portfolio/Portfolio.tsx";
 import { ScheduleComp } from "./app/schedule/Schedule.tsx";
 import { ScheduleLazy } from "./app/schedule_lazy/schedule.tsx";
 import { ErrorPage } from "./components/error-page/error_page.tsx";
 import { LayoutResponsive } from "./components/layout-responsive/index.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import "./index.css";
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
-
     element: <Landing />,
   },
   {
