@@ -1,7 +1,7 @@
 import { ReCron } from "../../components/cron";
 import { Type } from "@sbzen/cron-core";
 
-const Dashboard = () => {
+export const Dashboard = () => {
   const tabs = [Type.SECONDS, Type.MINUTES, Type.HOURS, Type.DAY, Type.MONTH];
 
   return (
@@ -14,5 +14,3 @@ const Dashboard = () => {
     </div>
   );
 };
-
-export default Dashboard;

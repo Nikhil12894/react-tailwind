@@ -12,7 +12,7 @@ import { Input } from "../ui/input";
 import SidebarSheet from "./Sidebarsheet";
 import { ModeToggle } from "../layout/mode-toggle";
 
-const Header = () => {
+export const Header = () => {
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
       <SidebarSheet />
@@ -48,5 +48,3 @@ const Header = () => {
     </header>
   );
 };
-
-export default Header;

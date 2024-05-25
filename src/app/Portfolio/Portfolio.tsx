@@ -5,17 +5,17 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { useEffect } from "react";
-import CVHeader from "./CVHeader";
-import CVWorkExp from "./CVWorkxExp";
+import { CVHeader } from "./CVHeader";
+import { CVWorkExp } from "./CVWorkxExp";
 import { data } from "../../assets/data";
-import CVCertification from "./CVCertification";
-import CVEducation from "./CVEducation";
-import CVSkill from "./CVSkils";
-import CVLanguage from "./CVLanguage";
-import CVSummery from "./CVSummery";
-import CVStrengths from "./CVStrengths";
+import { CVCertification } from "./CVCertification";
+import { CVEducation } from "./CVEducation";
+import { CVSkill } from "./CVSkils";
+import { CVLanguage } from "./CVLanguage";
+import { CVSummery } from "./CVSummery";
+import { CVStrengths } from "./CVStrengths";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import FullPageHeader from "../header/FullPageHeader";
+import { FullPageHeader } from "../header/FullPageHeader";
 import { CVExtCertification } from "./CVExtCertification";
 export default function Portfolio() {
   const workExp = data.workExp;

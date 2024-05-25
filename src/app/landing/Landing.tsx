@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import FullPageHeader from "../header/FullPageHeader";
+import { FullPageHeader } from "../header/FullPageHeader";
 
-const Landing = () => {
+export const Landing = () => {
   useEffect(() => {
     // Applying on mount
     document.body.style.overflow = "scroll";
@@ -307,5 +307,3 @@ const Landing = () => {
     </div>
   );
 };
-
-export default Landing;

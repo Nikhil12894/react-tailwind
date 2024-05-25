@@ -24,7 +24,7 @@ export interface CVWorkExpProps {
   }[];
 }
 
-const CVWorkExp = (workExp: CVWorkExpProps) => {
+export const CVWorkExp = (workExp: CVWorkExpProps) => {
   return (
     <div>
       <h2 className="text-lg lg:text-2xl text-teal-600">{workExp.title}</h2>
@@ -72,5 +72,3 @@ const CVWorkExp = (workExp: CVWorkExpProps) => {
     </div>
   );
 };
-
-export default CVWorkExp;

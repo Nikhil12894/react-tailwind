@@ -17,7 +17,7 @@ export interface CVHeaderProps {
     imageUrl: string;
   };
 }
-const CVHeader = ({ ...headerData }: CVHeaderProps) => {
+export const CVHeader = ({ ...headerData }: CVHeaderProps) => {
   return (
     <div className="grid grid-cols-6 gap-4">
       <div className="col-start-1 col-span-4 lg:col-span-5">
@@ -81,5 +81,3 @@ const CVHeader = ({ ...headerData }: CVHeaderProps) => {
     </div>
   );
 };
-
-export default CVHeader;

@@ -1,6 +1,6 @@
-import CVTag from "./CVTag";
+import { CVTag } from "./CVTag";
 
-const CVStrengths = ({
+export const CVStrengths = ({
   title,
   points,
 }: {
@@ -19,5 +19,3 @@ const CVStrengths = ({
     </div>
   );
 };
-
-export default CVStrengths;

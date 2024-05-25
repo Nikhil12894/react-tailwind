@@ -10,7 +10,7 @@ interface CVCertificationProps {
     points: string[];
   }[];
 }
-const CVCertification = (certifications: CVCertificationProps) => {
+export const CVCertification = (certifications: CVCertificationProps) => {
   return (
     <div>
       <h2 className="text-lg lg:text-2xl text-teal-600 mt-4">
@@ -43,5 +43,3 @@ const CVCertification = (certifications: CVCertificationProps) => {
     </div>
   );
 };
-
-export default CVCertification;

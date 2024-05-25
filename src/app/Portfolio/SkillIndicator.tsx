@@ -1,4 +1,4 @@
-const SkillIndicator = ({ level }: { label: string; level: number }) => {
+export const SkillIndicator = ({ level }: { label: string; level: number }) => {
   // Calculate the number of filled circles
   const filledCircles = level;
   // Calculate the number of empty circles
@@ -23,5 +23,3 @@ const SkillIndicator = ({ level }: { label: string; level: number }) => {
     </div>
   );
 };
-
-export default SkillIndicator;

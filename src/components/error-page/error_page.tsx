@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const ErrorPage = () => {
+export const ErrorPage = () => {
   return (
     <section className="bg-white dark:bg-gray-900 w-full">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -26,5 +26,3 @@ const ErrorPage = () => {
     </section>
   );
 };
-
-export default ErrorPage;

@@ -1,6 +1,6 @@
 import { useMenuItems } from "@/route";
 
-const SideMenubar = () => {
+export const SideMenubar = () => {
   const menus = useMenuItems();
   return (
     <div className="flex-1">
@@ -57,5 +57,3 @@ const SideMenubar = () => {
     </div>
   );
 };
-
-export default SideMenubar;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const FullPageHeader = () => {
+export const FullPageHeader = () => {
   return (
     <header>
       <input
@@ -105,5 +105,3 @@ const FullPageHeader = () => {
     </header>
   );
 };
-
-export default FullPageHeader;

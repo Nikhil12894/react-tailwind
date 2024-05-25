@@ -1,10 +1,10 @@
-import SkillIndicator from "./SkillIndicator";
+import { SkillIndicator } from "./SkillIndicator";
 
 interface CVSkillProps {
   title: string;
   skills: { name: string; level: number }[];
 }
-const CVSkill = (skills: CVSkillProps) => {
+export const CVSkill = (skills: CVSkillProps) => {
   return (
     <div>
       <h2 className="text-lg lg:text-2xl text-teal-600 mt-4">{skills.title}</h2>
@@ -18,5 +18,3 @@ const CVSkill = (skills: CVSkillProps) => {
     </div>
   );
 };
-
-export default CVSkill;

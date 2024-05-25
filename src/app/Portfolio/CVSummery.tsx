@@ -1,4 +1,10 @@
-const CVSummery = ({ title, points }: { title: string; points: string[] }) => {
+export const CVSummery = ({
+  title,
+  points,
+}: {
+  title: string;
+  points: string[];
+}) => {
   return (
     <div>
       <h2 className="text-lg lg:text-2xl text-teal-600">{title}</h2>
@@ -11,5 +17,3 @@ const CVSummery = ({ title, points }: { title: string; points: string[] }) => {
     </div>
   );
 };
-
-export default CVSummery;

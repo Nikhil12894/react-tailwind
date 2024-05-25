@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-const Maincontent = () => {
+export const Maincontent = () => {
   return (
     <div
       className="flex flex-1 rounded-lg border border-dashed shadow shadow-slate-400"
@@ -10,5 +10,3 @@ const Maincontent = () => {
     </div>
   );
 };
-
-export default Maincontent;

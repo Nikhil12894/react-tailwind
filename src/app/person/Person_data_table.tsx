@@ -17,7 +17,7 @@ import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-t
 import { DataTablePagination } from "@/components/ui/data-table-client/data-table-pagination";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-const PersonLazy = () => {
+export const PersonLazy = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 5,
@@ -84,5 +84,3 @@ const PersonLazy = () => {
     </div>
   );
 };
-
-export default PersonLazy;

@@ -1,6 +1,6 @@
 import SkillIndicator from "./SkillIndicator";
 
-const CVLanguage = ({
+export const CVLanguage = ({
   title,
   languages,
 }: {
@@ -20,5 +20,3 @@ const CVLanguage = ({
     </div>
   );
 };
-
-export default CVLanguage;

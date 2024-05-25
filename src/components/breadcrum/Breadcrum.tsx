@@ -20,7 +20,7 @@ const generateBreadcrumbs = (pathname: string): BreadcrumbProps[] => {
     return { label: value, path };
   });
 };
-const BreadcrumbComponent = () => {
+export const BreadcrumbComponent = () => {
   const location = useLocation();
   const [paths, setPaths] = useState<BreadcrumbProps[]>([]);
   useEffect(() => {
@@ -52,5 +52,3 @@ const BreadcrumbComponent = () => {
     </Breadcrumb>
   );
 };
-
-export default BreadcrumbComponent;

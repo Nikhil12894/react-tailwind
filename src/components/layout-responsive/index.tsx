@@ -1,9 +1,9 @@
-import BreadcrumbComponent from "../breadcrum/Breadcrum";
-import Header from "./Header";
-import Maincontent from "./Maincontent";
-import Sidebar from "./Sidebar";
+import { BreadcrumbComponent } from "../breadcrum/Breadcrum";
+import { Header } from "./Header";
+import { Maincontent } from "./Maincontent";
+import { Sidebar } from "./Sidebar";
 
-export default function LayoutResponsive() {
+export function LayoutResponsive() {
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <Sidebar />

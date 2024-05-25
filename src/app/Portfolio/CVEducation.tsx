@@ -10,7 +10,7 @@ interface CVEducationProps {
     gpa: string;
   }[];
 }
-const CVEducation = (education: CVEducationProps) => {
+export const CVEducation = (education: CVEducationProps) => {
   return (
     <div>
       <h2 className="text-lg lg:text-2xl text-teal-600 mt-4">
@@ -41,5 +41,3 @@ const CVEducation = (education: CVEducationProps) => {
     </div>
   );
 };
-
-export default CVEducation;

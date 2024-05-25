@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "../ui/card";
 
-const SidebarAd = () => {
+export const SidebarAd = () => {
   return (
     <div className="mt-auto p-4">
       <Card x-chunk="dashboard-02-chunk-0">
@@ -26,5 +26,3 @@ const SidebarAd = () => {
     </div>
   );
 };
-
-export default SidebarAd;

@@ -10,7 +10,7 @@ import {
 } from "../ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
-const SidebarSheet = () => {
+export const SidebarSheet = () => {
   const menus = useMenuItems();
   return (
     <Sheet>
@@ -95,5 +95,3 @@ const SidebarSheet = () => {
     </Sheet>
   );
 };
-
-export default SidebarSheet;
