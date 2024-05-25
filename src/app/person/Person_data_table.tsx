@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/data-table-lazy/data-table-lazy";
 import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
 import { DataTablePagination } from "@/components/ui/data-table-client/data-table-pagination";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const PersonLazy = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({

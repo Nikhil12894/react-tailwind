@@ -29,7 +29,7 @@ const CVHeader = ({ ...headerData }: CVHeaderProps) => {
         </h2>
         <ul className="flex flex-wrap text-xs lg:text-lg">
           <li className="mr-4 flex items-center justify-center cursor-pointer ">
-            <AtSign className="h-4 w-4 mr-2 text-cyan-600" />
+            <AtSign className="h-4 w-4 mr-2 text-teal-600" />
             <a
               href={`mailto: ${headerData.header.email}`}
               className="hover:text-black/50 dark:hover:text-white/50"
@@ -38,20 +38,20 @@ const CVHeader = ({ ...headerData }: CVHeaderProps) => {
             </a>
           </li>
           <li className="mr-4 flex items-center justify-center cursor-pointer ">
-            <Phone className="h-4 w-4 mr-2 text-cyan-600" />
+            <Phone className="h-4 w-4 mr-2 text-teal-600" />
             <span className="hover:text-black/50 dark:hover:text-white/50">
               {headerData.header.phone}
             </span>
           </li>
           <li className="mr-4 flex items-center justify-center cursor-pointer">
-            <MapPin className="h-4 w-4 mr-2 text-cyan-600" />
+            <MapPin className="h-4 w-4 mr-2 text-teal-600" />
             <span className="hover:text-black/50 dark:hover:text-white/50">
               {headerData.header.location}
             </span>
           </li>
         </ul>
         <h3 className="text-xs lg:text-lg text-muted-foreground flex items-center">
-          <Linkedin className="h-4 w-4 mr-2 text-cyan-600" />
+          <Linkedin className="h-4 w-4 mr-2 text-teal-600" />
           <a
             href={headerData.header.linkedin.href}
             className="hover:text-black/50 dark:hover:text-white/50"
@@ -60,7 +60,7 @@ const CVHeader = ({ ...headerData }: CVHeaderProps) => {
           </a>
         </h3>
         <h3 className="text-xs lg:text-lg text-muted-foreground flex items-center">
-          <Github className="h-4 w-4 mr-2 text-cyan-600" />
+          <Github className="h-4 w-4 mr-2 text-teal-600" />
           <a
             href={headerData.header.gitHub.href}
             className="hover:text-black/50 dark:hover:text-white/50"
