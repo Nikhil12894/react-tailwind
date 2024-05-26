@@ -13,7 +13,7 @@ export const data = {
       href: "https://www.linkedin.com/in/nalin-k-31564010a/",
       displayName: "nalin-k-31564010a",
     },
-    imageUrl: "/images/nalin1.jpeg",
+    imageUrl: "images/nalin1.jpeg",
   },
   workExp: {
     title: "WORK EXPERIENCE",

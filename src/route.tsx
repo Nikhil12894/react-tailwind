@@ -5,28 +5,28 @@ function useMenuItems(): MenuItem[] {
   return [
     {
       name: "Dashboard",
-      link: "/app/dashboard",
+      link: "app/dashboard",
       icon: () => {
         return <Home className="h-5 w-5" />;
       },
     },
     {
       name: "Schedule",
-      link: "/app/schedule",
+      link: "app/schedule",
       icon: () => {
         return <ShoppingCart className="h-5 w-5" />;
       },
     },
     {
       name: "Schedule-Lazy",
-      link: "/app/schedule_lazy",
+      link: "app/schedule_lazy",
       icon: () => {
         return <Package className="h-5 w-5" />;
       },
     },
     {
       name: "Person",
-      link: "/app/person",
+      link: "app/person",
       icon: () => {
         return <Users className="h-5 w-5" />;
       },
