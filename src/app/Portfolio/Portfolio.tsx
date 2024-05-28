@@ -4,21 +4,20 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { useEffect } from "react";
-import { CVHeader } from "./CVHeader";
-import { CVWorkExp } from "./CVWorkxExp";
 import { data } from "../../assets/data";
 import { CVCertification } from "./CVCertification";
 import { CVEducation } from "./CVEducation";
-import { CVSkill } from "./CVSkils";
-import { CVLanguage } from "./CVLanguage";
-import { CVSummery } from "./CVSummery";
-import { CVStrengths } from "./CVStrengths";
-import { useMediaQuery } from "@/hooks/use-media-query";
-import { FullPageHeader } from "../header/FullPageHeader";
 import { CVExtCertification } from "./CVExtCertification";
+import { CVHeader } from "./CVHeader";
+import { CVLanguage } from "./CVLanguage";
+import { CVSkill } from "./CVSkils";
+import { CVStrengths } from "./CVStrengths";
+import { CVSummery } from "./CVSummery";
+import { CVWorkExp } from "./CVWorkxExp";
 
-export default function Portfolio() {
+export const Portfolio: React.FC = () => {
   const workExp = data.workExp;
   const summery = data.summery;
   const education = data.education;
@@ -33,8 +32,7 @@ export default function Portfolio() {
     };
   }, []);
   return (
-    <div>
-      <FullPageHeader />
+    <>
       <div className="flex justify-center">
         <Card className="w-[80%] mr-4 ml-4 mt-4 mb-4 sm:text-base">
           <CardHeader>
@@ -100,6 +98,6 @@ export default function Portfolio() {
           <CVExtCertification />
         </div>
       </div>
-    </div>
+    </>
   );
-}
+};

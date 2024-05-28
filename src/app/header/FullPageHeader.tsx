@@ -70,12 +70,12 @@ export const FullPageHeader = () => {
                     </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      to="/blogs"
                       className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
                     >
-                      <span>Services</span>
-                    </a>
+                      <span>Blogs</span>
+                    </Link>
                   </li>
                 </ul>
               </div>

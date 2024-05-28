@@ -1,16 +1,7 @@
-import { ReCron } from "../../components/cron";
-import { Type } from "@sbzen/cron-core";
-
-export const Dashboard = () => {
-  const tabs = [Type.SECONDS, Type.MINUTES, Type.HOURS, Type.DAY, Type.MONTH];
-
+export const Dashboard: React.FC = () => {
   return (
     <div className="container mx-auto py-8 hover:overscroll-x-none hover:overflow-y-auto focus:overflow-y-auto focus:overscroll-x-none">
-      <ReCron
-        tabs={tabs}
-        value="* * * * * "
-        onChange={(cron) => console.log(cron)}
-      />
+      Dashboard works
     </div>
   );
 };

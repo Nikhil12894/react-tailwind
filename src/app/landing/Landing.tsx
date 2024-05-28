@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { FullPageHeader } from "../header/FullPageHeader";
 
 export const Landing = () => {
   useEffect(() => {
@@ -11,8 +10,7 @@ export const Landing = () => {
     };
   }, []);
   return (
-    <div className="overflow-x-hidden overflow-y-scroll">
-      <FullPageHeader />
+    <>
       <div className="pt-32 md:py-12 xl:container m-auto px-6 md:px-12">
         <div
           aria-hidden="true"
@@ -304,6 +302,6 @@ export const Landing = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 };

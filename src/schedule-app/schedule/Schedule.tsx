@@ -13,7 +13,7 @@ import { ColumnDefFun } from "@/components/ui/data-table-client/data-table-colum
 import { useCallback, useMemo, useState } from "react";
 import DeleteDialog from "@/components/ui/delete-dialog";
 
-export const ScheduleComp = () => {
+export const ScheduleComp: React.FC = () => {
   const [data, setData] = useState(scheduleData);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);

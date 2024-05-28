@@ -1,23 +1,23 @@
-import {
-  ColumnDef,
-  ColumnFiltersState,
-  PaginationState,
-} from "@tanstack/react-table";
-import { Person } from "./fetchData";
-import React from "react";
 import { ColumnDefFun } from "@/components/ui/data-table-client/data-table-column-def";
-import { personTableColumns } from "./data-config";
-import { usePersonQuery } from "@/service/queries";
+import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
 import {
   TableLazy,
   useLazyTable,
   useSorting,
 } from "@/components/ui/data-table-lazy/data-table-lazy";
-import { DataTableToolbar } from "@/components/ui/data-table-client/data-table-toolbar";
-import { DataTablePagination } from "@/components/ui/data-table-client/data-table-pagination";
+import { DataTableLazyPagination } from "@/components/ui/data-table-lazy/data-table-lazy-pagination";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { usePersonQuery } from "@/service/queries";
+import {
+  ColumnDef,
+  ColumnFiltersState,
+  PaginationState,
+} from "@tanstack/react-table";
+import React from "react";
+import { personTableColumns } from "./data-config";
+import { Person } from "./fetchData";
 
-export const PersonLazy = () => {
+export const PersonLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 5,
@@ -80,7 +80,7 @@ export const PersonLazy = () => {
           isFetching={dataQuery.isFetching}
         />
       </ScrollArea>
-      <DataTablePagination table={table} />
+      <DataTableLazyPagination table={table} />
     </div>
   );
 };

@@ -24,7 +24,7 @@ import React, { useCallback, useState } from "react";
 import { EditDialogForm } from "./edit-dilog";
 import { hiddenColumns, personTableColumns } from "./table-config-data";
 
-export const ScheduleLazy = () => {
+export const ScheduleLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
