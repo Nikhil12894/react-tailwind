@@ -8,7 +8,7 @@ import {
 import { PaginationState } from "@tanstack/react-table";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/taskservice/api/";
+const BASE_URL = "http://localhost:8080/taskservice/api/"; //import.meta.env.API_BASE_URL
 const axiosInstance = axios.create({ baseURL: BASE_URL });
 
 export const getAllSchedules = async (

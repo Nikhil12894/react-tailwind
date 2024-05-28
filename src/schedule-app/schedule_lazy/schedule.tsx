@@ -23,6 +23,7 @@ import {
 import React, { useCallback, useState } from "react";
 import { EditDialogForm } from "./edit-dilog";
 import { hiddenColumns, personTableColumns } from "./table-config-data";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const ScheduleLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
@@ -118,11 +119,13 @@ export const ScheduleLazy: React.FC = () => {
         openAddDialog={onAdd}
         isHideColumnsEnabled={true}
       />
-      <TableLazy
-        key="schedule_table"
-        table={table}
-        isFetching={dataQuery.isFetching}
-      />
+      <ScrollArea className="h-[65vh] rounded-md border p-4">
+        <TableLazy
+          key="schedule_table"
+          table={table}
+          isFetching={dataQuery.isFetching}
+        />
+      </ScrollArea>
       <DataTableLazyPagination table={table} />
       <EditDialogForm
         isEditDialogOpen={isEditDialogOpen}
