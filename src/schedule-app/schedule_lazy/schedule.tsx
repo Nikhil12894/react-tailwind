@@ -25,6 +25,7 @@ import { EditDialogForm } from "./edit-dilog";
 import { personTableColumns } from "./table-config-data";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { hiddenColumns } from "../default-app-config";
+import { defaultRowAction } from "@/types/row-action";
 
 export const ScheduleLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
@@ -72,6 +73,7 @@ export const ScheduleLazy: React.FC = () => {
     [selectedRow]
   );
 
+  const rowActions = defaultRowAction(onEdit, onDelete);
   const createScheduleMutation = useCreateSchedule();
   const updateScheduleMutation = useUpdateSchedule();
   const deleteScheduleMutation = useDeleteSchedule();
@@ -123,6 +125,8 @@ export const ScheduleLazy: React.FC = () => {
           key="schedule_table"
           table={table}
           isFetching={dataQuery.isFetching}
+          rowActions={rowActions}
+          iaRowSelectionEnabled={true}
         />
       </ScrollArea>
       <DataTableLazyPagination table={table} />

@@ -1,10 +1,10 @@
 import { ColumnConfig } from "@/components/ui/data-table-client/data-table-column-def";
 
 const personTableColumns: ColumnConfig[] = [
-  {
-    accessorKey: "select",
-    header: "Select",
-  },
+  // {
+  //   accessorKey: "select",
+  //   header: "Select",
+  // },
   {
     accessorKey: "firstName",
     header: "FirstName",

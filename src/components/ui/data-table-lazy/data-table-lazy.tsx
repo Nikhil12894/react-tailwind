@@ -24,7 +24,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "../button";
+import { RowAction } from "@/types/row-action";
+import { Checkbox } from "../checkbox";
 
 function useSorting(initialField = "id", initialOrder = "ASC") {
   const [sorting, setSorting] = useState([
@@ -43,16 +44,14 @@ function useSorting(initialField = "id", initialOrder = "ASC") {
 interface TableLazyProps<TData> {
   table: TenStackTable<TData>;
   isFetching: boolean;
-  rowActions?: {
-    label?: string;
-    action: (data: TData) => void;
-    icon?: ElementType;
-  }[];
+  rowActions?: RowAction<TData>[];
+  iaRowSelectionEnabled?: boolean;
 }
 function TableLazy<TData>({
   table,
   isFetching,
   rowActions,
+  iaRowSelectionEnabled = false,
 }: TableLazyProps<TData>) {
   return (
     <div className="rounded-md border">
@@ -60,6 +59,17 @@ function TableLazy<TData>({
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
+              {iaRowSelectionEnabled && (
+                <TableHead colSpan={1}>
+                  <Checkbox
+                    checked={table.getIsAllRowsSelected()}
+                    onCheckedChange={(value) =>
+                      table.toggleAllRowsSelected(!!value)
+                    }
+                    aria-label="Select all"
+                  />
+                </TableHead>
+              )}
               {headerGroup.headers.map((header) => {
                 return (
                   <TableHead key={header.id} colSpan={header.colSpan}>
@@ -97,10 +107,15 @@ function TableLazy<TData>({
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
+                <TableRow key={row.id}>
+                  {iaRowSelectionEnabled && (
+                    <TableCell colSpan={1}>
+                      <Checkbox
+                        checked={row.getIsSelected()}
+                        onCheckedChange={(value) => row.toggleSelected(!!value)}
+                      />
+                    </TableCell>
+                  )}
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
                       {flexRender(

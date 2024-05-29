@@ -88,6 +88,7 @@ export const PersonLazy: React.FC = () => {
           table={table}
           isFetching={dataQuery.isFetching}
           rowActions={rowActions}
+          iaRowSelectionEnabled={true}
         />
       </ScrollArea>
       <DataTableLazyPagination table={table} />

@@ -3,10 +3,6 @@ import { ColumnConfig } from "@/components/ui/data-table-client/data-table-colum
 
 const taskTableColumns: ColumnConfig[] = [
   {
-    accessorKey: "select",
-    header: "Select",
-  },
-  {
     accessorKey: "id",
     header: "ID",
     enableSorting: false,
