@@ -2,19 +2,19 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React, { lazy } from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 // import { Portfolio } from "./app/Portfolio/Portfolio.tsx";
 import { Dashboard } from "./app/dashboard/Dashboard.tsx";
+import { GeneralPages } from "./app/generalPages/index.tsx";
 import { Landing } from "./app/landing/Landing.tsx";
 import { PersonLazy } from "./app/person/Person_data_table.tsx";
-import { ScheduleComp } from "./schedule-app/schedule/Schedule.tsx";
-import { ScheduleLazy } from "./schedule-app/schedule_lazy/schedule.tsx";
 import { ErrorPage } from "./components/error-page/error_page.tsx";
 import { LayoutResponsive } from "./components/layout-responsive/index.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import "./index.css";
-import { GeneralPages } from "./app/generalPages/index.tsx";
 import { TaskTable } from "./schedule-app/Task/task-table.tsx";
+import { ScheduleComp } from "./schedule-app/schedule/Schedule.tsx";
+import { ScheduleLazy } from "./schedule-app/schedule_lazy/schedule.tsx";
 // import { Blog } from "./app/blog/Blog.tsx";
 
 const Portfolio = lazy(() =>
@@ -28,7 +28,7 @@ const Blog = lazy(() =>
   }))
 );
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     errorElement: <ErrorPage />,
