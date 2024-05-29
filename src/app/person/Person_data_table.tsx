@@ -8,6 +8,7 @@ import {
 import { DataTableLazyPagination } from "@/components/ui/data-table-lazy/data-table-lazy-pagination";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { usePersonQuery } from "@/service/queries";
+import { RowAction, defaultRowAction } from "@/types/row-action";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -16,8 +17,6 @@ import {
 import React from "react";
 import { personTableColumns } from "./data-config";
 import { Person } from "./fetchData";
-import { RowAction, defaultRowAction } from "@/types/row-action";
-import { EditIcon, Trash2 } from "lucide-react";
 
 export const PersonLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({

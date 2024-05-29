@@ -1,5 +1,4 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { Checkbox } from "../checkbox";
 import { DataTableColumnHeader } from "./data-table-column-header";
 
 export interface ColumnConfig {
@@ -8,13 +7,11 @@ export interface ColumnConfig {
   enableSorting?: boolean;
   filterEnabled?: boolean;
 }
-export interface ColumnsProps<T> {
+export interface ColumnsProps {
   columnList: ColumnConfig[];
 }
 
-export function ColumnDefFun<T>({
-  columnList,
-}: ColumnsProps<T>): ColumnDef<T>[] {
+export function ColumnDefFun<T>({ columnList }: ColumnsProps): ColumnDef<T>[] {
   return columnList.map((item) => {
     return {
       accessorKey: item.accessorKey,

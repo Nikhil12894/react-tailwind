@@ -31,7 +31,6 @@ import { Task } from "@/types/task-type";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Schedule } from "@/types/schedule-type";
 
 interface EditDialogProps {
   isEditDialogOpen: boolean;
