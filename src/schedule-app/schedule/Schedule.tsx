@@ -14,7 +14,7 @@ export const ScheduleComp: React.FC = () => {
   const [data, setData] = useState(scheduleData);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-
+  const [rowSelection, setRowSelection] = useState({});
   const [selectedRow, setSelectedRow] = useState<Schedule | null>(null);
   const onEdit = useCallback(
     (data: Schedule) => {
@@ -26,6 +26,7 @@ export const ScheduleComp: React.FC = () => {
 
   const onAdd = () => {
     setSelectedRow({ schedule_id: "", cron_schedule: "", id: 0 });
+    console.log(rowSelection);
     setIsEditDialogOpen(true);
   };
   const onDelete = useCallback(
@@ -85,6 +86,9 @@ export const ScheduleComp: React.FC = () => {
         }}
         openAddDialog={onAdd}
         rowActions={rowActions}
+        iaRowSelectionEnabled={true}
+        rowSelection={rowSelection}
+        onRowSelectionChange={setRowSelection}
       />
       <EditDialogForm
         isEditDialogOpen={isEditDialogOpen}

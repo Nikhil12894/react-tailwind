@@ -13,6 +13,8 @@ import {
   getFacetedUniqueValues,
   ColumnFiltersState,
   SortingState,
+  OnChangeFn,
+  RowSelectionState,
 } from "@tanstack/react-table";
 
 import {
@@ -27,6 +29,7 @@ import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar, FilterData } from "./data-table-toolbar";
 import React from "react";
 import { RowAction } from "@/types/row-action";
+import { Checkbox } from "../checkbox";
 
 export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -35,6 +38,9 @@ export interface DataTableProps<TData, TValue> {
   filterData?: FilterData;
   openAddDialog?: (open: boolean) => void;
   rowActions?: RowAction<TData>[];
+  iaRowSelectionEnabled?: boolean;
+  rowSelection: RowSelectionState;
+  onRowSelectionChange?: OnChangeFn<RowSelectionState>;
 }
 
 export function DataTable<TData, TValue>({
@@ -44,8 +50,10 @@ export function DataTable<TData, TValue>({
   filterData,
   openAddDialog,
   rowActions,
+  iaRowSelectionEnabled = false,
+  rowSelection,
+  onRowSelectionChange,
 }: DataTableProps<TData, TValue>) {
-  const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({ ...hiddenColumns });
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -64,7 +72,7 @@ export function DataTable<TData, TValue>({
     },
     enableRowSelection: true,
     autoResetPageIndex: false,
-    onRowSelectionChange: setRowSelection,
+    onRowSelectionChange: onRowSelectionChange,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
@@ -88,6 +96,17 @@ export function DataTable<TData, TValue>({
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
+                {iaRowSelectionEnabled && (
+                  <TableHead colSpan={1}>
+                    <Checkbox
+                      checked={table.getIsAllPageRowsSelected()}
+                      onCheckedChange={(value) =>
+                        table.toggleAllPageRowsSelected(!!value)
+                      }
+                      aria-label="Select all"
+                    />
+                  </TableHead>
+                )}
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead key={header.id}>
@@ -115,6 +134,14 @@ export function DataTable<TData, TValue>({
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >
+                  {iaRowSelectionEnabled && (
+                    <TableCell colSpan={1}>
+                      <Checkbox
+                        checked={row.getIsSelected()}
+                        onCheckedChange={(value) => row.toggleSelected(!!value)}
+                      />
+                    </TableCell>
+                  )}
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
                       {flexRender(

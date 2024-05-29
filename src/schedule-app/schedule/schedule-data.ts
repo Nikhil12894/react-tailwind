@@ -3,10 +3,6 @@ import { Schedule } from "../../types/schedule-type";
 
 export const columnList: ColumnConfig[] = [
   {
-    accessorKey: "select",
-    header: "Select",
-  },
-  {
     accessorKey: "id",
     header: "ID",
     enableSorting: false,
