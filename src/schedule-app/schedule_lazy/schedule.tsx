@@ -91,8 +91,6 @@ export const ScheduleLazy: React.FC = () => {
     () =>
       ColumnDefFun<Schedule>({
         columnList: personTableColumns,
-        editFun: onEdit,
-        deleteFun: onDelete,
       }),
     []
   );

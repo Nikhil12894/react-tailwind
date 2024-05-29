@@ -1,7 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "../checkbox";
 import { DataTableColumnHeader } from "./data-table-column-header";
-import { DataTableRowActions } from "./data-table-row-actions";
 
 export interface ColumnConfig {
   accessorKey: string;
@@ -11,14 +10,10 @@ export interface ColumnConfig {
 }
 export interface ColumnsProps<T> {
   columnList: ColumnConfig[];
-  deleteFun?: (rowData: T) => void;
-  editFun?: (rowData: T) => void;
 }
 
 export function ColumnDefFun<T>({
   columnList,
-  deleteFun,
-  editFun,
 }: ColumnsProps<T>): ColumnDef<T>[] {
   return columnList.map((item) => {
     if (item.accessorKey === "select") {
@@ -42,18 +37,6 @@ export function ColumnDefFun<T>({
         ),
         enableSorting: false,
         enableHiding: false,
-      };
-    } else if (item.accessorKey === "actions") {
-      return {
-        id: item.accessorKey,
-        header: item.header,
-        cell: ({ row }) => (
-          <DataTableRowActions
-            row={row}
-            onDelete={deleteFun}
-            onEdit={editFun}
-          />
-        ),
       };
     } else {
       return {

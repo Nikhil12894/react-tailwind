@@ -16,6 +16,8 @@ import {
 import React from "react";
 import { personTableColumns } from "./data-config";
 import { Person } from "./fetchData";
+import { RowAction, defaultRowAction } from "@/types/row-action";
+import { EditIcon, Trash2 } from "lucide-react";
 
 export const PersonLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
@@ -33,6 +35,12 @@ export const PersonLazy: React.FC = () => {
     rowSelection,
     columnFilters
   );
+  const onEdit = (data: Person) => {
+    console.log(data);
+  };
+  const onDelete = (data: Person) => {
+    console.log(data);
+  };
   const columns: ColumnDef<Person>[] = React.useMemo(
     () =>
       ColumnDefFun<Person>({
@@ -40,6 +48,7 @@ export const PersonLazy: React.FC = () => {
       }),
     []
   );
+  const rowActions: RowAction<Person>[] = defaultRowAction(onEdit, onDelete);
 
   const table = useLazyTable<Person, any>({
     data: dataQuery.data?.rows ?? [],
@@ -78,6 +87,7 @@ export const PersonLazy: React.FC = () => {
           key="person_table"
           table={table}
           isFetching={dataQuery.isFetching}
+          rowActions={rowActions}
         />
       </ScrollArea>
       <DataTableLazyPagination table={table} />

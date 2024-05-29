@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ElementType, useState } from "react";
 
 import {
   ColumnDef,
@@ -24,6 +24,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "../button";
 
 function useSorting(initialField = "id", initialOrder = "ASC") {
   const [sorting, setSorting] = useState([
@@ -42,8 +43,17 @@ function useSorting(initialField = "id", initialOrder = "ASC") {
 interface TableLazyProps<TData> {
   table: TenStackTable<TData>;
   isFetching: boolean;
+  rowActions?: {
+    label?: string;
+    action: (data: TData) => void;
+    icon?: ElementType;
+  }[];
 }
-function TableLazy<TData>({ table, isFetching }: TableLazyProps<TData>) {
+function TableLazy<TData>({
+  table,
+  isFetching,
+  rowActions,
+}: TableLazyProps<TData>) {
   return (
     <div className="rounded-md border">
       <Table>
@@ -64,6 +74,11 @@ function TableLazy<TData>({ table, isFetching }: TableLazyProps<TData>) {
                   </TableHead>
                 );
               })}
+              {rowActions && (
+                <TableHead key={headerGroup.id} colSpan={1}>
+                  Action
+                </TableHead>
+              )}
             </TableRow>
           ))}
         </TableHeader>
@@ -94,6 +109,22 @@ function TableLazy<TData>({ table, isFetching }: TableLazyProps<TData>) {
                       )}
                     </TableCell>
                   ))}
+                  <TableCell>
+                    {rowActions &&
+                      rowActions.map((action, index) => (
+                        <button
+                          className="text-muted-foreground hover:text-foreground"
+                          key={index}
+                          onClick={() => action.action(row.original)}
+                        >
+                          {action.icon ? (
+                            <action.icon />
+                          ) : action.label ? (
+                            action.label
+                          ) : null}
+                        </button>
+                      ))}
+                  </TableCell>
                 </TableRow>
               ))
             ) : (

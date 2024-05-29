@@ -47,10 +47,6 @@ const taskTableColumns: ColumnConfig[] = [
     header: "LastUpdateDate",
     enableSorting: false,
   },
-  {
-    accessorKey: "actions",
-    header: "Actions",
-  },
 ];
 const FilterData = {
   filterColl: "task_id",

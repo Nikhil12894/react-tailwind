@@ -26,6 +26,7 @@ import {
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar, FilterData } from "./data-table-toolbar";
 import React from "react";
+import { RowAction } from "@/types/row-action";
 
 export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -33,6 +34,7 @@ export interface DataTableProps<TData, TValue> {
   hiddenColumns?: VisibilityState;
   filterData?: FilterData;
   openAddDialog?: (open: boolean) => void;
+  rowActions?: RowAction<TData>[];
 }
 
 export function DataTable<TData, TValue>({
@@ -41,6 +43,7 @@ export function DataTable<TData, TValue>({
   hiddenColumns,
   filterData,
   openAddDialog,
+  rowActions,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
@@ -97,6 +100,11 @@ export function DataTable<TData, TValue>({
                     </TableHead>
                   );
                 })}
+                {rowActions && (
+                  <TableHead key={headerGroup.id} colSpan={1}>
+                    Action
+                  </TableHead>
+                )}
               </TableRow>
             ))}
           </TableHeader>
@@ -115,6 +123,22 @@ export function DataTable<TData, TValue>({
                       )}
                     </TableCell>
                   ))}
+                  <TableCell>
+                    {rowActions &&
+                      rowActions.map((action, index) => (
+                        <button
+                          className="text-muted-foreground hover:text-foreground"
+                          key={index}
+                          onClick={() => action.action(row.original)}
+                        >
+                          {action.icon ? (
+                            <action.icon />
+                          ) : action.label ? (
+                            action.label
+                          ) : null}
+                        </button>
+                      ))}
+                  </TableCell>
                 </TableRow>
               ))
             ) : (

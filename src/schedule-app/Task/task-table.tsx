@@ -7,11 +7,7 @@ import {
 } from "@/components/ui/data-table-lazy/data-table-lazy";
 import { DataTableLazyPagination } from "@/components/ui/data-table-lazy/data-table-lazy-pagination";
 import DeleteDialog from "@/components/ui/delete-dialog";
-import {
-  useScheduleIDsQuery,
-  useScheduleQuery,
-  useTaskQuery,
-} from "@/service/queries";
+import { useScheduleIDsQuery, useTaskQuery } from "@/service/queries";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -26,6 +22,7 @@ import {
   useDeleteTask,
   useUpdateTask,
 } from "@/service/mutation";
+import { RowAction, defaultRowAction } from "@/types/row-action";
 import { Task } from "@/types/task-type";
 import { hiddenColumns } from "../default-app-config";
 import { EditDialogForm } from "./edit-dilog";
@@ -82,7 +79,7 @@ export const TaskTable: React.FC = () => {
     },
     [selectedRow]
   );
-
+  const rowActions: RowAction<Task>[] = defaultRowAction(onEdit, onDelete);
   const createTaskMutation = useCreateTask();
   const updateTaskMutation = useUpdateTask();
   const deleteTaskMutation = useDeleteTask();
@@ -102,8 +99,6 @@ export const TaskTable: React.FC = () => {
     () =>
       ColumnDefFun<Task>({
         columnList: taskTableColumns,
-        editFun: onEdit,
-        deleteFun: onDelete,
       }),
     []
   );
@@ -136,6 +131,7 @@ export const TaskTable: React.FC = () => {
           key="schedule_table"
           table={table}
           isFetching={dataQuery.isFetching}
+          rowActions={rowActions}
         />
       </ScrollArea>
       <DataTableLazyPagination table={table} />

@@ -42,10 +42,6 @@ export const columnList: ColumnConfig[] = [
     header: "LastUpdateDate",
     enableSorting: false,
   },
-  {
-    accessorKey: "actions",
-    header: "Actions",
-  },
 ];
 
 // Define a type for the column configuration

@@ -1,13 +1,14 @@
-import { ColumnDef } from "@tanstack/react-table";
-import { DataTable } from "../../components/ui/data-table-client/data-table";
-import { scheduleData } from "./schedule";
-import { EditDialogForm } from "./edit-dilog";
-import { Schedule } from "../../types/schedule-type";
-import { columnList, sampleSchedule, filterByCron } from "./schedule-data";
 import { ColumnDefFun } from "@/components/ui/data-table-client/data-table-column-def";
-import { useCallback, useMemo, useState } from "react";
 import DeleteDialog from "@/components/ui/delete-dialog";
+import { RowAction, defaultRowAction } from "@/types/row-action";
+import { ColumnDef } from "@tanstack/react-table";
+import { useCallback, useMemo, useState } from "react";
+import { DataTable } from "../../components/ui/data-table-client/data-table";
+import { Schedule } from "../../types/schedule-type";
 import { hiddenColumns } from "../default-app-config";
+import { EditDialogForm } from "./edit-dilog";
+import { scheduleData } from "./schedule";
+import { columnList, filterByCron, sampleSchedule } from "./schedule-data";
 
 export const ScheduleComp: React.FC = () => {
   const [data, setData] = useState(scheduleData);
@@ -39,11 +40,11 @@ export const ScheduleComp: React.FC = () => {
     () =>
       ColumnDefFun<typeof sampleSchedule>({
         columnList,
-        editFun: onEdit,
-        deleteFun: onDelete,
       }),
     []
   );
+
+  const rowActions: RowAction<Schedule>[] = defaultRowAction(onEdit, onDelete);
 
   const handleSubmit = (schedule: Schedule) => {
     if (schedule.id === 0 || schedule.id === undefined) {
@@ -83,6 +84,7 @@ export const ScheduleComp: React.FC = () => {
           filterCollDropdownOptions: filterByCron,
         }}
         openAddDialog={onAdd}
+        rowActions={rowActions}
       />
       <EditDialogForm
         isEditDialogOpen={isEditDialogOpen}

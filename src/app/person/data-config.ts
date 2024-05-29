@@ -35,10 +35,6 @@ const personTableColumns: ColumnConfig[] = [
     header: "Progress",
     enableSorting: true,
   },
-  {
-    accessorKey: "actions",
-    header: "Actions",
-  },
 ];
 
 export { personTableColumns };
