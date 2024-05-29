@@ -81,7 +81,7 @@ export function DataTableToolbar<TData>({
           </Button>
         )}
       </div>
-      {!isHideColumnsEnabled && <DataTableViewOptions table={table} />}
+      {isHideColumnsEnabled && <DataTableViewOptions table={table} />}
       {openAddDialog && <DataAddRow onOpenDialogFunc={openAddDialog} />}
     </div>
   );

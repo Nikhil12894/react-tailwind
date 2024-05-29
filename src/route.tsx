@@ -1,4 +1,4 @@
-import { Home, Package, ShoppingCart, Users } from "lucide-react";
+import { Home, ListTodo, Package, ShoppingCart, Users } from "lucide-react";
 import { MenuItem } from "./types/menu";
 
 function useMenuItems(): MenuItem[] {
@@ -29,6 +29,13 @@ function useMenuItems(): MenuItem[] {
       link: "/app/person",
       icon: () => {
         return <Users className="h-5 w-5" />;
+      },
+    },
+    {
+      name: "Tasks",
+      link: "/app/task",
+      icon: () => {
+        return <ListTodo className="h-5 w-5" />;
       },
     },
   ];

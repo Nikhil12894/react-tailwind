@@ -14,6 +14,7 @@ import { LayoutResponsive } from "./components/layout-responsive/index.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import "./index.css";
 import { GeneralPages } from "./app/generalPages/index.tsx";
+import { TaskTable } from "./schedule-app/Task/task-table.tsx";
 // import { Blog } from "./app/blog/Blog.tsx";
 
 const Portfolio = lazy(() =>
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "person",
         element: <PersonLazy />,
+      },
+      {
+        path: "task",
+        element: <TaskTable />,
       },
       {
         path: "*",

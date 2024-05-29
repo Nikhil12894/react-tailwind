@@ -1,7 +1,7 @@
 "use strict";
 import { ColumnConfig } from "@/components/ui/data-table-client/data-table-column-def";
 
-const personTableColumns: ColumnConfig[] = [
+const taskTableColumns: ColumnConfig[] = [
   {
     accessorKey: "select",
     header: "Select",
@@ -53,21 +53,8 @@ const personTableColumns: ColumnConfig[] = [
   },
 ];
 const FilterData = {
-  filterColl: "schedule_id",
-  filterPlaceHolder: "Search by schedule id",
-  filterCollDropdownOptions: [
-    {
-      label: "Cron Expression",
-      value: "cron_schedule",
-      options: [
-        { label: "*/5 * * * * *", value: "*/5 * * * * *" },
-        { label: "*/15 * * * * *", value: "*/15 * * * * *" },
-        { label: "*/20 * * * * *", value: "*/20 * * * * *" },
-        { label: "*/35 * * * * *", value: "*/35 * * * * *" },
-        { label: "0/10 * * ? * *", value: "0/10 * * ? * *" },
-      ],
-    },
-  ],
+  filterColl: "task_id",
+  filterPlaceHolder: "Search by task id",
 };
 
-export { FilterData, personTableColumns };
+export { FilterData, taskTableColumns };

@@ -36,4 +36,4 @@ taskShotBy.set("created_by", "CREATED_BY");
 taskShotBy.set("last_updated_by", "LAST_UPDATED_BY");
 taskShotBy.set("none", "NONE");
 
-export const getShotBy = (key: string) => taskShotBy.get(key);
+export const getTaskShotBy = (key: string) => taskShotBy.get(key);
