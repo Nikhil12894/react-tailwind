@@ -1,7 +1,16 @@
 import { Schedule } from "@/types/schedule-type";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createSchedule, deleteSchedule, updateSchedule } from "./api";
-
+import {
+  createSchedule,
+  createTask,
+  deleteSchedule,
+  deleteTask,
+  updateSchedule,
+  updateTask,
+} from "./api";
+import { Task } from "@/types/task-type";
+const SCHEDULE_QUERY_KEY = "schedule_data";
+const TASK_QUERY_KEY = "task_data";
 export function useCreateSchedule() {
   const queryClient = useQueryClient();
 
@@ -24,7 +33,7 @@ export function useCreateSchedule() {
       if (error) {
         console.log(error);
       } else {
-        await queryClient.invalidateQueries({ queryKey: ["schedule_data"] });
+        await queryClient.invalidateQueries({ queryKey: [SCHEDULE_QUERY_KEY] });
       }
     },
   });
@@ -39,7 +48,7 @@ export function useUpdateSchedule() {
       if (error) {
         console.log(error);
       } else {
-        await queryClient.invalidateQueries({ queryKey: ["schedule_data"] });
+        await queryClient.invalidateQueries({ queryKey: [SCHEDULE_QUERY_KEY] });
       }
     },
   });
@@ -54,7 +63,55 @@ export function useDeleteSchedule() {
       if (error) {
         console.log(error);
       } else {
-        await queryClient.invalidateQueries({ queryKey: ["schedule_data"] });
+        await queryClient.invalidateQueries({ queryKey: [SCHEDULE_QUERY_KEY] });
+      }
+    },
+  });
+}
+
+// Task Mutations
+
+export function useCreateTask() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: Task) => createTask(data),
+
+    onSettled: async (_, error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        await queryClient.invalidateQueries({ queryKey: [TASK_QUERY_KEY] });
+      }
+    },
+  });
+}
+
+export function useUpdateTask() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: Task) => updateTask(data),
+    onSettled: async (_, error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        await queryClient.invalidateQueries({ queryKey: [TASK_QUERY_KEY] });
+      }
+    },
+  });
+}
+
+export function useDeleteTask() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: number) => deleteTask(data),
+    onSettled: async (_, error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        await queryClient.invalidateQueries({ queryKey: [TASK_QUERY_KEY] });
       }
     },
   });

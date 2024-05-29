@@ -5,7 +5,7 @@ import {
   ScheduleRequest,
   getShotBy,
 } from "@/types/schedule-type";
-import { TaskList, getTaskShotBy } from "@/types/task-type";
+import { Task, TaskList, TaskRequest, getTaskShotBy } from "@/types/task-type";
 import { PaginationState } from "@tanstack/react-table";
 import axios from "axios";
 
@@ -28,6 +28,12 @@ export const getAllSchedules = async (
   ).data;
 };
 
+export const getAllSchedulesIDs = async () => {
+  return (
+    await axiosInstance.get<WebResponse<string[]>>(`schedule/all-schedule-id`)
+  ).data;
+};
+
 export const createSchedule = async (data: ScheduleRequest) => {
   return (await axiosInstance.post<WebResponse<Schedule>>("schedule", data))
     .data;
@@ -39,12 +45,13 @@ export const updateSchedule = async (data: ScheduleRequest) => {
 
 export const deleteSchedule = async (data: string) => {
   return (
-    await axiosInstance.delete<WebResponse<Schedule>>(
+    await axiosInstance.delete<WebResponse<boolean>>(
       `schedule?schedule_id=${data}`
     )
   ).data;
 };
 
+// Task API
 export const getAllTasks = async (
   pagination: PaginationState,
   sort: { id: string; desc: boolean },
@@ -59,6 +66,21 @@ export const getAllTasks = async (
       }&sort_order=${sort.desc ? "DESC" : "ASC"}&sort_by=${getTaskShotBy(
         sort.id
       )}`
+    )
+  ).data;
+};
+
+export const createTask = async (data: TaskRequest) => {
+  return (await axiosInstance.post<WebResponse<Task>>("task", data)).data;
+};
+export const updateTask = async (data: TaskRequest) => {
+  return (await axiosInstance.put<WebResponse<Task>>("task", data)).data;
+};
+
+export const deleteTask = async (data: number) => {
+  return (
+    await axiosInstance.delete<WebResponse<boolean>>(
+      `task/with-id?task_id=${data}`
     )
   ).data;
 };

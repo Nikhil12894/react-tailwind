@@ -7,7 +7,11 @@ import {
 } from "@/components/ui/data-table-lazy/data-table-lazy";
 import { DataTableLazyPagination } from "@/components/ui/data-table-lazy/data-table-lazy-pagination";
 import DeleteDialog from "@/components/ui/delete-dialog";
-import { useTaskQuery } from "@/service/queries";
+import {
+  useScheduleIDsQuery,
+  useScheduleQuery,
+  useTaskQuery,
+} from "@/service/queries";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -17,8 +21,14 @@ import {
 import React, { useCallback, useState } from "react";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  useCreateTask,
+  useDeleteTask,
+  useUpdateTask,
+} from "@/service/mutation";
 import { Task } from "@/types/task-type";
 import { hiddenColumns } from "../default-app-config";
+import { EditDialogForm } from "./edit-dilog";
 import { taskTableColumns } from "./task-data-config";
 
 export const TaskTable: React.FC = () => {
@@ -42,6 +52,7 @@ export const TaskTable: React.FC = () => {
     rowSelection,
     columnFilters
   );
+  const scheduleQuery = useScheduleIDsQuery();
 
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -72,19 +83,19 @@ export const TaskTable: React.FC = () => {
     [selectedRow]
   );
 
-  //   const createScheduleMutation = useCreateSchedule();
-  //   const updateScheduleMutation = useUpdateSchedule();
-  //   const deleteScheduleMutation = useDeleteSchedule();
-  const handleSubmit = (schedule: Task) => {
-    if (schedule.id === 0 || schedule.id === undefined) {
-      //createScheduleMutation.mutate(schedule);
+  const createTaskMutation = useCreateTask();
+  const updateTaskMutation = useUpdateTask();
+  const deleteTaskMutation = useDeleteTask();
+  const handleSubmit = (task: Task) => {
+    if (task.id === 0 || task.id === undefined) {
+      createTaskMutation.mutate(task);
     } else {
-      //updateScheduleMutation.mutate(schedule);
+      updateTaskMutation.mutate(task);
     }
   };
 
   const handleDelete = () => {
-    // deleteScheduleMutation.mutate(selectedRow?.schedule_id ?? "");
+    deleteTaskMutation.mutate(selectedRow?.id ?? 0);
   };
 
   const columns: ColumnDef<Task>[] = React.useMemo(
@@ -128,7 +139,7 @@ export const TaskTable: React.FC = () => {
         />
       </ScrollArea>
       <DataTableLazyPagination table={table} />
-      {/* <EditDialogForm
+      <EditDialogForm
         isEditDialogOpen={isEditDialogOpen}
         onOpenDialogFunc={(value) => {
           setIsEditDialogOpen(value);
@@ -138,7 +149,8 @@ export const TaskTable: React.FC = () => {
         }}
         submit={handleSubmit}
         selectedRow={selectedRow}
-      /> */}
+        scheduleList={scheduleQuery.data?.data ?? []}
+      />
       <DeleteDialog
         deleteFun={handleDelete}
         isDeleteDialogOpen={isDeleteDialogOpen}
@@ -149,8 +161,8 @@ export const TaskTable: React.FC = () => {
           }
         }}
         selectedRow={selectedRow}
-        displayColumn="schedule_id"
-        heading="Delete Schedule"
+        displayColumn="id"
+        heading="Delete Task"
       />
     </div>
   );
