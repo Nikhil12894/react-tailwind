@@ -22,8 +22,9 @@ import {
 } from "@tanstack/react-table";
 import React, { useCallback, useState } from "react";
 import { EditDialogForm } from "./edit-dilog";
-import { hiddenColumns, personTableColumns } from "./table-config-data";
+import { personTableColumns } from "./table-config-data";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { hiddenColumns } from "../default-app-config";
 
 export const ScheduleLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({

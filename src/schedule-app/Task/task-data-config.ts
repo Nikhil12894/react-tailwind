@@ -12,15 +12,20 @@ const personTableColumns: ColumnConfig[] = [
     enableSorting: false,
   },
   {
-    accessorKey: "schedule_id",
-    header: "ScheduleID",
+    accessorKey: "task_id",
+    header: "TaskID",
     enableSorting: true,
   },
   {
-    accessorKey: "cron_schedule",
-    header: "CronSchedule",
+    accessorKey: "description",
+    header: "Description",
     enableSorting: false,
-    filterEnabled: true,
+    filterEnabled: false,
+  },
+  {
+    accessorKey: "is_schedular_enabled",
+    header: "is_schedular_enabled",
+    enableSorting: false,
   },
   {
     accessorKey: "created_by",

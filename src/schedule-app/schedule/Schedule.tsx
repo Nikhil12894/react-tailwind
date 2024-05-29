@@ -3,15 +3,11 @@ import { DataTable } from "../../components/ui/data-table-client/data-table";
 import { scheduleData } from "./schedule";
 import { EditDialogForm } from "./edit-dilog";
 import { Schedule } from "../../types/schedule-type";
-import {
-  columnList,
-  hiddenColumns,
-  sampleSchedule,
-  filterByCron,
-} from "./schedule-data";
+import { columnList, sampleSchedule, filterByCron } from "./schedule-data";
 import { ColumnDefFun } from "@/components/ui/data-table-client/data-table-column-def";
 import { useCallback, useMemo, useState } from "react";
 import DeleteDialog from "@/components/ui/delete-dialog";
+import { hiddenColumns } from "../default-app-config";
 
 export const ScheduleComp: React.FC = () => {
   const [data, setData] = useState(scheduleData);
