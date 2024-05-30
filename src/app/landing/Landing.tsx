@@ -1,14 +1,4 @@
-import { useEffect } from "react";
-
 export const Landing = () => {
-  useEffect(() => {
-    // Applying on mount
-    document.body.style.overflow = "scroll";
-    // Applying on unmount
-    return () => {
-      document.body.style.overflow = "hidden";
-    };
-  }, []);
   return (
     <>
       <div className="pt-32 md:py-12 xl:container m-auto px-6 md:px-12">

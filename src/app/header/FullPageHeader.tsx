@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const FullPageHeader = () => {
   return (
@@ -46,36 +46,36 @@ export const FullPageHeader = () => {
               <div className="text-gray-600 dark:text-gray-300 lg:pr-4">
                 <ul className="space-y-6 tracking-wide font-medium text-base lg:text-sm lg:flex lg:space-y-0">
                   <li>
-                    <Link
+                    <NavLink
                       to="/"
                       className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
                     >
                       <span>Home</span>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       to="/app"
                       className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
                     >
                       <span>App</span>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       to="/portfolio"
                       className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
                     >
                       <span>Portfolio</span>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       to="/blogs"
                       className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
                     >
                       <span>Blogs</span>
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </div>

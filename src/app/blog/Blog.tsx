@@ -1,14 +1,6 @@
-import { useEffect } from "react";
+import React from "react";
 
-export const Blog: React.FC = () => {
-  useEffect(() => {
-    // Applying on mount
-    document.body.style.overflow = "scroll";
-    // Applying on unmount
-    return () => {
-      document.body.style.overflow = "hidden";
-    };
-  }, []);
+const Blog: React.FC = () => {
   return (
     <div>
       <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
@@ -1253,3 +1245,5 @@ export const Blog: React.FC = () => {
     </div>
   );
 };
+
+export default Blog;

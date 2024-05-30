@@ -1,5 +1,5 @@
 import { MenuItem } from "@/types/menu";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Menu = ({ ...props }: { menuItems: MenuItem[] }) => {
   return (
@@ -7,14 +7,14 @@ export const Menu = ({ ...props }: { menuItems: MenuItem[] }) => {
       <ul className="mt-8 space-y-2 tracking-wide">
         {props.menuItems.map((item: MenuItem) => (
           <li key={item.name}>
-            <Link
+            <NavLink
               to={item.link}
               aria-label="dashboard"
               className="relative flex items-center space-x-4 rounded-xl px-4 py-3 hover:text-white hover:bg-gradient-to-r from-sky-400 to-cyan-100"
             >
               {item.icon && <item.icon />}
               <span className="-mr-1 font-medium">{item.name}</span>
-            </Link>
+            </NavLink>
           </li>
         ))}
       </ul>

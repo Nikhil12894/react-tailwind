@@ -1,34 +1,27 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import React, { lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createHashRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // import { Portfolio } from "./app/Portfolio/Portfolio.tsx";
 import { Dashboard } from "./app/dashboard/Dashboard.tsx";
-import { GeneralPages } from "./app/generalPages/index.tsx";
 import { Landing } from "./app/landing/Landing.tsx";
 import { PersonLazy } from "./app/person/Person_data_table.tsx";
+import { ScheduleComp } from "./schedule-app/schedule/Schedule.tsx";
+import { ScheduleLazy } from "./schedule-app/schedule_lazy/schedule.tsx";
 import { ErrorPage } from "./components/error-page/error_page.tsx";
 import { LayoutResponsive } from "./components/layout-responsive/index.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import "./index.css";
+import { GeneralPages } from "./app/generalPages/index.tsx";
 import { TaskTable } from "./schedule-app/Task/task-table.tsx";
-import { ScheduleComp } from "./schedule-app/schedule/Schedule.tsx";
-import { ScheduleLazy } from "./schedule-app/schedule_lazy/schedule.tsx";
+import { Loader } from "./components/ui/loader.tsx";
 // import { Blog } from "./app/blog/Blog.tsx";
 
-const Portfolio = lazy(() =>
-  import("./app/Portfolio/Portfolio.tsx").then(({ Portfolio }) => ({
-    default: Portfolio,
-  }))
-);
-const Blog = lazy(() =>
-  import("./app/blog/Blog.tsx").then(({ Blog }) => ({
-    default: Blog,
-  }))
-);
+const Portfolio = lazy(() => import("./app/Portfolio/Portfolio.tsx"));
+const Blog = lazy(() => import("./app/blog/Blog.tsx"));
 
-const router = createHashRouter([
+const router = createBrowserRouter([
   {
     path: "/",
     errorElement: <ErrorPage />,
@@ -94,7 +87,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
-        <RouterProvider router={router} />
+        <Suspense fallback={<Loader size={10} />}>
+          <RouterProvider router={router} />
+        </Suspense>
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

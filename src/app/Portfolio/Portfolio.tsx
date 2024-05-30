@@ -5,7 +5,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { useEffect } from "react";
+import React from "react";
 import { data } from "../../assets/data";
 import { CVCertification } from "./CVCertification";
 import { CVEducation } from "./CVEducation";
@@ -17,20 +17,13 @@ import { CVStrengths } from "./CVStrengths";
 import { CVSummery } from "./CVSummery";
 import { CVWorkExp } from "./CVWorkxExp";
 
-export const Portfolio: React.FC = () => {
+const Portfolio: React.FC = () => {
   const workExp = data.workExp;
   const summery = data.summery;
   const education = data.education;
   const certifications = data.certifications;
   const display = useMediaQuery("(min-width: 1024px)");
-  useEffect(() => {
-    // Applying on mount
-    document.body.style.overflow = "scroll";
-    // Applying on unmount
-    return () => {
-      document.body.style.overflow = "hidden";
-    };
-  }, []);
+
   return (
     <>
       <div className="flex justify-center">
@@ -101,3 +94,5 @@ export const Portfolio: React.FC = () => {
     </>
   );
 };
+
+export default Portfolio;
