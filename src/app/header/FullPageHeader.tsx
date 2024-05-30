@@ -1,17 +1,11 @@
+import { SidebarSheet } from "@/components/layout-responsive/Sidebarsheet";
+import { headerMenus, signUpAndLoginMenus } from "@/route";
 import { NavLink } from "react-router-dom";
 
 export const FullPageHeader = () => {
   return (
     <header>
-      <input
-        type="checkbox"
-        name="hbr"
-        id="hbr"
-        className="hbr peer"
-        hidden
-        aria-hidden="true"
-      />
-      <nav className="fixed z-20 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur navbar shadow-md shadow-gray-600/5 peer-checked:navbar-active md:relative md:bg-transparent dark:shadow-none">
+      <nav className="fixed z-20 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur navbar shadow-md shadow-gray-600/5 md:relative md:bg-transparent dark:shadow-none">
         <div className="xl:container m-auto px-6 md:px-12">
           <div className="flex flex-wrap items-center justify-between gap-6 md:py-3 md:gap-0">
             <div className="w-full flex justify-between lg:w-auto">
@@ -32,51 +26,24 @@ export const FullPageHeader = () => {
                 htmlFor="hbr"
                 className="peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden"
               >
-                <div
-                  aria-hidden="true"
-                  className="m-auto h-0.5 w-6 rounded bg-gray-900 dark:bg-gray-300 transition duration-300"
-                ></div>
-                <div
-                  aria-hidden="true"
-                  className="m-auto mt-2 h-0.5 w-6 rounded bg-gray-900 dark:bg-gray-300 transition duration-300"
-                ></div>
+                <SidebarSheet
+                  menus={[...headerMenus, ...signUpAndLoginMenus]}
+                />
               </label>
             </div>
             <div className="navmenu hidden w-full flex-wrap justify-end items-center mb-16 space-y-8 p-6 border border-gray-100 rounded-3xl shadow-2xl shadow-gray-300/20 bg-white dark:bg-gray-800 lg:space-y-0 lg:p-0 lg:m-0 lg:flex md:flex-nowrap lg:bg-transparent lg:w-7/12 lg:shadow-none dark:shadow-none dark:border-gray-700 lg:border-0">
               <div className="text-gray-600 dark:text-gray-300 lg:pr-4">
                 <ul className="space-y-6 tracking-wide font-medium text-base lg:text-sm lg:flex lg:space-y-0">
-                  <li>
-                    <NavLink
-                      to="/"
-                      className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
-                    >
-                      <span>Home</span>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/app"
-                      className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
-                    >
-                      <span>App</span>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/portfolio"
-                      className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
-                    >
-                      <span>Portfolio</span>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/blogs"
-                      className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
-                    >
-                      <span>Blogs</span>
-                    </NavLink>
-                  </li>
+                  {headerMenus.map((item, index) => (
+                    <li key={index}>
+                      <NavLink
+                        to={item.link}
+                        className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
+                      >
+                        <span>{item.name}</span>
+                      </NavLink>
+                    </li>
+                  ))}
                 </ul>
               </div>
 

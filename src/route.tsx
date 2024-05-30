@@ -1,13 +1,27 @@
-import { Home, ListTodo, Package, ShoppingCart, Users } from "lucide-react";
+import {
+  Gauge,
+  Home,
+  ListTodo,
+  Package,
+  ShoppingCart,
+  Users,
+} from "lucide-react";
 import { MenuItem } from "./types/menu";
 
 function useMenuItems(): MenuItem[] {
   return [
     {
+      name: "Home",
+      link: "/",
+      icon: () => {
+        return <Home className="h-5 w-5" />;
+      },
+    },
+    {
       name: "Dashboard",
       link: "/app/dashboard",
       icon: () => {
-        return <Home className="h-5 w-5" />;
+        return <Gauge className="h-5 w-5" />;
       },
     },
     {
@@ -41,4 +55,33 @@ function useMenuItems(): MenuItem[] {
   ];
 }
 
-export { useMenuItems };
+const headerMenus: MenuItem[] = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "App",
+    link: "/app",
+  },
+  {
+    name: "Portfolio",
+    link: "/portfolio",
+  },
+  {
+    name: "Blogs",
+    link: "/blogs",
+  },
+];
+const signUpAndLoginMenus: MenuItem[] = [
+  {
+    name: "Login",
+    link: "/login",
+  },
+  {
+    name: "Sign Up",
+    link: "/signUp",
+  },
+];
+
+export { useMenuItems, headerMenus, signUpAndLoginMenus };

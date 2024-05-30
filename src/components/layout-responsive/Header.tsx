@@ -11,11 +11,13 @@ import {
 import { Input } from "../ui/input";
 import { SidebarSheet } from "./Sidebarsheet";
 import { ModeToggle } from "../layout/mode-toggle";
+import { useMenuItems } from "@/route";
 
 export const Header = () => {
+  const menus = useMenuItems();
   return (
     <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
-      <SidebarSheet />
+      <SidebarSheet menus={menus} />
       <div className="w-full flex-1">
         <form>
           <div className="relative">

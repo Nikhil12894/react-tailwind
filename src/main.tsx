@@ -2,24 +2,39 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-// import { Portfolio } from "./app/Portfolio/Portfolio.tsx";
-import { Dashboard } from "./app/dashboard/Dashboard.tsx";
-import { Landing } from "./app/landing/Landing.tsx";
-import { PersonLazy } from "./app/person/Person_data_table.tsx";
-import { ScheduleComp } from "./schedule-app/schedule/Schedule.tsx";
-import { ScheduleLazy } from "./schedule-app/schedule_lazy/schedule.tsx";
-import { ErrorPage } from "./components/error-page/error_page.tsx";
-import { LayoutResponsive } from "./components/layout-responsive/index.tsx";
-import { ThemeProvider } from "./components/theme-provider.tsx";
-import "./index.css";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import { GeneralPages } from "./app/generalPages/index.tsx";
-import { TaskTable } from "./schedule-app/Task/task-table.tsx";
+import { Landing } from "./app/landing/Landing.tsx";
+import { ThemeProvider } from "./components/theme-provider.tsx";
 import { Loader } from "./components/ui/loader.tsx";
-// import { Blog } from "./app/blog/Blog.tsx";
+import "./index.css";
 
 const Portfolio = lazy(() => import("./app/Portfolio/Portfolio.tsx"));
 const Blog = lazy(() => import("./app/blog/Blog.tsx"));
+const PersonLazy = lazy(() => import("./app/person/Person_data_table.tsx"));
+const Dashboard = lazy(() => import("./app/dashboard/Dashboard.tsx"));
+const ScheduleLazy = lazy(
+  () => import("./schedule-app/schedule_lazy/schedule.tsx")
+);
+const TaskTable = lazy(() => import("./schedule-app/Task/task-table.tsx"));
+const ScheduleComp = lazy(() => import("./schedule-app/schedule/Schedule.tsx"));
+const LayoutResponsive = lazy(() =>
+  import("./components/layout-responsive/index.tsx").then(
+    ({ LayoutResponsive }) => ({
+      default: LayoutResponsive,
+    })
+  )
+);
+
+const ErrorPage = lazy(() =>
+  import("./components/error-page/error_page.tsx").then(({ ErrorPage }) => ({
+    default: ErrorPage,
+  }))
+);
 
 const router = createBrowserRouter([
   {
@@ -29,6 +44,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Navigate to="home" />,
+      },
+      {
+        path: "home",
         element: <Landing />,
       },
       {
@@ -48,6 +67,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Navigate to="dashboard" />,
+      },
+      {
+        path: "dashboard",
         element: <Dashboard />,
       },
       {
@@ -73,6 +96,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

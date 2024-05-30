@@ -18,7 +18,7 @@ import React from "react";
 import { personTableColumns } from "./data-config";
 import { Person } from "./fetchData";
 
-export const PersonLazy: React.FC = () => {
+const PersonLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 5,
@@ -94,3 +94,5 @@ export const PersonLazy: React.FC = () => {
     </div>
   );
 };
+
+export default PersonLazy;

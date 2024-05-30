@@ -27,7 +27,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { hiddenColumns } from "../default-app-config";
 import { defaultRowAction } from "@/types/row-action";
 
-export const ScheduleLazy: React.FC = () => {
+const ScheduleLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
@@ -157,3 +157,5 @@ export const ScheduleLazy: React.FC = () => {
     </div>
   );
 };
+
+export default ScheduleLazy;
