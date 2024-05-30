@@ -1,4 +1,4 @@
-import { useMenuItems } from "@/route";
+import { MenuItem } from "@/types/menu";
 import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import {
@@ -10,8 +10,11 @@ import {
 } from "../ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
-export const SidebarSheet = () => {
-  const menus = useMenuItems();
+interface SidebarSheetProps {
+  menus: MenuItem[];
+}
+export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
+  // const menus = useMenuItems();
   return (
     <Sheet>
       <SheetTrigger asChild>

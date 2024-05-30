@@ -10,7 +10,7 @@ import { EditDialogForm } from "./edit-dilog";
 import { scheduleData } from "./schedule";
 import { columnList, filterByCron, sampleSchedule } from "./schedule-data";
 
-export const ScheduleComp: React.FC = () => {
+const ScheduleComp: React.FC = () => {
   const [data, setData] = useState(scheduleData);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -117,3 +117,5 @@ export const ScheduleComp: React.FC = () => {
     </div>
   );
 };
+
+export default ScheduleComp;

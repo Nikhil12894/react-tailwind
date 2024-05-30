@@ -28,7 +28,7 @@ import { hiddenColumns } from "../default-app-config";
 import { EditDialogForm } from "./edit-dilog";
 import { taskTableColumns } from "./task-data-config";
 
-export const TaskTable: React.FC = () => {
+const TaskTable: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
@@ -164,3 +164,5 @@ export const TaskTable: React.FC = () => {
     </div>
   );
 };
+
+export default TaskTable;
