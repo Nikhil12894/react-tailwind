@@ -52,6 +52,13 @@ function useMenuItems(): MenuItem[] {
         return <ListTodo className="h-5 w-5" />;
       },
     },
+    {
+      name: "Forms",
+      link: "/app/forms",
+      icon: () => {
+        return <ListTodo className="h-5 w-5" />;
+      },
+    },
   ];
 }
 

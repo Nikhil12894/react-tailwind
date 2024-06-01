@@ -37,4 +37,11 @@ const personTableColumns: ColumnConfig[] = [
   },
 ];
 
-export { personTableColumns };
+const hiddneColumenas = {
+  visits: false,
+  status: false,
+  progress: false,
+  lastName: false,
+};
+
+export { personTableColumns, hiddneColumenas };

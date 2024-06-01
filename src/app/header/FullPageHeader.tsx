@@ -1,8 +1,11 @@
 import { SidebarSheet } from "@/components/layout-responsive/Sidebarsheet";
+import { useStore } from "@/hooks/use-store";
+import { useTitle } from "@/hooks/use-title";
 import { headerMenus, signUpAndLoginMenus } from "@/route";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const FullPageHeader = () => {
+  const title = useStore(useTitle, (state) => state);
   return (
     <header>
       <nav className="fixed z-20 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur navbar shadow-md shadow-gray-600/5 md:relative md:bg-transparent dark:shadow-none">
@@ -38,6 +41,7 @@ export const FullPageHeader = () => {
                     <li key={index}>
                       <NavLink
                         to={item.link}
+                        onClick={() => title?.setTitle(item.name)}
                         className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
                       >
                         <span>{item.name}</span>
@@ -48,22 +52,22 @@ export const FullPageHeader = () => {
               </div>
 
               <div className="w-full space-y-2 border-primary/10 dark:border-gray-700 flex flex-col -ml-1 sm:flex-row lg:space-y-0 md:w-max lg:border-l">
-                <a
-                  href="#"
+                <Link
+                  to="/signUp"
                   className="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full focus:before:bg-primary/10 dark:focus:before:bg-primaryLight/10 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
                 >
                   <span className="relative text-sm font-semibold text-primary dark:text-primaryLight">
                     Sign Up
                   </span>
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="/login"
                   className="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-primaryLight before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
                 >
                   <span className="relative text-sm font-semibold text-white dark:text-gray-900">
                     Login
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

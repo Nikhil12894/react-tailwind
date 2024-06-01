@@ -9,7 +9,7 @@ import {
 import { faLaptop, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTheme } from "../theme-provider";
-import { Button } from "../ui/button";
+import { Button } from "./button";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
@@ -29,15 +29,15 @@ export function ModeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button> */}
         <Button
-          variant="secondary"
+          variant="outline"
           size="icon"
-          className="block-switcher group relative flex h-9 w-9 rounded-full before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700"
+          className="block-switcher group relative flex h-8 w-8 rounded-full "
         >
           {theme === "light" && (
             <>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="sun relative transistion m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:rotate-180 group-hover:fill-yellow-600 dark:fill-gray-300 dark:group-hover:fill-yellow-400 block"
+                className="sun relative transistion m-auto h-4 w-4 fill-gray-500 duration-300 group-hover:rotate-180 group-hover:fill-yellow-600 dark:fill-gray-300 dark:group-hover:fill-yellow-400 block"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -53,7 +53,7 @@ export function ModeToggle() {
             <>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="sun relative transistion m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:rotate-180 group-hover:fill-yellow-600 dark:fill-gray-300 dark:group-hover:fill-yellow-400 hidden"
+                className="sun relative transistion m-auto h-4 w-4 fill-gray-500 duration-300 group-hover:rotate-180 group-hover:fill-yellow-600 dark:fill-gray-300 dark:group-hover:fill-yellow-400 hidden"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -65,7 +65,7 @@ export function ModeToggle() {
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="moon relative transistion m-auto h-5 w-5 fill-gray-500 duration-300 group-hover:-rotate-90 group-hover:fill-blue-900 dark:fill-gray-300 dark:group-hover:fill-white block "
+                className="moon relative transistion m-auto h-4 w-4 fill-gray-500 duration-300 group-hover:-rotate-90 group-hover:fill-blue-900 dark:fill-gray-300 dark:group-hover:fill-white block "
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >

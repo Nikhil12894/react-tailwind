@@ -9,6 +9,7 @@ import { hiddenColumns } from "../default-app-config";
 import { EditDialogForm } from "./edit-dilog";
 import { scheduleData } from "./schedule";
 import { columnList, filterByCron, sampleSchedule } from "./schedule-data";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const ScheduleComp: React.FC = () => {
   const [data, setData] = useState(scheduleData);
@@ -75,21 +76,23 @@ const ScheduleComp: React.FC = () => {
 
   return (
     <div className="container mx-auto py-8">
-      <DataTable
-        columns={columns}
-        data={data}
-        hiddenColumns={hiddenColumns}
-        filterData={{
-          filterColl: "schedule_id",
-          filterPlaceHolder: "Search by scheduleId",
-          filterCollDropdownOptions: filterByCron,
-        }}
-        openAddDialog={onAdd}
-        rowActions={rowActions}
-        iaRowSelectionEnabled={true}
-        rowSelection={rowSelection}
-        onRowSelectionChange={setRowSelection}
-      />
+      <ScrollArea className="h-[65vh] rounded-md border p-4">
+        <DataTable
+          columns={columns}
+          data={data}
+          hiddenColumns={hiddenColumns}
+          filterData={{
+            filterColl: "schedule_id",
+            filterPlaceHolder: "Search by scheduleId",
+            filterCollDropdownOptions: filterByCron,
+          }}
+          openAddDialog={onAdd}
+          rowActions={rowActions}
+          iaRowSelectionEnabled={true}
+          rowSelection={rowSelection}
+          onRowSelectionChange={setRowSelection}
+        />
+      </ScrollArea>
       <EditDialogForm
         isEditDialogOpen={isEditDialogOpen}
         onOpenDialogFunc={(value) => {

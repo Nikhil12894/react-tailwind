@@ -1,3 +1,4 @@
+import { useMenuItems } from "@/route";
 import { CircleUser, Search } from "lucide-react";
 import { Button } from "../ui/button";
 import {
@@ -9,9 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
+import { ModeToggle } from "../ui/mode-toggle";
 import { SidebarSheet } from "./Sidebarsheet";
-import { ModeToggle } from "../layout/mode-toggle";
-import { useMenuItems } from "@/route";
 
 export const Header = () => {
   const menus = useMenuItems();
@@ -25,6 +25,7 @@ export const Header = () => {
             <Input
               type="search"
               placeholder="Search products..."
+              id="search"
               className="w-full appearance-none bg-background pl-8 shadow-none md:w-2/3 lg:w-1/3"
             />
           </div>
