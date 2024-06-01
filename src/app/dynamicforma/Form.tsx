@@ -1,7 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { DynamicFieldData } from "./dynamic-control-types";
 import { DynamicControl } from "./DynamicControl";
-import { Label } from "@/components/ui/label";
+import { DynamicFieldData } from "./dynamic-control-types";
 
 interface FormProps {
   fields: DynamicFieldData[];

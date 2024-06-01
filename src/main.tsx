@@ -11,6 +11,7 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import AccountPage from "./app/account/Account.tsx";
+import DashboardPage from "./app/dashboard/page.tsx";
 import DynamicForm from "./app/dynamicforma/dynamic-form.tsx";
 import { GeneralPages } from "./app/generalPages/index.tsx";
 import { Landing } from "./app/landing/Landing.tsx";
@@ -25,7 +26,7 @@ import "./index.css";
 const Portfolio = lazy(() => import("./app/Portfolio/Portfolio.tsx"));
 const Blog = lazy(() => import("./app/blog/Blog.tsx"));
 const PersonLazy = lazy(() => import("./app/person/Person_data_table.tsx"));
-const Dashboard = lazy(() => import("./app/dashboard/Dashboard.tsx"));
+// const Dashboard = lazy(() => import("./app/dashboard/Dashboard.tsx"));
 const ScheduleLazy = lazy(
   () => import("./schedule-app/schedule_lazy/schedule.tsx")
 );
@@ -95,7 +96,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: <DashboardPage />,
       },
       {
         path: "schedule",

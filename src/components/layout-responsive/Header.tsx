@@ -1,3 +1,4 @@
+import { useMenuItems } from "@/route";
 import { CircleUser, Search } from "lucide-react";
 import { Button } from "../ui/button";
 import {
@@ -9,9 +10,8 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
-import { SidebarSheet } from "./Sidebarsheet";
 import { ModeToggle } from "../ui/mode-toggle";
-import { useMenuItems } from "@/route";
+import { SidebarSheet } from "./Sidebarsheet";
 
 export const Header = () => {
   const menus = useMenuItems();

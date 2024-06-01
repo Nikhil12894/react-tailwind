@@ -8,7 +8,7 @@ interface useTitleStore {
 
 export const useTitle = create(
   persist<useTitleStore>(
-    (set, get) => ({
+    (set) => ({
       title: "Dashboard",
       setTitle: (title) => {
         set({ title: title });
