@@ -4,6 +4,7 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import {
   Navigate,
+  Outlet,
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
@@ -12,6 +13,14 @@ import { Landing } from "./app/landing/Landing.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import { Loader } from "./components/ui/loader.tsx";
 import "./index.css";
+import DynamicForm from "./app/dynamicforma/dynamic-form.tsx";
+import { BreadcrumbComponent } from "./components/breadcrum/Breadcrum.tsx";
+import { Login } from "./app/login/Login.tsx";
+import { SignUpForm } from "./app/signup/SignUp.tsx";
+import AccountPage from "./app/account/Account.tsx";
+import { UsersPage } from "./app/users/Users.tsx";
+import AdminPanelLayout from "@/components/ui/admin-panel/admin-panel-layout.tsx";
+import { ContentLayout } from "@/components/ui/admin-panel/content-layout.tsx";
 
 const Portfolio = lazy(() => import("./app/Portfolio/Portfolio.tsx"));
 const Blog = lazy(() => import("./app/blog/Blog.tsx"));
@@ -58,12 +67,27 @@ const router = createBrowserRouter([
         path: "blogs",
         element: <Blog />,
       },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "signUp",
+        element: <SignUpForm />,
+      },
     ],
   },
   {
     path: "app",
     errorElement: <ErrorPage />,
-    element: <LayoutResponsive />,
+    element: (
+      <AdminPanelLayout>
+        <ContentLayout title="Account">
+          <BreadcrumbComponent />
+          <Outlet />
+        </ContentLayout>
+      </AdminPanelLayout>
+    ),
     children: [
       {
         index: true,
@@ -88,6 +112,18 @@ const router = createBrowserRouter([
       {
         path: "task",
         element: <TaskTable />,
+      },
+      {
+        path: "forms",
+        element: <DynamicForm />,
+      },
+      {
+        path: "account",
+        element: <AccountPage />,
+      },
+      {
+        path: "users",
+        element: <UsersPage />,
       },
       {
         path: "*",

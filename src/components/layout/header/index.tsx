@@ -1,5 +1,5 @@
 import { useSidebar } from "../../../context";
-import { ModeToggle } from "../mode-toggle";
+import { ModeToggle } from "../../ui/mode-toggle";
 
 export const Header = () => {
   const { toggleOpened } = useSidebar();
@@ -51,7 +51,7 @@ export const Header = () => {
                 <input
                   type="search"
                   name="leadingIcon"
-                  id="leadingIcon"
+                  id="header-search"
                   placeholder="Search here"
                   className="outline-none w-full rounded-xl border  py-2.5 pl-14 pr-4 text-sm  transition bg-background"
                 />
