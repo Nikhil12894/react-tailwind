@@ -6,28 +6,32 @@ import {
   useSorting,
 } from "@/components/ui/data-table-lazy/data-table-lazy";
 import { DataTableLazyPagination } from "@/components/ui/data-table-lazy/data-table-lazy-pagination";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { usePersonQuery } from "@/service/queries";
 import { RowAction, defaultRowAction } from "@/types/row-action";
 import {
   ColumnDef,
   ColumnFiltersState,
   PaginationState,
+  VisibilityState,
 } from "@tanstack/react-table";
 import React from "react";
-import { personTableColumns } from "./data-config";
+import { hiddneColumenas, personTableColumns } from "./data-config";
 import { Person } from "./fetchData";
 
 const PersonLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
-    pageSize: 5,
+    pageSize: 10,
   });
   const { sorting, onSortingChange, field, order } = useSorting("age", "DESC");
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({ ...hiddneColumenas });
+
   const dataQuery = usePersonQuery(
     pagination,
     { id: field, desc: order === "DESC" },
@@ -57,10 +61,12 @@ const PersonLazy: React.FC = () => {
     sorting,
     rowSelection,
     columnFilters,
+    columnVisibility,
     onSortingChange,
     onPaginationChange: setPagination,
     setRowSelection,
     setColumnFilters,
+    setColumnVisibility,
     idKey: "id",
   });
   return (
@@ -81,7 +87,7 @@ const PersonLazy: React.FC = () => {
         openAddDialog={() => console.log("Open Add Dialog")}
         isHideColumnsEnabled={true}
       />
-      <ScrollArea className="h-[65vh] rounded-md border p-4">
+      <ScrollArea className="h-[60vh] rounded-md border p-4">
         <TableLazy
           key="person_table"
           table={table}
@@ -89,6 +95,7 @@ const PersonLazy: React.FC = () => {
           rowActions={rowActions}
           iaRowSelectionEnabled={true}
         />
+        <ScrollBar orientation="horizontal" />
       </ScrollArea>
       <DataTableLazyPagination table={table} />
     </div>

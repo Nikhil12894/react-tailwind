@@ -1,3 +1,5 @@
+import AdminPanelLayout from "@/components/ui/admin-panel/admin-panel-layout.tsx";
+import { ContentLayout } from "@/components/ui/admin-panel/content-layout.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import React, { Suspense, lazy } from "react";
@@ -8,19 +10,17 @@ import {
   RouterProvider,
   createBrowserRouter,
 } from "react-router-dom";
+import AccountPage from "./app/account/Account.tsx";
+import DynamicForm from "./app/dynamicforma/dynamic-form.tsx";
 import { GeneralPages } from "./app/generalPages/index.tsx";
 import { Landing } from "./app/landing/Landing.tsx";
+import { Login } from "./app/login/Login.tsx";
+import { SignUpForm } from "./app/signup/SignUp.tsx";
+import { UsersPage } from "./app/users/Users.tsx";
+import { BreadcrumbComponent } from "./components/breadcrum/Breadcrum.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import { Loader } from "./components/ui/loader.tsx";
 import "./index.css";
-import DynamicForm from "./app/dynamicforma/dynamic-form.tsx";
-import { BreadcrumbComponent } from "./components/breadcrum/Breadcrum.tsx";
-import { Login } from "./app/login/Login.tsx";
-import { SignUpForm } from "./app/signup/SignUp.tsx";
-import AccountPage from "./app/account/Account.tsx";
-import { UsersPage } from "./app/users/Users.tsx";
-import AdminPanelLayout from "@/components/ui/admin-panel/admin-panel-layout.tsx";
-import { ContentLayout } from "@/components/ui/admin-panel/content-layout.tsx";
 
 const Portfolio = lazy(() => import("./app/Portfolio/Portfolio.tsx"));
 const Blog = lazy(() => import("./app/blog/Blog.tsx"));
@@ -31,13 +31,13 @@ const ScheduleLazy = lazy(
 );
 const TaskTable = lazy(() => import("./schedule-app/Task/task-table.tsx"));
 const ScheduleComp = lazy(() => import("./schedule-app/schedule/Schedule.tsx"));
-const LayoutResponsive = lazy(() =>
-  import("./components/layout-responsive/index.tsx").then(
-    ({ LayoutResponsive }) => ({
-      default: LayoutResponsive,
-    })
-  )
-);
+// const LayoutResponsive = lazy(() =>
+//   import("./components/layout-responsive/index.tsx").then(
+//     ({ LayoutResponsive }) => ({
+//       default: LayoutResponsive,
+//     })
+//   )
+// );
 
 const ErrorPage = lazy(() =>
   import("./components/error-page/error_page.tsx").then(({ ErrorPage }) => ({
@@ -142,6 +142,10 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+if (import.meta.env.MODE === "development") {
+  document.body.classList.add("debug-screens");
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

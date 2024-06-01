@@ -31,7 +31,7 @@ export function ModeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className="block-switcher group relative flex h-8 w-8 rounded-full before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700"
+          className="block-switcher group relative flex h-8 w-8 rounded-full "
         >
           {theme === "light" && (
             <>
