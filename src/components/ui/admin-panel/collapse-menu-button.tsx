@@ -26,6 +26,8 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
+import { useStore } from "@/hooks/use-store";
+import { useTitle } from "@/hooks/use-title";
 
 type Submenu = {
   href: string;
@@ -50,6 +52,7 @@ export function CollapseMenuButton({
 }: CollapseMenuButtonProps) {
   const isSubmenuActive = submenus.some((submenu) => submenu.active);
   const [isCollapsed, setIsCollapsed] = useState<boolean>(isSubmenuActive);
+  const title = useStore(useTitle, (state) => state);
 
   return isOpen ? (
     <Collapsible
@@ -105,7 +108,7 @@ export function CollapseMenuButton({
             className="w-full justify-start h-10 mb-1"
             asChild
           >
-            <Link to={href}>
+            <Link to={href} onClick={() => title?.setTitle(label)}>
               <span className="mr-4 ml-2">
                 <Dot size={18} />
               </span>
@@ -164,7 +167,11 @@ export function CollapseMenuButton({
         <DropdownMenuSeparator />
         {submenus.map(({ href, label }, index) => (
           <DropdownMenuItem key={index} asChild>
-            <Link className="cursor-pointer" to={href}>
+            <Link
+              className="cursor-pointer"
+              to={href}
+              onClick={() => title?.setTitle(label)}
+            >
               <p className="max-w-[180px] truncate">{label}</p>
             </Link>
           </DropdownMenuItem>

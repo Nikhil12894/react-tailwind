@@ -20,8 +20,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
+import { useStore } from "@/hooks/use-store";
+import { useTitle } from "@/hooks/use-title";
 
 export function UserNav() {
+  const title = useStore(useTitle, (state) => state);
+
   return (
     <DropdownMenu>
       <TooltipProvider disableHoverableContent>
@@ -55,13 +59,25 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link to="/app/dashboard" className="flex items-center">
+            <Link
+              to="/app/dashboard"
+              className="flex items-center"
+              onClick={() => {
+                title?.setTitle("Dashboard");
+              }}
+            >
               <LayoutGrid className="w-4 h-4 mr-3 text-muted-foreground" />
               Dashboard
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link to="/app/account" className="flex items-center">
+            <Link
+              to="/app/account"
+              className="flex items-center"
+              onClick={() => {
+                title?.setTitle("Account");
+              }}
+            >
               <User className="w-4 h-4 mr-3 text-muted-foreground" />
               Account
             </Link>

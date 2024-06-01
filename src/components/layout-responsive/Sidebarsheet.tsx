@@ -9,12 +9,16 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { useStore } from "@/hooks/use-store";
+import { useTitle } from "@/hooks/use-title";
 
 interface SidebarSheetProps {
   menus: MenuItem[];
 }
 export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
   // const menus = useMenuItems();
+  const title = useStore(useTitle, (state) => state);
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -29,6 +33,7 @@ export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
             <a
               key={menu.name}
               href={menu.link}
+              onClick={() => title?.setTitle(menu.name)}
               className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               {menu.icon && <menu.icon />}

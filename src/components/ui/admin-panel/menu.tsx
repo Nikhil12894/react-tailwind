@@ -14,6 +14,8 @@ import {
 import { getMenuList } from "@/lib/menu-list";
 import { Link, useLocation } from "react-router-dom";
 import { CollapseMenuButton } from "./collapse-menu-button";
+import { useStore } from "@/hooks/use-store";
+import { useTitle } from "@/hooks/use-title";
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -21,7 +23,7 @@ interface MenuProps {
 
 export function Menu({ isOpen }: MenuProps) {
   const location = useLocation();
-
+  const title = useStore(useTitle, (state) => state);
   const menuList = getMenuList(location.pathname);
 
   return (
@@ -62,7 +64,10 @@ export function Menu({ isOpen }: MenuProps) {
                               className="w-full justify-start h-10 mb-1"
                               asChild
                             >
-                              <Link to={href}>
+                              <Link
+                                to={href}
+                                onClick={() => title?.setTitle(label)}
+                              >
                                 <span
                                   className={cn(isOpen === false ? "" : "mr-4")}
                                 >

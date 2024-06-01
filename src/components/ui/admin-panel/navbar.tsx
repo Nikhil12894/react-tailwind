@@ -3,7 +3,7 @@ import { SheetMenu } from "./sheet-menu";
 import { UserNav } from "./user-nav";
 
 interface NavbarProps {
-  title: string;
+  title?: string;
 }
 
 export function Navbar({ title }: NavbarProps) {

@@ -82,7 +82,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: (
       <AdminPanelLayout>
-        <ContentLayout title="Account">
+        <ContentLayout>
           <BreadcrumbComponent />
           <Outlet />
         </ContentLayout>
