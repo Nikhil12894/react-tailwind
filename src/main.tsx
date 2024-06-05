@@ -11,7 +11,6 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import AccountPage from "./app/account/Account.tsx";
-import DashboardPage from "./app/dashboard/page.tsx";
 import DynamicForm from "./app/dynamicforma/dynamic-form.tsx";
 import { GeneralPages } from "./app/generalPages/index.tsx";
 import { Landing } from "./app/landing/Landing.tsx";
@@ -22,6 +21,7 @@ import { BreadcrumbComponent } from "./components/breadcrum/Breadcrum.tsx";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import { Loader } from "./components/ui/loader.tsx";
 import "./index.css";
+import { DashboardPage } from "./app/dashboard/page.tsx";
 
 const Portfolio = lazy(() => import("./app/Portfolio/Portfolio.tsx"));
 const Blog = lazy(() => import("./app/blog/Blog.tsx"));

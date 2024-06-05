@@ -27,7 +27,7 @@ export const FullPageHeader = () => {
               </a>
               <label
                 htmlFor="hbr"
-                className="peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden"
+                className="block relative z-20 p-6 -mr-6 cursor-pointer"
               >
                 <SidebarSheet
                   menus={[...headerMenus, ...signUpAndLoginMenus]}
