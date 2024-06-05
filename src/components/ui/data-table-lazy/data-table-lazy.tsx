@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/table";
 import { RowAction } from "@/types/row-action";
 import { Checkbox } from "../checkbox";
+import { cn } from "@/lib/utils";
 
 function useSorting(initialField = "id", initialOrder = "ASC") {
   const [sorting, setSorting] = useState([
@@ -46,15 +47,17 @@ interface TableLazyProps<TData> {
   isFetching: boolean;
   rowActions?: RowAction<TData>[];
   iaRowSelectionEnabled?: boolean;
+  className?: string;
 }
 function TableLazy<TData>({
   table,
   isFetching,
   rowActions,
   iaRowSelectionEnabled = false,
+  className,
 }: TableLazyProps<TData>) {
   return (
-    <div className="rounded-md border">
+    <div className={cn(["rounded-md border", className])}>
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
