@@ -1,8 +1,6 @@
+import { RowAction } from "@/types/row-action";
 import { Row, flexRender } from "@tanstack/react-table";
 import { Person } from "./fetchData";
-import { Button } from "@/components/ui/button";
-import { Pencil, Trash2 } from "lucide-react";
-import { RowAction } from "@/types/row-action";
 
 interface PersonDataCardProps {
   row: Row<Person>;

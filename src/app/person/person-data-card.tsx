@@ -1,21 +1,18 @@
-import { Loader } from "@/components/ui/loader";
-import { cn } from "@/lib/utils";
-import { Table } from "@tanstack/react-table";
-import PersonCard from "./person-card";
-import { Person } from "./fetchData";
-import { ArrowUpDown, ListFilter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ColumnConfig } from "@/components/ui/data-table-client/data-table-column-def";
+import { DataTableColumnHeader } from "@/components/ui/data-table-client/data-table-column-header";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { DataTableColumnHeader } from "@/components/ui/data-table-client/data-table-column-header";
-import { ColumnConfig } from "@/components/ui/data-table-client/data-table-column-def";
+import { Loader } from "@/components/ui/loader";
+import { cn } from "@/lib/utils";
 import { RowAction } from "@/types/row-action";
+import { Table } from "@tanstack/react-table";
+import { ArrowUpDown } from "lucide-react";
+import { Person } from "./fetchData";
+import PersonCard from "./person-card";
 
 interface PersonDataCardProps {
   table: Table<Person>;

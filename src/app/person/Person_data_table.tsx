@@ -19,7 +19,6 @@ import React from "react";
 import { hiddneColumenas, personTableColumns } from "./data-config";
 import { Person } from "./fetchData";
 import { PersonDataCard } from "./person-data-card";
-import PersonCard from "./person-card";
 
 const PersonLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
