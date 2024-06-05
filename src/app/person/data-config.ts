@@ -23,17 +23,17 @@ const personTableColumns: ColumnConfig[] = [
   {
     accessorKey: "visits",
     header: "Visits",
-    enableSorting: true,
+    enableSorting: false,
   },
   {
     accessorKey: "status",
     header: "Status",
-    enableSorting: true,
+    enableSorting: false,
   },
   {
     accessorKey: "progress",
     header: "Progress",
-    enableSorting: true,
+    enableSorting: false,
   },
 ];
 
