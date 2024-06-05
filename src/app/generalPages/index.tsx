@@ -14,7 +14,9 @@ export const GeneralPages = () => {
   return (
     <div className="overflow-x-hidden overflow-y-scroll">
       <FullPageHeader />
-      <Outlet />
+      <div className="pt-20 md:pt-8 pb-16 lg:pt-16 lg:pb-24">
+        <Outlet />
+      </div>
     </div>
   );
 };

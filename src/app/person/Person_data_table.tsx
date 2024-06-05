@@ -18,6 +18,7 @@ import {
 import React from "react";
 import { hiddneColumenas, personTableColumns } from "./data-config";
 import { Person } from "./fetchData";
+import { PersonDataCard } from "./person-data-card";
 
 const PersonLazy: React.FC = () => {
   const [pagination, setPagination] = React.useState<PaginationState>({
@@ -70,34 +71,44 @@ const PersonLazy: React.FC = () => {
     idKey: "id",
   });
   return (
-    <div className="p-4 w-full text-sm">
-      <DataTableToolbar
-        table={table}
-        filterData={{
-          filterColl: "firstName",
-          filterPlaceHolder: "Search by firstName",
-          filterCollDropdownOptions: [
-            {
-              label: "FirstName",
-              value: "firstName",
-              options: [{ label: "Cheyenne", value: "Cheyenne" }],
-            },
-          ],
-        }}
-        openAddDialog={() => console.log("Open Add Dialog")}
-        isHideColumnsEnabled={true}
-      />
-      <ScrollArea className="h-[60vh] rounded-md border p-4">
-        <TableLazy
-          key="person_table"
+    <div>
+      <div className="p-4 w-full text-sm">
+        <DataTableToolbar
           table={table}
-          isFetching={dataQuery.isFetching}
-          rowActions={rowActions}
-          iaRowSelectionEnabled={true}
+          filterData={{
+            filterColl: "firstName",
+            filterPlaceHolder: "Search by firstName",
+            filterCollDropdownOptions: [
+              {
+                label: "FirstName",
+                value: "firstName",
+                options: [{ label: "Cheyenne", value: "Cheyenne" }],
+              },
+            ],
+          }}
+          openAddDialog={() => console.log("Open Add Dialog")}
+          isHideColumnsEnabled={true}
         />
-        <ScrollBar orientation="horizontal" />
-      </ScrollArea>
-      <DataTableLazyPagination table={table} />
+        <ScrollArea className="h-[60vh] rounded-md border p-4">
+          <TableLazy
+            key="person_table"
+            table={table}
+            isFetching={dataQuery.isFetching}
+            rowActions={rowActions}
+            iaRowSelectionEnabled={true}
+            className="hidden lg:block md:block"
+          />
+          <PersonDataCard
+            table={table}
+            className="lg:hidden md:hidden"
+            isLoading={dataQuery.isFetching}
+            columns={personTableColumns}
+            rowActions={rowActions}
+          />
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+        <DataTableLazyPagination table={table} />
+      </div>
     </div>
   );
 };
