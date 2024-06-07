@@ -29,19 +29,27 @@ export const data = {
           end: "Present",
         },
         location: "Noida, India",
-        bulletPoints: ["Completed TMT Badge."],
+        bulletPoints: [
+          "Completed TMT Badge.",
+          "Completed Kubernetes for the Absolute Beginners - Hands-on Tutorial",
+        ],
         projects: {
           title: "Major Projects Handled",
           projects: [
             {
-              title: "OEM PowerFlex Plug-in",
-              description:
-                "The plug-in helps view and monitor the PowerFlex components associated with the Oracle databases managed by Oracle Enterprise manager. It maps the Oracle databases with PowerFlex SDC nodes. Oracle Enterprise Manager users can analyze the performance of the volumes, SDC nodes, and alerts.",
-            },
-            {
-              title: "Order Fulfillment and Verification System",
+              title: "Order Management System ( Dell )",
               description:
                 "It was a event driven architecture based Spring-Boot Micro-Service deployed on kubernetes cluster which uses RabbitMQ as message broker. It was responsible for validating the order by different Type, Location etc. .Providing the order status to the different system which are waiting for the status by transforming the data according to the need of destination system and also store the event log in casandra database.",
+            },
+            {
+              title: "Bookings Microservice ( VMWare )",
+              description:
+                "To distribute a percentage of there total sales for product and services. Developed multiple Micro-services using spring boot and spring-data-JDBC and exposed various end point in Restful manner and deployed on Kubernetes cluster. Paired with team member to developed reusable library which act as foundation for other micro-service.",
+            },
+            {
+              title: "OEM PowerFlex Plug-in ( Dell )",
+              description:
+                "The plug-in helps view and monitor the PowerFlex components associated with the Oracle databases managed by Oracle Enterprise manager. It maps the Oracle databases with PowerFlex SDC nodes. Oracle Enterprise Manager users can analyze the performance of the volumes, SDC nodes, and alerts.",
             },
           ],
         },

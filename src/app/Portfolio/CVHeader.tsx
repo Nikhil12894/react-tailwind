@@ -1,4 +1,11 @@
-import { AtSign, Github, Linkedin, MapPin, Phone } from "lucide-react";
+import {
+  ArrowDownToLine,
+  AtSign,
+  Github,
+  Linkedin,
+  MapPin,
+  Phone,
+} from "lucide-react";
 export interface CVHeaderProps {
   header: {
     name: string;
@@ -21,8 +28,14 @@ export const CVHeader = ({ ...headerData }: CVHeaderProps) => {
   return (
     <div className="grid grid-cols-6 gap-4">
       <div className="col-start-1 col-span-4 lg:col-span-5">
-        <h1 className="text-2xl lg:text-6xl font-bold">
+        <h1
+          className="text-2xl lg:text-6xl font-bold flex items-center"
+          title="To download click on download icon"
+        >
           {headerData.header.name}
+          <a href="./Nalin_CV.pdf">
+            <ArrowDownToLine className="h-6 w-6 ml-2 text-muted-foreground hover:text-black/50 dark:hover:text-white/50 cursor-pointer" />
+          </a>
         </h1>
         <h2 className="text-sm lg:text-2xl text-muted-foreground text-teal-600">
           {headerData.header.title}
