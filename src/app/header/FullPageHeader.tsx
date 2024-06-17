@@ -22,7 +22,7 @@ export const FullPageHeader = () => {
                   <div className="h-6 w-2 bg-primary dark:bg-primaryLight"></div>
                 </div>
                 <span className="text-base font-bold text-gray-600 dark:text-white">
-                  SASS
+                  NK
                 </span>
               </a>
               <label

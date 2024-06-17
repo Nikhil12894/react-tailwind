@@ -75,7 +75,7 @@ const ScheduleComp: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto py-8 bg-muted/40 mt-4">
       <ScrollArea className="h-[65vh] rounded-md border p-4">
         <DataTable
           columns={columns}

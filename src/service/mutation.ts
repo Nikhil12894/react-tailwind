@@ -1,6 +1,7 @@
 import { Schedule } from "@/types/schedule-type";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
+  createPost,
   createSchedule,
   createTask,
   deleteSchedule,
@@ -9,8 +10,10 @@ import {
   updateTask,
 } from "./api";
 import { Task } from "@/types/task-type";
+import { Post } from "@/types/posst-type";
 const SCHEDULE_QUERY_KEY = "schedule_data";
 const TASK_QUERY_KEY = "task_data";
+const POST_QUERY_KEY = "post_data";
 export function useCreateSchedule() {
   const queryClient = useQueryClient();
 
@@ -112,6 +115,24 @@ export function useDeleteTask() {
         console.log(error);
       } else {
         await queryClient.invalidateQueries({ queryKey: [TASK_QUERY_KEY] });
+      }
+    },
+  });
+}
+
+// Post Mutations
+
+export function useCreatePost() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (data: Post) => createPost(data),
+
+    onSettled: async (_, error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        await queryClient.invalidateQueries({ queryKey: [POST_QUERY_KEY] });
       }
     },
   });
