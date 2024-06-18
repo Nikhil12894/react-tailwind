@@ -4,9 +4,10 @@ export interface Post extends BaseType {
   id: number;
   title: string;
   content: string;
-  published_at: Date | string;
+  published_at?: Date | string;
   status: PostStatus;
-  featuredImage: string;
+  featured_image: string;
+  description?: string;
 }
 
 export enum PostStatus {
@@ -19,9 +20,10 @@ export interface PostRequest {
   id?: number;
   title: string;
   content: string;
-  published_at: Date | string;
+  published_at?: Date | string;
   status: PostStatus;
-  featuredImage: string;
+  featured_image: string | ArrayBuffer | null;
+  description?: string;
 }
 
 export interface PostsDTO {

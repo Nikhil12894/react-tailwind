@@ -1,4 +1,6 @@
+import { PostRequest } from "@/types/posst-type";
 import { Schedule } from "@/types/schedule-type";
+import { Task } from "@/types/task-type";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   createPost,
@@ -9,8 +11,6 @@ import {
   updateSchedule,
   updateTask,
 } from "./api";
-import { Task } from "@/types/task-type";
-import { Post } from "@/types/posst-type";
 const SCHEDULE_QUERY_KEY = "schedule_data";
 const TASK_QUERY_KEY = "task_data";
 const POST_QUERY_KEY = "post_data";
@@ -126,7 +126,7 @@ export function useCreatePost() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: Post) => createPost(data),
+    mutationFn: (data: PostRequest) => createPost(data),
 
     onSettled: async (_, error) => {
       if (error) {

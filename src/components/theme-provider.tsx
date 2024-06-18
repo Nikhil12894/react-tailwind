@@ -44,7 +44,7 @@ export function ThemeProvider({
       root.classList.add(systemTheme);
       return;
     }
-
+    document.documentElement.setAttribute("data-color-mode", theme);
     root.classList.add(theme);
   }, [theme]);
 

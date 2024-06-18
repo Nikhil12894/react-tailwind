@@ -1,18 +1,17 @@
-import React from "react";
-import RelatedBlog from "./Related_Blog";
-import BlogNewsLater from "./Blog_news_later";
 import BlogFooter from "./Blog_footer";
-import SelectedBlog from "./Selected_blog";
+import BlogNewsLater from "./Blog_news_later";
+import RelatedBlog from "./Related_Blog";
 
-const Blog: React.FC = () => {
+const Blog = () => {
   return (
     <div>
       <main className="antialiased">
         <div className="flex justify-between px-4 mx-auto max-w-screen-xl ">
-          <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert"></article>
+          <article className="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+            Selected Blog
+          </article>
         </div>
       </main>
-      <SelectedBlog />
       <RelatedBlog />
       <BlogNewsLater />
       <BlogFooter />

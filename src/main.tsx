@@ -33,6 +33,7 @@ const ScheduleLazy = lazy(
 );
 const TaskTable = lazy(() => import("./schedule-app/Task/task-table.tsx"));
 const ScheduleComp = lazy(() => import("./schedule-app/schedule/Schedule.tsx"));
+const AllBlogs = lazy(() => import("./app/blog/All_blogs.tsx"));
 // const LayoutResponsive = lazy(() =>
 //   import("./components/layout-responsive/index.tsx").then(
 //     ({ LayoutResponsive }) => ({
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       },
       {
         path: "blogs",
+        element: <AllBlogs />,
+      },
+      {
+        path: "post/:id",
         element: <Blog />,
       },
       {
