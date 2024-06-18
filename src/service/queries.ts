@@ -1,7 +1,12 @@
 import { fetchData } from "@/app/person/fetchData";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { PaginationState } from "@tanstack/react-table";
-import { getAllSchedules, getAllSchedulesIDs, getAllTasks } from "./api";
+import {
+  getAllPosts,
+  getAllSchedules,
+  getAllSchedulesIDs,
+  getAllTasks,
+} from "./api";
 
 export function usePersonQuery(
   pagination: PaginationState,
@@ -47,6 +52,19 @@ export function useTaskQuery(
   return useQuery({
     queryKey: ["task_data", pagination, sort, columnFilters],
     queryFn: () => getAllTasks(pagination, sort, rowSelection, columnFilters),
+    placeholderData: keepPreviousData,
+  });
+}
+
+// Post query
+
+export function usePostQuery(
+  pagination: PaginationState,
+  sort: { id: string; desc: boolean }
+) {
+  return useQuery({
+    queryKey: ["post_data", pagination, sort],
+    queryFn: () => getAllPosts(pagination, sort),
     placeholderData: keepPreviousData,
   });
 }
