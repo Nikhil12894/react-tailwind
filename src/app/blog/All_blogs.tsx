@@ -4,14 +4,18 @@ import { Loader } from "@/components/ui/loader";
 import { usePostQuery } from "@/service/queries";
 import { PaginationState } from "@tanstack/react-table";
 import { Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BlogFooter from "./Blog_footer";
 import BlogNewsLater from "./Blog_news_later";
 import { CreatePostForm } from "./Create_post";
+import useAuthStore from "@/hooks/use-login-store";
+import { Post } from "@/types/posst-type";
 
 const AllBlogs = () => {
   const [newPost, setNewPost] = useState(false);
+  const isAuthenticated = useAuthStore((stat) => stat.isAuthenticated);
+  const [allPost, setAllPost] = useState<Post[]>([]);
   const [pagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
@@ -21,32 +25,42 @@ const AllBlogs = () => {
     id: field,
     desc: order === "DESC",
   });
-
+  useEffect(() => {
+    setAllPost(dataQuery.data?.data?.postDTOs ?? []);
+  }, []);
   return (
     <div className="grid grid-flow-row-dense grid-cols-4 grid-rows-3">
       <div className="col-span-3 border container">
-        <Button
-          variant="outline"
-          className="float-right m-5"
-          onClick={() => setNewPost(!newPost)}
-        >
-          {newPost ? (
-            "Cancel"
-          ) : (
-            <>
-              <Plus className="mr-2" />
-              New Post
-            </>
-          )}
-        </Button>
+        {isAuthenticated && (
+          <Button
+            variant="outline"
+            className="float-right m-5"
+            onClick={() => setNewPost(!newPost)}
+          >
+            {newPost ? (
+              "Cancel"
+            ) : (
+              <>
+                <Plus className="mr-2" />
+                New Post
+              </>
+            )}
+          </Button>
+        )}
         {newPost ? (
           <CreatePostForm />
         ) : (
           <section>
             {dataQuery.isLoading ? (
               <Loader />
+            ) : allPost.length == 0 ? (
+              <div className="h-screen flex items-center justify-center">
+                <div className="text-9xl">
+                  No Post available will be available soon...
+                </div>
+              </div>
             ) : (
-              dataQuery.data?.data?.postDTOs?.map((post) => (
+              allPost.map((post) => (
                 <Link
                   to={`/post/${post.id}`}
                   key={post.id}

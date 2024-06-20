@@ -1,4 +1,5 @@
-import { MenuItem } from "@/types/menu";
+import { useStore } from "@/hooks/use-store";
+import { useTitle } from "@/hooks/use-title";
 import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import {
@@ -9,12 +10,22 @@ import {
   CardTitle,
 } from "../ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { useStore } from "@/hooks/use-store";
-import { useTitle } from "@/hooks/use-title";
 
 interface SidebarSheetProps {
-  menus: MenuItem[];
+  menus: {
+    href: string;
+    label: string;
+    active?: boolean;
+    icon?: any;
+    submenus?: Submenu[];
+  }[];
 }
+type Submenu = {
+  href: string;
+  label: string;
+  active: boolean;
+};
+
 export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
   // const menus = useMenuItems();
   const title = useStore(useTitle, (state) => state);
@@ -31,13 +42,13 @@ export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
         <nav className="grid gap-2 text-lg font-medium">
           {menus.map((menu) => (
             <a
-              key={menu.name}
-              href={menu.link}
-              onClick={() => title?.setTitle(menu.name)}
+              key={menu.href}
+              href={menu.label}
+              onClick={() => title?.setTitle(menu.href)}
               className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               {menu.icon && <menu.icon />}
-              {menu.name}
+              {menu.href}
             </a>
           ))}
           {/* <a href="#" className="flex items-center gap-2 text-lg font-semibold">

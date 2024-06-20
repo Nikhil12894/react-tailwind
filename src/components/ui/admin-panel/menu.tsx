@@ -16,6 +16,7 @@ import { Link, useLocation } from "react-router-dom";
 import { CollapseMenuButton } from "./collapse-menu-button";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
+import { AuthService } from "@/service/auth.service";
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -54,7 +55,7 @@ export function Menu({ isOpen }: MenuProps) {
               )}
               {menus.map(
                 ({ href, label, icon: Icon, active, submenus }, index) =>
-                  submenus.length === 0 ? (
+                  submenus && submenus.length === 0 ? (
                     <div className="w-full" key={index}>
                       <TooltipProvider disableHoverableContent>
                         <Tooltip delayDuration={100}>
@@ -99,8 +100,8 @@ export function Menu({ isOpen }: MenuProps) {
                       <CollapseMenuButton
                         icon={Icon}
                         label={label}
-                        active={active}
-                        submenus={submenus}
+                        active={active ?? false}
+                        submenus={submenus ?? []}
                         isOpen={isOpen}
                       />
                     </div>
@@ -113,7 +114,7 @@ export function Menu({ isOpen }: MenuProps) {
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
-                    onClick={() => {}}
+                    onClick={() => AuthService.handleLogout()}
                     variant="outline"
                     className="w-full justify-center h-10 mt-5"
                   >

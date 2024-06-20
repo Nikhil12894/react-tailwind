@@ -22,9 +22,12 @@ import {
 import { Link } from "react-router-dom";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
+import { AuthService } from "@/service/auth.service";
+import useAuthStore from "@/hooks/use-login-store";
 
 export function UserNav() {
   const title = useStore(useTitle, (state) => state);
+  const { isAuthenticated, user } = useAuthStore();
 
   return (
     <DropdownMenu>
@@ -38,7 +41,14 @@ export function UserNav() {
               >
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="#" alt="Avatar" />
-                  <AvatarFallback className="bg-transparent">JD</AvatarFallback>
+
+                  <AvatarFallback className="bg-transparent">
+                    {isAuthenticated
+                      ? `${user?.firstName?.charAt(0)} ${user?.lastName?.charAt(
+                          0
+                        )}`
+                      : "JD"}
+                  </AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
@@ -48,14 +58,28 @@ export function UserNav() {
       </TooltipProvider>
 
       <DropdownMenuContent className="w-56" align="end" forceMount>
-        <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">John Doe</p>
-            <p className="text-xs leading-none text-muted-foreground">
-              johndoe@example.com
-            </p>
-          </div>
-        </DropdownMenuLabel>
+        {isAuthenticated ? (
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex flex-col space-y-1">
+              <p className="text-sm font-medium leading-none">
+                {user?.firstName} {user?.lastName}
+              </p>
+              <p className="text-xs leading-none text-muted-foreground">
+                {user?.email}
+              </p>
+            </div>
+          </DropdownMenuLabel>
+        ) : (
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex flex-col space-y-1">
+              <p className="text-sm font-medium leading-none">John Doe</p>
+              <p className="text-xs leading-none text-muted-foreground">
+                johndoe@example.com
+              </p>
+            </div>
+          </DropdownMenuLabel>
+        )}
+
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
@@ -84,7 +108,10 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="hover:cursor-pointer" onClick={() => {}}>
+        <DropdownMenuItem
+          className="hover:cursor-pointer"
+          onClick={() => AuthService.handleLogout()}
+        >
           <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
           Sign out
         </DropdownMenuItem>

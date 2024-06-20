@@ -16,9 +16,9 @@ type Submenu = {
 type Menu = {
   href: string;
   label: string;
-  active: boolean;
-  icon: any;
-  submenus: Submenu[];
+  active?: boolean;
+  icon?: any;
+  submenus?: Submenu[];
 };
 
 type Group = {
@@ -98,6 +98,54 @@ export function getMenuList(pathname: string): Group[] {
           active: pathname.includes("/app/account"),
           icon: Settings,
           submenus: [],
+        },
+      ],
+    },
+  ];
+}
+
+export function headerMenuList(pathname: string): Group[] {
+  return [
+    {
+      groupLabel: "",
+      menus: [
+        {
+          href: "/home",
+          label: "Home",
+          active: pathname.includes("/home"),
+        },
+        {
+          href: "/app",
+          label: "App",
+          active: pathname.includes("/app/dashboard"),
+        },
+        {
+          href: "/Portfolio",
+          label: "portfolio",
+          active: pathname.includes("/portfolio"),
+        },
+        {
+          href: "/Blogs",
+          label: "blogs",
+          active: pathname.includes("/blogs"),
+        },
+      ],
+    },
+  ];
+}
+
+export function signUpAndLoginMenus(): Group[] {
+  return [
+    {
+      groupLabel: "",
+      menus: [
+        {
+          label: "Login",
+          href: "/login",
+        },
+        {
+          label: "Sign Up",
+          href: "/signUp",
         },
       ],
     },
