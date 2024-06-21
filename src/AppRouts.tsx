@@ -34,7 +34,11 @@ const ErrorPage = lazy(() =>
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const authBypass = useAuthByPass();
-  return isAuthenticated || authBypass! ? children : null;
+  return isAuthenticated || authBypass! ? (
+    children
+  ) : (
+    <Navigate to="/login" replace={true} />
+  );
 };
 
 const appRout = createBrowserRouter([
@@ -60,7 +64,7 @@ const appRout = createBrowserRouter([
         element: <AllBlogs />,
       },
       {
-        path: "post/",
+        path: "post/:title",
         element: <Blog />,
       },
       {

@@ -1,8 +1,8 @@
-import useAuthStore from "@/hooks/use-login-store";
-import authClient from "./keycloak";
-import { KeycloakProfile } from "keycloak-js";
-import { AuthClientTokens } from "@react-keycloak/core/lib/types";
 import { useAuthByPass } from "@/hooks/auth-bypass";
+import useAuthStore from "@/hooks/use-login-store";
+import { AuthClientTokens } from "@react-keycloak/core/lib/types";
+import { KeycloakProfile } from "keycloak-js";
+import authClient from "./keycloak";
 
 class AuthService {
   static setAuthState = (
@@ -38,10 +38,12 @@ const onKeycloakEvent = (event: string, error: any) => {
 };
 
 const onKeycloakTokens = (tokens: AuthClientTokens) => {
-  authClient.loadUserProfile().then((user) => {
-    console.log(user, tokens);
-    AuthService.setAuthState(true, user, tokens.token);
-  });
+  if (authClient.authenticated) {
+    authClient.loadUserProfile().then((user) => {
+      // console.log(user, tokens);
+      AuthService.setAuthState(true, user, tokens.token);
+    });
+  }
 };
 
 export { AuthService, onKeycloakEvent, onKeycloakTokens };

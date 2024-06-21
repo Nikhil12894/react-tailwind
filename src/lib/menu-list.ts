@@ -120,13 +120,13 @@ export function headerMenuList(pathname: string): Group[] {
           active: pathname.includes("/app/dashboard"),
         },
         {
-          href: "/Portfolio",
-          label: "portfolio",
+          href: "/portfolio",
+          label: "Portfolio",
           active: pathname.includes("/portfolio"),
         },
         {
-          href: "/Blogs",
-          label: "blogs",
+          href: "/blogs",
+          label: "Blogs",
           active: pathname.includes("/blogs"),
         },
       ],

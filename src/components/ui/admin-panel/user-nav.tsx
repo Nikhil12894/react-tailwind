@@ -2,14 +2,8 @@
 
 import { LayoutGrid, LogOut, User } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-  TooltipProvider,
-} from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,11 +13,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Link } from "react-router-dom";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import useAuthStore from "@/hooks/use-login-store";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
-import { AuthService } from "@/service/auth.service";
-import useAuthStore from "@/hooks/use-login-store";
+import { handleLogout } from "@/service/redirectionService";
+import { Link } from "react-router-dom";
 
 export function UserNav() {
   const title = useStore(useTitle, (state) => state);
@@ -110,7 +110,7 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="hover:cursor-pointer"
-          onClick={() => AuthService.handleLogout()}
+          onClick={() => handleLogout({})}
         >
           <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
           Sign out

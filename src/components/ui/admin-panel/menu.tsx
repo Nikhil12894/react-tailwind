@@ -2,21 +2,21 @@
 
 import { Ellipsis, LogOut } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Tooltip,
-  TooltipTrigger,
   TooltipContent,
   TooltipProvider,
+  TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { getMenuList } from "@/lib/menu-list";
-import { Link, useLocation } from "react-router-dom";
-import { CollapseMenuButton } from "./collapse-menu-button";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
-import { AuthService } from "@/service/auth.service";
+import { getMenuList } from "@/lib/menu-list";
+import { cn } from "@/lib/utils";
+import { handleLogout } from "@/service/redirectionService";
+import { Link, useLocation } from "react-router-dom";
+import { CollapseMenuButton } from "./collapse-menu-button";
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -114,7 +114,7 @@ export function Menu({ isOpen }: MenuProps) {
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
-                    onClick={() => AuthService.handleLogout()}
+                    onClick={() => handleLogout({})}
                     variant="outline"
                     className="w-full justify-center h-10 mt-5"
                   >

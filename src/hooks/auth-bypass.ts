@@ -1,5 +1,5 @@
 const useAuthByPass = (): boolean => {
-  return import.meta.env.MODE === "development1";
+  return import.meta.env.MODE === "development";
 };
 
 export { useAuthByPass };

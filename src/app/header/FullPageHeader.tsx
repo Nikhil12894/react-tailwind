@@ -6,6 +6,7 @@ import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
 import { headerMenuList, signUpAndLoginMenus } from "@/lib/menu-list";
 import { AuthService } from "@/service/auth.service";
+import { handleLogout } from "@/service/redirectionService";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
 export const FullPageHeader = () => {
@@ -87,7 +88,7 @@ export const FullPageHeader = () => {
                 ) : isAuthenticated ? (
                   <Button
                     variant="outline"
-                    onClick={() => AuthService.handleLogout()}
+                    onClick={() => handleLogout({ rout: location.pathname })}
                     className="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-primaryLight before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
                   >
                     <span className="relative text-sm font-semibold text-white dark:text-gray-900">

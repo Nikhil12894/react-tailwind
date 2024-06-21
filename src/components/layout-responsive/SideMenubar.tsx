@@ -1,4 +1,4 @@
-import { useMenuItems } from "@/route";
+import { useMenuItems } from "@/lib/app_menu_data";
 
 export const SideMenubar = () => {
   const menus = useMenuItems();

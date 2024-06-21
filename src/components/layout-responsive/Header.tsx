@@ -1,4 +1,4 @@
-import { useMenuItems } from "@/route";
+import { useMenuItems } from "@/lib/app_menu_data";
 import { CircleUser, Search } from "lucide-react";
 import { Button } from "../ui/button";
 import {

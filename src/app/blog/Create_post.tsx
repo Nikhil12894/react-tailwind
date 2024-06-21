@@ -145,7 +145,7 @@ Bob-->>John: Jolly good!
                 <>
                   <FormItem>
                     <FormLabel>Circle Image</FormLabel>
-                    <FormControl>
+                    <FormControl className="hover:bg-slate-300 cursor-pointer">
                       <Input
                         type="file"
                         accept="image/*"
