@@ -12,20 +12,19 @@ import {
 } from "@/components/ui/tooltip";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
-import { getMenuList } from "@/lib/menu-list";
+import { Group } from "@/lib/menu-list";
 import { cn } from "@/lib/utils";
 import { handleLogout } from "@/service/redirectionService";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CollapseMenuButton } from "./collapse-menu-button";
 
 interface MenuProps {
   isOpen: boolean | undefined;
+  menuList: Group[];
 }
 
-export function Menu({ isOpen }: MenuProps) {
-  const location = useLocation();
+export function Menu({ isOpen, menuList }: MenuProps) {
   const title = useStore(useTitle, (state) => state);
-  const menuList = getMenuList(location.pathname);
 
   return (
     <ScrollArea className="[&>div>div[style]]:!block">

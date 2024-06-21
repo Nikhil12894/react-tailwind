@@ -7,10 +7,13 @@ import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { Link } from "react-router-dom";
 import { SidebarToggle } from "./sidebar-toggle";
 import { Menu } from "./menu";
+import { Group } from "@/lib/menu-list";
 
-export function Sidebar() {
+interface sideBarProps {
+  menuList: Group[];
+}
+export function Sidebar({ menuList }: sideBarProps) {
   const sidebar = useStore(useSidebarToggle, (state) => state);
-
   if (!sidebar) return null;
 
   return (
@@ -44,7 +47,7 @@ export function Sidebar() {
             </h1>
           </Link>
         </Button>
-        <Menu isOpen={sidebar?.isOpen} />
+        <Menu isOpen={sidebar?.isOpen} menuList={menuList} />
       </div>
     </aside>
   );

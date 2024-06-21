@@ -1,15 +1,15 @@
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
 import { Menu } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../ui/card";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+} from "../card";
+import { Sheet, SheetContent, SheetTrigger } from "../sheet";
 
 interface SidebarSheetProps {
   menus: {
@@ -42,13 +42,13 @@ export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
         <nav className="grid gap-2 text-lg font-medium">
           {menus.map((menu) => (
             <a
-              key={menu.href}
-              href={menu.label}
-              onClick={() => title?.setTitle(menu.href)}
+              key={menu.label}
+              href={menu.href}
+              onClick={() => title?.setTitle(menu.label)}
               className="flex items-center gap-2 rounded-lg px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               {menu.icon && <menu.icon />}
-              {menu.href}
+              {menu.label}
             </a>
           ))}
           {/* <a href="#" className="flex items-center gap-2 text-lg font-semibold">

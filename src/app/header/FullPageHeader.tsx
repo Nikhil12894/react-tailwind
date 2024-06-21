@@ -1,4 +1,4 @@
-import { SidebarSheet } from "@/components/layout-responsive/Sidebarsheet";
+import { SidebarSheet } from "@/components/ui/admin-panel/Sidebarsheet";
 import { Button } from "@/components/ui/button";
 import { useAuthByPass } from "@/hooks/auth-bypass";
 import useAuthStore from "@/hooks/use-login-store";
