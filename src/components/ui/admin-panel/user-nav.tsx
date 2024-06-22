@@ -22,7 +22,7 @@ import {
 import useAuthStore from "@/hooks/use-login-store";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
-import { handleLogout } from "@/service/redirectionService";
+import { HandleLogout } from "@/service/redirectionService";
 import { Link } from "react-router-dom";
 
 export function UserNav() {
@@ -110,7 +110,7 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="hover:cursor-pointer"
-          onClick={() => handleLogout({})}
+          onClick={() => <HandleLogout rout="/home" />}
         >
           <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
           Sign out

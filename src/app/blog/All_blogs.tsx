@@ -62,25 +62,26 @@ const AllBlogs = () => {
               </div>
             ) : (
               allPost.map((post) => (
-                <div key={post.id} className="container items-center">
-                  <Link to={`/post/${post.title}`}>
-                    <article className="flex flex-col">
-                      <img
-                        src={post.featured_image}
-                        className="mb-5 h-[15rem]"
-                        alt="Image 1"
-                      />
-                      <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                        {post.title}
-                      </h2>
-                      <p className="mb-4 text-gray-500 dark:text-gray-400">
-                        {post.description}
-                      </p>
-                      {/* <p className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline">
-                      Read in 2 minutes
-                    </p> */}
-                    </article>
-                  </Link>
+                <div key={post.id} className="container">
+                  <div className="items-center mt-5 border rounded-lg duration-300 hover:scale-105">
+                    <div className="m-5">
+                      <Link to={`/post/${post.title}`}>
+                        <article className="flex flex-col">
+                          <img
+                            src={post.featured_image}
+                            className="mb-5 h-[15rem] w-full rounded-lg"
+                            alt={post.title}
+                          />
+                          <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+                            {post.title}
+                          </h2>
+                          <p className="mb-4 text-gray-500 dark:text-gray-400">
+                            {post.description}
+                          </p>
+                        </article>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               ))
             )}

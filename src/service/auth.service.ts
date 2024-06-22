@@ -33,10 +33,6 @@ class AuthService {
   };
 }
 
-const onKeycloakEvent = (event: string, error: any) => {
-  console.log("onKeycloakEvent", event, error);
-};
-
 const onKeycloakTokens = (tokens: AuthClientTokens) => {
   if (authClient.authenticated) {
     authClient.loadUserProfile().then((user) => {
@@ -46,4 +42,4 @@ const onKeycloakTokens = (tokens: AuthClientTokens) => {
   }
 };
 
-export { AuthService, onKeycloakEvent, onKeycloakTokens };
+export { AuthService, onKeycloakTokens };

@@ -12,9 +12,9 @@ export const GeneralPages = () => {
     };
   }, []);
   return (
-    <div className="overflow-x-hidden overflow-y-scroll">
+    <div className="">
       <FullPageHeader />
-      <div className="pt-20 md:pt-8 pb-16 lg:pt-16 lg:pb-24">
+      <div className="pt-20 md:pt-10 pb-16 lg:pt-16 lg:pb-24 overflow-x-hidden overflow-y-scroll">
         <Outlet />
       </div>
     </div>

@@ -9,7 +9,7 @@ import { appRout } from "./AppRouts";
 import { ThemeProvider } from "./components/theme-provider";
 import { Loader } from "./components/ui/loader";
 import "./index.css";
-import { onKeycloakEvent, onKeycloakTokens } from "./service/auth.service";
+import { onKeycloakTokens } from "./service/auth.service";
 import authClient from "./service/keycloak";
 
 const queryClient = new QueryClient({
@@ -27,11 +27,7 @@ if (import.meta.env.MODE === "development") {
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <ReactKeycloakProvider
-    authClient={authClient}
-    onEvent={onKeycloakEvent}
-    onTokens={onKeycloakTokens}
-  >
+  <ReactKeycloakProvider authClient={authClient} onTokens={onKeycloakTokens}>
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">

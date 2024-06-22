@@ -12,14 +12,13 @@ const Blog = () => {
   const { pathname } = location;
 
   const [content, setContent] = useState<string>("");
-
+  const [imageSrc, setImageSrc] = useState<string>();
   useEffect(() => {
     const title = pathname.split("/")[2].replaceAll("%20", " ");
-    console.log(title);
     const currentPost: Post[] = postDefaultData.filter(
       (post) => post.title === title
     );
-    console.log(currentPost);
+    setImageSrc(currentPost[0].featured_image);
     fetch(`${currentPost[0].content}`)
       .then((response) => {
         if (!response.ok) {
@@ -32,8 +31,9 @@ const Blog = () => {
   }, [content]);
   return (
     <div>
-      <div className="container">
-        <MDEditor.Markdown source={content} />
+      <div className="m-2 md:container">
+        <img src={imageSrc} className="mb-5 h-[15rem] w-full" alt="Image 1" />
+        <MDEditor.Markdown source={content} className="mb-5 mt-5 ml-0 mr-0" />
       </div>
       <RelatedBlog />
       <BlogNewsLater />

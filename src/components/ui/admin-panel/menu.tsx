@@ -14,7 +14,7 @@ import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
 import { Group } from "@/lib/menu-list";
 import { cn } from "@/lib/utils";
-import { handleLogout } from "@/service/redirectionService";
+import { HandleLogout } from "@/service/redirectionService";
 import { Link } from "react-router-dom";
 import { CollapseMenuButton } from "./collapse-menu-button";
 
@@ -113,7 +113,7 @@ export function Menu({ isOpen, menuList }: MenuProps) {
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
-                    onClick={() => handleLogout({})}
+                    onClick={() => <HandleLogout />}
                     variant="outline"
                     className="w-full justify-center h-10 mt-5"
                   >
