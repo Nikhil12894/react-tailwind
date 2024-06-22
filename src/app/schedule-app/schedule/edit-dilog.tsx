@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
-import { Schedule } from "../../types/schedule-type";
 
 import {
   Form,
@@ -23,6 +22,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Schedule } from "@/types/schedule-type";
 
 interface EditDialogProps {
   isEditDialogOpen: boolean;

@@ -2,29 +2,29 @@
 
 import { Ellipsis, LogOut } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Tooltip,
-  TooltipTrigger,
   TooltipContent,
   TooltipProvider,
+  TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { getMenuList } from "@/lib/menu-list";
-import { Link, useLocation } from "react-router-dom";
-import { CollapseMenuButton } from "./collapse-menu-button";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
+import { Group } from "@/lib/menu-list";
+import { cn } from "@/lib/utils";
+import { HandleLogout } from "@/service/redirectionService";
+import { Link } from "react-router-dom";
+import { CollapseMenuButton } from "./collapse-menu-button";
 
 interface MenuProps {
   isOpen: boolean | undefined;
+  menuList: Group[];
 }
 
-export function Menu({ isOpen }: MenuProps) {
-  const location = useLocation();
+export function Menu({ isOpen, menuList }: MenuProps) {
   const title = useStore(useTitle, (state) => state);
-  const menuList = getMenuList(location.pathname);
 
   return (
     <ScrollArea className="[&>div>div[style]]:!block">
@@ -54,7 +54,7 @@ export function Menu({ isOpen }: MenuProps) {
               )}
               {menus.map(
                 ({ href, label, icon: Icon, active, submenus }, index) =>
-                  submenus.length === 0 ? (
+                  submenus && submenus.length === 0 ? (
                     <div className="w-full" key={index}>
                       <TooltipProvider disableHoverableContent>
                         <Tooltip delayDuration={100}>
@@ -99,8 +99,8 @@ export function Menu({ isOpen }: MenuProps) {
                       <CollapseMenuButton
                         icon={Icon}
                         label={label}
-                        active={active}
-                        submenus={submenus}
+                        active={active ?? false}
+                        submenus={submenus ?? []}
                         isOpen={isOpen}
                       />
                     </div>
@@ -113,7 +113,7 @@ export function Menu({ isOpen }: MenuProps) {
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
-                    onClick={() => {}}
+                    onClick={() => <HandleLogout />}
                     variant="outline"
                     className="w-full justify-center h-10 mt-5"
                   >

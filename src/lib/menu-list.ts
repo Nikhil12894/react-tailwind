@@ -5,28 +5,32 @@ import {
   Bookmark,
   SquarePen,
   LayoutGrid,
+  Home,
+  LogOut,
+  LogIn,
+  User2,
 } from "lucide-react";
 
-type Submenu = {
+interface Submenu {
   href: string;
   label: string;
   active: boolean;
-};
+}
 
-type Menu = {
+interface Menu {
   href: string;
   label: string;
-  active: boolean;
-  icon: any;
-  submenus: Submenu[];
-};
+  active?: boolean;
+  icon?: any;
+  submenus?: Submenu[];
+}
 
-type Group = {
+interface Group {
   groupLabel: string;
   menus: Menu[];
-};
+}
 
-export function getMenuList(pathname: string): Group[] {
+function getMenuList(pathname: string): Group[] {
   return [
     {
       groupLabel: "",
@@ -103,3 +107,60 @@ export function getMenuList(pathname: string): Group[] {
     },
   ];
 }
+
+function headerMenuList(pathname: string): Group[] {
+  return [
+    {
+      groupLabel: "",
+      menus: [
+        {
+          href: "/home",
+          label: "Home",
+          icon: Home,
+          active: pathname.includes("/home"),
+        },
+        {
+          href: "/app",
+          label: "App",
+          icon: LayoutGrid,
+          active: pathname.includes("/app/dashboard"),
+        },
+        {
+          href: "/portfolio",
+          label: "Portfolio",
+          icon: User2,
+          active: pathname.includes("/portfolio"),
+        },
+        {
+          href: "/blogs",
+          label: "Blogs",
+          icon: Bookmark,
+          active: pathname.includes("/blogs"),
+        },
+      ],
+    },
+  ];
+}
+
+function signUpAndLoginMenus(): Group[] {
+  return [
+    {
+      groupLabel: "",
+      menus: [
+        {
+          label: "Login",
+          href: "/login",
+          icon: LogIn,
+        },
+        {
+          label: "Sign Up",
+          href: "/signUp",
+          icon: LogOut,
+        },
+      ],
+    },
+  ];
+}
+
+export { headerMenuList, signUpAndLoginMenus, getMenuList };
+export type { Submenu, Menu, Group };

@@ -3,7 +3,7 @@ import { BaseType } from "./base-type";
 export interface Post extends BaseType {
   id: number;
   title: string;
-  content: string;
+  content: string | Promise<string>;
   published_at?: Date | string;
   status: PostStatus;
   featured_image: string;

@@ -1,0 +1,37 @@
+<mxfile host="65bd71144e">
+    <diagram id="2foq_hLN2l36DjRVOxPm" name="Page-1">
+        <mxGraphModel dx="2026" dy="1187" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#333333" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="42" value="" style="group" vertex="1" connectable="0" parent="1">
+                    <mxGeometry x="25" y="157" width="797" height="303" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="whiteSpace=wrap;html=1;fillColor=none;" vertex="1" parent="42">
+                    <mxGeometry width="797" height="303" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.svgrepo.com/show/376353/terraform.svg;" vertex="1" parent="42">
+                    <mxGeometry x="545.3007759699625" y="66" width="225.08582746478874" height="225.08582746478874" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.svgrepo.com/show/376335/maven.svg;" vertex="1" parent="42">
+                    <mxGeometry x="571.4881101376722" y="20.909090909090907" width="95.76378841229193" height="95.76378841229193" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="" style="dashed=0;outlineConnect=0;html=1;align=center;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;shape=mxgraph.weblogos.github" vertex="1" parent="42">
+                    <mxGeometry x="720" y="235" width="67.7" height="57.95" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Kubernetes.svg;" vertex="1" parent="42">
+                    <mxGeometry x="7.202753441802258" y="8.5" width="263.62052112676054" height="253.07831946222794" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="sketch=0;aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="42">
+                    <mxGeometry x="415" y="145" width="146.34" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.svgrepo.com/show/376350/spring.svg;" vertex="1" parent="42">
+                    <mxGeometry x="291" y="23" width="138.86" height="138.86" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://static-00.iconduck.com/assets.00/vault-icon-256x248-lk4k1hr3.png;" vertex="1" parent="42">
+                    <mxGeometry x="677" y="8.5" width="113.51" height="109.97" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

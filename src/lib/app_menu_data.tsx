@@ -6,7 +6,7 @@ import {
   ShoppingCart,
   Users,
 } from "lucide-react";
-import { MenuItem } from "./types/menu";
+import { MenuItem } from "../types/menu";
 
 function useMenuItems(): MenuItem[] {
   return [

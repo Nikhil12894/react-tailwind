@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
 import { Menu } from "./menu";
+import { Group } from "@/lib/menu-list";
 
-export function SheetMenu() {
+export function SheetMenu({ menuList }: { menuList: Group[] }) {
   return (
     <Sheet>
       <SheetTrigger className="lg:hidden" asChild>
@@ -31,7 +32,7 @@ export function SheetMenu() {
             </Link>
           </Button>
         </SheetHeader>
-        <Menu isOpen />
+        <Menu isOpen menuList={menuList} />
       </SheetContent>
     </Sheet>
   );

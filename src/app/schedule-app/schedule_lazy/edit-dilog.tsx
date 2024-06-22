@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
-import { Schedule } from "../../types/schedule-type";
 import {
   Form,
   FormControl,
@@ -24,6 +23,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { ReCron } from "@/components/cron";
 import { Type } from "@sbzen/cron-core";
+import { Schedule } from "@/types/schedule-type";
 
 const tabs = [Type.SECONDS, Type.MINUTES, Type.HOURS, Type.DAY, Type.MONTH];
 
