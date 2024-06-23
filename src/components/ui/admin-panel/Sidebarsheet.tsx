@@ -2,13 +2,6 @@ import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
 import { Menu } from "lucide-react";
 import { Button } from "../button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../card";
 import { Sheet, SheetContent, SheetTrigger } from "../sheet";
 
 interface SidebarSheetProps {
@@ -94,7 +87,7 @@ export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
             Analytics
           </a> */}
         </nav>
-        <div className="mt-auto">
+        {/* <div className="mt-auto">
           <Card>
             <CardHeader>
               <CardTitle>Upgrade to Pro</CardTitle>
@@ -109,7 +102,29 @@ export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
               </Button>
             </CardContent>
           </Card>
-        </div>
+        </div> */}
+        {/* <li className="w-full grow flex items-end">
+          <TooltipProvider disableHoverableContent>
+            <Tooltip delayDuration={100}>
+              <TooltipTrigger asChild>
+                <Button
+                  onClick={() => <HandleLogout />}
+                  variant="outline"
+                  className="w-full justify-center h-10 mt-5"
+                >
+                  <span className="mr-4">
+                    <LogOut size={18} />
+                  </span>
+                  <p className={cn("whitespace-nowrap", "opacity-100")}>
+                    Sign out
+                  </p>
+                </Button>
+              </TooltipTrigger>
+
+              <TooltipContent side="right">Sign out</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </li> */}
       </SheetContent>
     </Sheet>
   );

@@ -27,7 +27,7 @@ const Portfolio: React.FC = () => {
   return (
     <>
       <div className="flex justify-center">
-        <Card className="w-[80%] mr-4 ml-4 mt-4 mb-4 sm:text-base">
+        <Card className="w-full mr-1 ml-1 md:w-[80%] md:mr-4 md:ml-4 mt-4 mb-4 sm:text-base">
           <CardHeader>
             {data.header && <CVHeader header={data.header} />}
           </CardHeader>

@@ -5,15 +5,21 @@ import useAuthStore from "@/hooks/use-login-store";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
 import { headerMenuList, signUpAndLoginMenus } from "@/lib/menu-list";
+import { cn } from "@/lib/utils";
 import { AuthService } from "@/service/auth.service";
 import { HandleLogout } from "@/service/redirectionService";
+import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+
+const SIGNUP_LOGIN_BUTTON_CLASS =
+  "relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full  before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95";
 
 export const FullPageHeader = () => {
   const location = useLocation();
   const isAuthenticated = useAuthStore((stat) => stat.isAuthenticated);
   const title = useStore(useTitle, (state) => state);
   const bypassAuth = useAuthByPass();
+  const [selectedButton, setSelectedButton] = useState("Home");
 
   return (
     <header>
@@ -54,10 +60,27 @@ export const FullPageHeader = () => {
                       <li key={index}>
                         <NavLink
                           to={item.href}
-                          onClick={() => title?.setTitle(item.label)}
-                          className="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight"
+                          onClick={() => {
+                            title?.setTitle(item.label);
+                            setSelectedButton(item.label);
+                          }}
+                          className={cn(
+                            SIGNUP_LOGIN_BUTTON_CLASS,
+                            selectedButton === item.label
+                              ? "before:bg-primary dark:before:bg-primaryLight"
+                              : "focus:before:bg-primary/10 dark:focus:before:bg-primaryLight/10"
+                          )}
                         >
-                          <span>{item.label}</span>
+                          <span
+                            className={cn(
+                              "relative text-sm font-semibold  ",
+                              selectedButton === item.label
+                                ? "dark:text-gray-900 text-white"
+                                : "dark:text-primaryLight text-primary"
+                            )}
+                          >
+                            {item.label}
+                          </span>
                         </NavLink>
                       </li>
                     )
@@ -70,17 +93,43 @@ export const FullPageHeader = () => {
                   <>
                     <Link
                       to="/signUp"
-                      className="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full focus:before:bg-primary/10 dark:focus:before:bg-primaryLight/10 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
+                      onClick={() => setSelectedButton("Sign Up")}
+                      className={cn(
+                        SIGNUP_LOGIN_BUTTON_CLASS,
+                        selectedButton === "Sign Up"
+                          ? "before:bg-primary dark:before:bg-primaryLight"
+                          : "focus:before:bg-primary/10 dark:focus:before:bg-primaryLight/10"
+                      )}
                     >
-                      <span className="relative text-sm font-semibold text-primary dark:text-primaryLight">
+                      <span
+                        className={cn(
+                          "relative text-sm font-semibold  ",
+                          selectedButton === "Sign Up"
+                            ? "dark:text-gray-900 text-white"
+                            : "dark:text-primaryLight text-primary"
+                        )}
+                      >
                         Sign Up
                       </span>
                     </Link>
                     <Link
                       to="/login"
-                      className="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-primaryLight before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
+                      onClick={() => setSelectedButton("Login")}
+                      className={cn(
+                        SIGNUP_LOGIN_BUTTON_CLASS,
+                        selectedButton === "Login"
+                          ? "before:bg-primary dark:before:bg-primaryLight"
+                          : "focus:before:bg-primary/10 dark:focus:before:bg-primaryLight/10"
+                      )}
                     >
-                      <span className="relative text-sm font-semibold text-white dark:text-gray-900">
+                      <span
+                        className={cn(
+                          "relative text-sm font-semibold  ",
+                          selectedButton === "Login"
+                            ? "dark:text-gray-900 text-white"
+                            : "dark:text-primaryLight text-primary"
+                        )}
+                      >
                         Login
                       </span>
                     </Link>
