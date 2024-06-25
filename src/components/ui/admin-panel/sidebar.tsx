@@ -7,13 +7,15 @@ import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { Link } from "react-router-dom";
 import { SidebarToggle } from "./sidebar-toggle";
 import { Menu } from "./menu";
-import { Group } from "@/lib/menu-list";
+import { Group, brandMenuLink } from "@/lib/menu-list";
 
 interface sideBarProps {
   menuList: Group[];
 }
 export function Sidebar({ menuList }: sideBarProps) {
   const sidebar = useStore(useSidebarToggle, (state) => state);
+  const brandMenu = brandMenuLink();
+
   if (!sidebar) return null;
 
   return (
@@ -33,7 +35,7 @@ export function Sidebar({ menuList }: sideBarProps) {
           variant="link"
           asChild
         >
-          <Link to="/app/dashboard" className="flex items-center gap-2">
+          <Link to={brandMenu.href} className="flex items-center gap-2">
             <PanelsTopLeft className="w-6 h-6 mr-1" />
             <h1
               className={cn(
@@ -43,7 +45,7 @@ export function Sidebar({ menuList }: sideBarProps) {
                   : "translate-x-0 opacity-100"
               )}
             >
-              Brand
+              {brandMenu.label}
             </h1>
           </Link>
         </Button>

@@ -162,5 +162,12 @@ function signUpAndLoginMenus(): Group[] {
   ];
 }
 
-export { headerMenuList, signUpAndLoginMenus, getMenuList };
+function brandMenuLink() {
+  return {
+    href: "/home",
+    label: "NK",
+  };
+}
+
+export { headerMenuList, signUpAndLoginMenus, getMenuList, brandMenuLink };
 export type { Submenu, Menu, Group };
