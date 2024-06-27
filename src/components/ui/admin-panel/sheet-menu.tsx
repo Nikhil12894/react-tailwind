@@ -9,9 +9,10 @@ import {
 } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
 import { Menu } from "./menu";
-import { Group } from "@/lib/menu-list";
+import { Group, brandMenuLink } from "@/lib/menu-list";
 
 export function SheetMenu({ menuList }: { menuList: Group[] }) {
+  const { href, label } = brandMenuLink();
   return (
     <Sheet>
       <SheetTrigger className="lg:hidden" asChild>
@@ -26,9 +27,9 @@ export function SheetMenu({ menuList }: { menuList: Group[] }) {
             variant="link"
             asChild
           >
-            <Link to="/app/dashboard" className="flex items-center gap-2">
+            <Link to={href} className="flex items-center gap-2">
               <PanelsTopLeft className="w-6 h-6 mr-1" />
-              <h1 className="font-bold text-lg">Brand</h1>
+              <h1 className="font-bold text-lg">{label}</h1>
             </Link>
           </Button>
         </SheetHeader>

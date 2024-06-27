@@ -1,18 +1,67 @@
 import { lazy } from "react";
 import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
-import AccountPage from "./app/account/Account.tsx";
-import { DashboardPage } from "./app/dashboard/page.tsx";
-import DynamicForm from "./app/dynamicforma/dynamic-form.tsx";
-import { GeneralPages } from "./app/generalPages/index.tsx";
-import { Landing } from "./app/landing/Landing.tsx";
-import { Login } from "./app/login/Login.tsx";
-import { SignUpForm } from "./app/signup/SignUp.tsx";
-import { UsersPage } from "./app/users/Users.tsx";
-import { BreadcrumbComponent } from "./components/breadcrum/Breadcrum.tsx";
-import AdminPanelLayout from "./components/ui/admin-panel/admin-panel-layout.tsx";
-import { ContentLayout } from "./components/ui/admin-panel/content-layout.tsx";
+// import { Login } from "./app/login/Login.tsx";
+// import { SignUpForm } from "./app/signup/SignUp.tsx";
+// import { UsersPage } from "./app/users/Users.tsx";
+// import { BreadcrumbComponent } from "./components/breadcrum/Breadcrum.tsx";
+// import { ContentLayout } from "./components/ui/admin-panel/content-layout.tsx";
 import { useAuthByPass } from "./hooks/auth-bypass.ts";
 import useAuthStore from "./hooks/use-login-store.tsx";
+const BreadcrumbComponent = lazy(() =>
+  import("./components/breadcrum/Breadcrum.tsx").then(
+    ({ BreadcrumbComponent }) => ({
+      default: BreadcrumbComponent,
+    })
+  )
+);
+const ContentLayout = lazy(() =>
+  import("./components/ui/admin-panel/content-layout.tsx").then(
+    ({ ContentLayout }) => ({
+      default: ContentLayout,
+    })
+  )
+);
+const GeneralPages = lazy(() =>
+  import("./app/generalPages/index.tsx").then(({ GeneralPages }) => ({
+    default: GeneralPages,
+  }))
+);
+const Landing = lazy(() =>
+  import("./app/landing/Landing.tsx").then(({ Landing }) => ({
+    default: Landing,
+  }))
+);
+const DashboardPage = lazy(() =>
+  import("./app/dashboard/page.tsx").then(({ DashboardPage }) => ({
+    default: DashboardPage,
+  }))
+);
+const Login = lazy(() =>
+  import("./app/login/Login.tsx").then(({ Login }) => ({
+    default: Login,
+  }))
+);
+const SignUpForm = lazy(() =>
+  import("./app/signup/SignUp.tsx").then(({ SignUpForm }) => ({
+    default: SignUpForm,
+  }))
+);
+const UsersPage = lazy(() =>
+  import("./app/users/Users.tsx").then(({ UsersPage }) => ({
+    default: UsersPage,
+  }))
+);
+const ErrorPage = lazy(() =>
+  import("./components/error-page/error_page.tsx").then(({ ErrorPage }) => ({
+    default: ErrorPage,
+  }))
+);
+const AdminPanelLayout = lazy(
+  () => import("./components/ui/admin-panel/admin-panel-layout.tsx")
+);
+const AccountPage = lazy(() => import("./app/account/Account.tsx"));
+
+const DynamicForm = lazy(() => import("./app/dynamicforma/dynamic-form.tsx"));
 const Portfolio = lazy(() => import("./app/Portfolio/Portfolio.tsx"));
 const Blog = lazy(() => import("./app/blog/Blog.tsx"));
 const PersonLazy = lazy(() => import("./app/person/Person_data_table.tsx"));
@@ -25,16 +74,11 @@ const ScheduleComp = lazy(
 );
 const AllBlogs = lazy(() => import("./app/blog/All_blogs.tsx"));
 
-const ErrorPage = lazy(() =>
-  import("./components/error-page/error_page.tsx").then(({ ErrorPage }) => ({
-    default: ErrorPage,
-  }))
-);
-
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const authBypass = useAuthByPass();
-  return isAuthenticated || authBypass! ? (
+
+  return isAuthenticated || authBypass ? (
     children
   ) : (
     <Navigate to="/login" replace={true} />

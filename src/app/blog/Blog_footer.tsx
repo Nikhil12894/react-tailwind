@@ -3,7 +3,7 @@ const BlogFooter = () => {
     <footer className="bg-gray-50 dark:bg-gray-800 antialiased">
       <div className="p-4 py-6 mx-auto max-w-screen-xl md:p-8 lg:p-10">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-5">
-          <div>
+          {/* <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Company
             </h2>
@@ -105,8 +105,8 @@ const BlogFooter = () => {
                 </a>
               </li>
             </ul>
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
               Download
             </h2>
@@ -132,7 +132,7 @@ const BlogFooter = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="text-center">

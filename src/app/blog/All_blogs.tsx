@@ -30,8 +30,8 @@ const AllBlogs = () => {
     setAllPost(dataQuery.data?.data?.postDTOs ?? postDefaultData);
   }, []);
   return (
-    <div className="grid grid-flow-row-dense grid-cols-4 grid-rows-3">
-      <div className="col-span-3 border container">
+    <div className="grid grid-cols-4 grid-rows-1">
+      <div className="col-span-4 md:col-span-3 border container">
         {isAuthenticated && (
           <Button
             variant="outline"
@@ -56,20 +56,20 @@ const AllBlogs = () => {
               <Loader />
             ) : allPost.length == 0 ? (
               <div className="h-screen flex items-center justify-center">
-                <div className="text-9xl">
+                <div className="text-5xl">
                   No Post available will be available soon...
                 </div>
               </div>
             ) : (
               allPost.map((post) => (
-                <div key={post.id} className="container">
+                <div key={post.id} className="md:container m-4">
                   <div className="items-center mt-5 border rounded-lg duration-300 hover:scale-105">
                     <div className="m-5">
                       <Link to={`/post/${post.title}`}>
                         <article className="flex flex-col">
                           <img
                             src={post.featured_image}
-                            className="mb-5 h-[15rem] w-full rounded-lg"
+                            className="mb-5 h-[10rem] w-full rounded-lg"
                             alt={post.title}
                           />
                           <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
@@ -88,7 +88,7 @@ const AllBlogs = () => {
           </section>
         )}
       </div>
-      <div className="col-span-1 border">ADS</div>
+      <div className="border md:col-span-1 hidden md:block">ADS</div>
       <div className="col-span-4 border">
         <BlogNewsLater />
         <BlogFooter />
