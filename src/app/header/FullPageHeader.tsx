@@ -1,5 +1,6 @@
 import { SidebarSheet } from "@/components/ui/admin-panel/Sidebarsheet";
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 import { useAuthByPass } from "@/hooks/auth-bypass";
 import useAuthStore from "@/hooks/use-login-store";
 import { useStore } from "@/hooks/use-store";
@@ -9,7 +10,7 @@ import { cn } from "@/lib/utils";
 import { AuthService } from "@/service/auth.service";
 import { HandleLogout } from "@/service/redirectionService";
 import { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const SIGNUP_LOGIN_BUTTON_CLASS =
   "relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full  before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95";
@@ -20,15 +21,19 @@ export const FullPageHeader = () => {
   const title = useStore(useTitle, (state) => state);
   const bypassAuth = useAuthByPass();
   const [selectedButton, setSelectedButton] = useState("Home");
-
+  const navigator = useNavigate();
+  const handleLogout = () => {
+    HandleLogout();
+    navigator(location.pathname, { replace: true });
+  };
   return (
     <header>
       <nav className="fixed z-20 w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur navbar shadow-md shadow-gray-600/5 md:relative md:bg-transparent dark:shadow-none">
         <div className="xl:container m-auto px-6 md:px-12">
           <div className="flex flex-wrap items-center justify-between gap-6 md:py-3 md:gap-0">
             <div className="w-full flex justify-between lg:w-auto">
-              <a
-                href="#"
+              <Link
+                to="/home"
                 aria-label="logo"
                 className="flex space-x-2 items-center"
               >
@@ -39,10 +44,10 @@ export const FullPageHeader = () => {
                 <span className="text-base font-bold text-gray-600 dark:text-white">
                   NK
                 </span>
-              </a>
+              </Link>
               <label
                 htmlFor="hbr"
-                className="block relative z-20 p-6 -mr-6 cursor-pointer"
+                className="relative z-20 p-6 -mr-6 cursor-pointer flex items-center justify-center"
               >
                 <SidebarSheet
                   menus={[
@@ -52,7 +57,7 @@ export const FullPageHeader = () => {
                 />
               </label>
             </div>
-            <div className="navmenu hidden w-full flex-wrap justify-end items-center mb-16 space-y-8 p-6 border border-gray-100 rounded-3xl shadow-2xl shadow-gray-300/20 bg-white dark:bg-gray-800 lg:space-y-0 lg:p-0 lg:m-0 lg:flex md:flex-nowrap lg:bg-transparent lg:w-7/12 lg:shadow-none dark:shadow-none dark:border-gray-700 lg:border-0">
+            <div className="hidden w-full flex-wrap justify-end items-center mb-16 space-y-8 p-6 border border-gray-100 rounded-3xl shadow-2xl shadow-gray-300/20 bg-white dark:bg-gray-800 lg:space-y-0 lg:p-0 lg:m-0 lg:flex md:flex-nowrap lg:bg-transparent lg:w-7/12 lg:shadow-none dark:shadow-none dark:border-gray-700 lg:border-0">
               <div className="text-gray-600 dark:text-gray-300 lg:pr-4">
                 <ul className="space-y-6 tracking-wide font-medium text-base lg:text-sm lg:flex lg:space-y-0">
                   {headerMenuList(location.pathname)[0].menus.map(
@@ -137,7 +142,7 @@ export const FullPageHeader = () => {
                 ) : isAuthenticated ? (
                   <Button
                     variant="outline"
-                    onClick={() => <HandleLogout rout={location.pathname} />}
+                    onClick={() => handleLogout()}
                     className="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-primaryLight before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95"
                   >
                     <span className="relative text-sm font-semibold text-white dark:text-gray-900">
@@ -165,6 +170,9 @@ export const FullPageHeader = () => {
                     </Button>
                   </>
                 )}
+              </div>
+              <div className="hidden lg:block ml-5">
+                <ModeToggle />
               </div>
             </div>
           </div>

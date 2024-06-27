@@ -23,11 +23,16 @@ import useAuthStore from "@/hooks/use-login-store";
 import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
 import { HandleLogout } from "@/service/redirectionService";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function UserNav() {
   const title = useStore(useTitle, (state) => state);
   const { isAuthenticated, user } = useAuthStore();
+  const navigator = useNavigate();
+  const handleLogout = () => {
+    HandleLogout();
+    navigator("/home", { replace: true });
+  };
 
   return (
     <DropdownMenu>
@@ -110,7 +115,7 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="hover:cursor-pointer"
-          onClick={() => <HandleLogout rout="/home" />}
+          onClick={() => handleLogout()}
         >
           <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
           Sign out

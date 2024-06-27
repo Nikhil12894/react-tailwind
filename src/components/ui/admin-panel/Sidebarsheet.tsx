@@ -2,6 +2,7 @@ import { useStore } from "@/hooks/use-store";
 import { useTitle } from "@/hooks/use-title";
 import { Menu } from "lucide-react";
 import { Button } from "../button";
+import { ModeToggle } from "../mode-toggle";
 import { Sheet, SheetContent, SheetTrigger } from "../sheet";
 
 interface SidebarSheetProps {
@@ -33,6 +34,9 @@ export const SidebarSheet = ({ menus }: SidebarSheetProps) => {
       </SheetTrigger>
       <SheetContent side="left" className="flex flex-col">
         <nav className="grid gap-2 text-lg font-medium">
+          <div className="flex items-center justify-center">
+            <ModeToggle />
+          </div>
           {menus.map((menu) => (
             <a
               key={menu.label}

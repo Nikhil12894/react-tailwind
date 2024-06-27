@@ -15,7 +15,7 @@ import { useTitle } from "@/hooks/use-title";
 import { Group } from "@/lib/menu-list";
 import { cn } from "@/lib/utils";
 import { HandleLogout } from "@/service/redirectionService";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CollapseMenuButton } from "./collapse-menu-button";
 
 interface MenuProps {
@@ -25,6 +25,11 @@ interface MenuProps {
 
 export function Menu({ isOpen, menuList }: MenuProps) {
   const title = useStore(useTitle, (state) => state);
+  const navigator = useNavigate();
+  const handleLogout = () => {
+    navigator("/home", { replace: true });
+    HandleLogout();
+  };
 
   return (
     <ScrollArea className="[&>div>div[style]]:!block">
@@ -113,7 +118,7 @@ export function Menu({ isOpen, menuList }: MenuProps) {
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
-                    onClick={() => <HandleLogout />}
+                    onClick={() => handleLogout()}
                     variant="outline"
                     className="w-full justify-center h-10 mt-5"
                   >
