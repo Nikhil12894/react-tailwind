@@ -13,7 +13,9 @@ export default (configEnv: ConfigEnv) => {
 
   return defineConfig({
     base: process.env.BASE_URL,
-
+    // server: {
+    //   host: true,
+    // },
     plugins: [react()],
     resolve: {
       alias: {

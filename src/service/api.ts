@@ -10,7 +10,8 @@ import { Task, TaskList, TaskRequest, getTaskShotBy } from "@/types/task-type";
 import { PaginationState } from "@tanstack/react-table";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/taskservice/api/"; //import.meta.env.API_BASE_URL
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const axiosInstance = axios.create({ baseURL: BASE_URL });
 
 export const getAllSchedules = async (
@@ -19,6 +20,7 @@ export const getAllSchedules = async (
   rowSelection: {},
   columnFilters: {}
 ) => {
+  console.log(BASE_URL);
   console.log(pagination, sort, rowSelection, columnFilters);
   return (
     await axiosInstance.get<WebResponse<ScheduleDTOList>>(
