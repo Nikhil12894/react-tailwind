@@ -19,10 +19,12 @@ import { useEffect, useState } from "react";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;
+  hideSelectedCount?: boolean;
 }
 
 export function DataTableLazyPagination<TData>({
   table,
+  hideSelectedCount = false,
 }: DataTablePaginationProps<TData>) {
   const [selectedRowCount, setSelectedRowCount] = useState<number>(0);
   useEffect(() => {
@@ -35,7 +37,13 @@ export function DataTableLazyPagination<TData>({
   return (
     <div className="flex items-center justify-between px-2 ">
       <div className="text-sm text-muted-foreground hidden lg:flex">
-        {selectedRowCount} of {table.getRowCount()} row(s) selected.
+        {!hideSelectedCount ? (
+          <>
+            {selectedRowCount} of {table.getRowCount()} row(s) selected.
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className="items-center space-x-2 hidden lg:flex">
