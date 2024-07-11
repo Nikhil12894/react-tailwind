@@ -6,7 +6,7 @@ export interface Post extends BaseType {
   content: string | Promise<string>;
   published_at?: Date | string;
   status: PostStatus;
-  featured_image: string;
+  image_url?: string;
   description?: string;
 }
 
@@ -22,8 +22,14 @@ export interface PostRequest {
   content: string;
   published_at?: Date | string;
   status: PostStatus;
-  featured_image: string | ArrayBuffer | null;
+  image_url?: string;
   description?: string;
+}
+
+export interface Image {
+  id: number;
+  name: string;
+  data: string;
 }
 
 export interface PostsDTO {
