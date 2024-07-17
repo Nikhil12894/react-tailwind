@@ -137,6 +137,12 @@ function headerMenuList(pathname: string): Group[] {
           icon: Bookmark,
           active: pathname.includes("/blogs"),
         },
+        {
+          href: "/editor",
+          label: "Editor",
+          icon: Bookmark,
+          active: pathname.includes("/blogs"),
+        },
       ],
     },
   ];

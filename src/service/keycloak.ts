@@ -7,9 +7,9 @@ interface KeycloakConfig {
 }
 
 const keycloakConfig: KeycloakConfig = {
-  url: "http://localhost:8080/",
-  realm: "myrelm",
-  clientId: "react-app",
+  url: "https://keycloak.learnwithnk.in/",
+  realm: "NK",
+  clientId: "nk_client",
 };
 
 const authClient = new Keycloak(keycloakConfig);

@@ -1,6 +1,7 @@
 export const Landing = () => {
   return (
     <>
+      <h1>Test</h1>
       <div className="pt-32 md:py-12 xl:container m-auto px-6 md:px-12">
         <div
           aria-hidden="true"

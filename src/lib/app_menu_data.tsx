@@ -79,6 +79,10 @@ const headerMenus: MenuItem[] = [
     name: "Blogs",
     link: "/blogs",
   },
+  {
+    name: "Editor",
+    link: "/editor",
+  },
 ];
 const signUpAndLoginMenus: MenuItem[] = [
   {

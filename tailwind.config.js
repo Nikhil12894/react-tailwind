@@ -8,6 +8,7 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
+  safelist: ["ProseMirror"],
   theme: {
     container: {
       center: true,
@@ -84,10 +85,18 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "100ch",
+          },
+        },
+      },
     },
   },
   plugins: [
     require("tailwindcss-animate"),
     require("tailwindcss-debug-screens"),
+    require("@tailwindcss/typography"),
   ],
 };

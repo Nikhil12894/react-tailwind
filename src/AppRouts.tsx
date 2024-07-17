@@ -7,6 +7,9 @@ import { Navigate, Outlet, createBrowserRouter } from "react-router-dom";
 // import { ContentLayout } from "./components/ui/admin-panel/content-layout.tsx";
 import { useAuthByPass } from "./hooks/auth-bypass.ts";
 import useAuthStore from "./hooks/use-login-store.tsx";
+import BlockEditor from "./editor/BlockEditor/BlockEditor.tsx";
+import { initialContent } from "./editor/lib/data/initialContent.tsx";
+import Tiptap from "./app/my_editor/TipTap.tsx";
 const BreadcrumbComponent = lazy(() =>
   import("./components/breadcrum/Breadcrum.tsx").then(
     ({ BreadcrumbComponent }) => ({
@@ -118,6 +121,10 @@ const appRout = createBrowserRouter([
       {
         path: "signUp",
         element: <SignUpForm />,
+      },
+      {
+        path: "editor",
+        element: <Tiptap />,
       },
     ],
   },
